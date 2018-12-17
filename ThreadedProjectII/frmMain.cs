@@ -34,5 +34,15 @@ namespace ThreadedProjectII
             Form1.Show();
             Form1.Activate();
         }
+
+        private void mnuAddSupplier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuEditSupplier_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
