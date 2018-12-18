@@ -9,3 +9,9 @@ C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.c
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CoreCompileInputs.cache
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.exe
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.pdb
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmPackage.resources
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmPkgConfirmation.resources
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmProducts.resources
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmProductsComfirmation.resources
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmSuppliers.resources
+C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmSuppliersComfirmation.resources
