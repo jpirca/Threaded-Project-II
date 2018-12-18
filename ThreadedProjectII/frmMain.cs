@@ -26,13 +26,48 @@ namespace ThreadedProjectII
         {
             //this.Enabled = false;
             //this.IsMdiContainer = true;
-            frmLogin Form1 = new frmLogin();
-            Form1.MdiParent = this;
+            frmLogin form1 = new frmLogin();
+            form1.MdiParent = this;
             //Form2.Enabled = true;
             //Form2.BringToFront();
-            menuMain.Enabled = false;
-            Form1.Show();
-            Form1.Activate();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Enabled = false;
+            //this.IsMdiContainer = true;
+            frmPackage form1 = new frmPackage();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
+        }
+
+        private void addToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmProducts form1 = new frmProducts();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
+        }
+
+        private void addToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            frmSuppliers form1 = new frmSuppliers();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
         }
     }
 }
