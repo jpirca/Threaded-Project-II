@@ -67,7 +67,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -83,13 +83,14 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.addToolStripMenuItem.Text = "Add...";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.editToolStripMenuItem.Text = "Edit...";
             // 
             // productsToolStripMenuItem
@@ -104,13 +105,14 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.addToolStripMenuItem1.Text = "Add...";
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.editToolStripMenuItem1.Text = "Edit...";
             // 
             // suppliersToolStripMenuItem
@@ -127,6 +129,7 @@
             this.addToolStripMenuItem2.Name = "addToolStripMenuItem2";
             this.addToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.addToolStripMenuItem2.Text = "Add...";
+            this.addToolStripMenuItem2.Click += new System.EventHandler(this.addToolStripMenuItem2_Click);
             // 
             // editToolStripMenuItem2
             // 
@@ -143,7 +146,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuMain;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Expert Agency";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
