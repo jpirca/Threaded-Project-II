@@ -42,9 +42,9 @@
             this.mnuEditSupplier = new System.Windows.Forms.ToolStripMenuItem();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // menuMain
-            // 
+            //
             this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.packagesToolStripMenuItem,
@@ -55,89 +55,91 @@
             this.menuMain.Size = new System.Drawing.Size(800, 24);
             this.menuMain.TabIndex = 0;
             this.menuMain.Text = "menuStrip1";
-            // 
+            //
             // fileToolStripMenuItem
-            // 
+            //
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
-            // 
+            //
             // exitToolStripMenuItem
-            // 
+            //
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
+            //
             // packagesToolStripMenuItem
-            // 
+            //
             this.packagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
             this.editToolStripMenuItem});
             this.packagesToolStripMenuItem.Name = "packagesToolStripMenuItem";
             this.packagesToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.packagesToolStripMenuItem.Text = "Packages";
-            // 
+            //
             // addToolStripMenuItem
-            // 
+            //
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
             this.addToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.addToolStripMenuItem.Text = "Add...";
-            // 
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            //
             // editToolStripMenuItem
-            // 
+            //
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.editToolStripMenuItem.Text = "Edit...";
-            // 
+            //
             // productsToolStripMenuItem
-            // 
+            //
             this.productsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem1,
             this.editToolStripMenuItem1});
             this.productsToolStripMenuItem.Name = "productsToolStripMenuItem";
             this.productsToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.productsToolStripMenuItem.Text = "Products";
-            // 
+            //
             // addToolStripMenuItem1
-            // 
+            //
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
             this.addToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.addToolStripMenuItem1.Text = "Add...";
-            // 
+            this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
+            //
             // editToolStripMenuItem1
-            // 
+            //
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
             this.editToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.editToolStripMenuItem1.Text = "Edit...";
-            // 
+            //
             // suppliersToolStripMenuItem
-            // 
+            //
             this.suppliersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAddSupplier,
             this.mnuEditSupplier});
             this.suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
             this.suppliersToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.suppliersToolStripMenuItem.Text = "Suppliers";
-            // 
+            //
             // mnuAddSupplier
-            // 
+            //
             this.mnuAddSupplier.Name = "mnuAddSupplier";
             this.mnuAddSupplier.Size = new System.Drawing.Size(180, 22);
             this.mnuAddSupplier.Text = "Add...";
             this.mnuAddSupplier.Click += new System.EventHandler(this.mnuAddSupplier_Click);
-            // 
+            //
             // mnuEditSupplier
-            // 
+            //
             this.mnuEditSupplier.Name = "mnuEditSupplier";
             this.mnuEditSupplier.Size = new System.Drawing.Size(180, 22);
             this.mnuEditSupplier.Text = "Edit..";
             this.mnuEditSupplier.Click += new System.EventHandler(this.mnuEditSupplier_Click);
-            // 
+            //
             // frmMain
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
@@ -145,7 +147,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuMain;
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Travel Expert Agency";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuMain.ResumeLayout(false);
             this.menuMain.PerformLayout();
@@ -170,4 +174,3 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEditSupplier;
     }
 }
-
