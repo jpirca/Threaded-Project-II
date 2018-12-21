@@ -16,7 +16,8 @@ namespace ThreadedProjectII
         private int supplierId;
         private string supName;
 
-        /* when supplierId = -1, Supplier object is initialized */
+        /* Constructor: 
+         * when supplierId = -1, Supplier object is initialized */
         public Supplier(int supplierId = -1, string supName = "")
         {
             this.supplierId = supplierId;

@@ -72,12 +72,24 @@ namespace ThreadedProjectII
 
         private void mnuAddSupplier_Click(object sender, EventArgs e)
         {
-
+            frmSuppliers form1 = new frmSuppliers();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
         }
 
         private void mnuEditSupplier_Click(object sender, EventArgs e)
         {
-
+            frmSuppliers form1 = new frmSuppliers();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
         }
     }
 }

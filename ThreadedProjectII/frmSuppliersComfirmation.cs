@@ -19,9 +19,9 @@ namespace ThreadedProjectII
 
         private void btnAddSup_Click(object sender, EventArgs e)
         {
-            SupplierADO ado = new SupplierADO();
+            /*SupplierADO ado = new SupplierADO();
             Supplier supplier = new Supplier(-1, txtSupplierName.Text);
-            ado.InsertSuppliers(supplier);
+            ado.InsertSuppliers(supplier);*/
             MessageBox.Show("The supplier \"Supplier Name\" was created sussccefully", "Adding Supplier");
             this.Close();
         }

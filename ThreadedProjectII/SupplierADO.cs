@@ -24,11 +24,12 @@ namespace ThreadedProjectII
             string query = "SELECT * FROM Suppliers";
             try
             {
+                // get connection
                 GetDBConnection();
 
-                SqlCommand command = new SqlCommand(query, cnn);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+                SqlDataReader reader = command.ExecuteReader(); // execute query
+                while (reader.Read()) // parse data if there is
                 {
                     Supplier supplier = new Supplier(Convert.ToInt32(reader[0]), 
                                                     Convert.ToString(reader[1]));
@@ -156,14 +157,18 @@ namespace ThreadedProjectII
             return (result!=0);
         }
 
+        // get database connection
         private SqlConnection GetDBConnection()
         {
             string connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=travelexperts;" +
                                     "User ID=sa;Password=sa";
             try
             {
-                cnn = new SqlConnection(connetionString);
-                cnn.Open();
+                if(cnn == null) // initialize only when connection does not exist
+                {
+                    cnn = new SqlConnection(connetionString);
+                    cnn.Open();
+                }                
             }
             catch (Exception ex)
             {
@@ -173,6 +178,7 @@ namespace ThreadedProjectII
             return cnn;
         }
 
+        // close database connection
         private bool CloseDBConnection()
         {
             try
