@@ -11,10 +11,15 @@ Basic Rules
  - Add Comments
  - follow Naming convention
  - feel free to edit this page
- - When finished give yourself a pat on the back :)
-
-NAMING CONVENTION
-----------------
+ 
+Adding Comments
+---------------
+		1. Descriptive Comment
+		2. Use mulit-line flag post comments
+		3. If possible please provide the params and returns
+		
+Naming Convention
+-----------------
 
 C# Code Style
 
