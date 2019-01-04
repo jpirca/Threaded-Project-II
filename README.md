@@ -13,7 +13,7 @@ Basic Rules
  - feel free to edit this page
  - When finished give yourself a pat on the back :)
 
-NAMING CONVETNION
+NAMING CONVENTION
 ----------------
 
 C# Code Style
