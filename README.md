@@ -1,9 +1,9 @@
 Travel Experts Desktop Application
 ==================================
 Authors
->Jeremiah Lobo 
->Jonanthan Pirca
->Muhammad Islam
+>Jeremiah Lobo, 
+>Jonanthan Pirca, 
+>Muhammad Islam, and 
 >Quynh Nguyen
 
 Basic Rules
