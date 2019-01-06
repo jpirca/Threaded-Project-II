@@ -55,6 +55,7 @@
             this.btnCancelSup.TabIndex = 50;
             this.btnCancelSup.Text = "&Cancel";
             this.btnCancelSup.UseVisualStyleBackColor = true;
+            this.btnCancelSup.Click += new System.EventHandler(this.btnCancelSup_Click);
             // 
             // btnNextSup
             // 
