@@ -24,5 +24,18 @@ namespace ThreadedProjectII
             form1.Show();
             form1.Activate();
         }
+
+        private void btnCancelSup_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to Cancel?", "Adding \"Supplier\"", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
     }
 }
