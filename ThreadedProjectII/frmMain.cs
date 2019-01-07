@@ -83,7 +83,33 @@ namespace ThreadedProjectII
 
         private void mnuEditSupplier_Click(object sender, EventArgs e)
         {
-            frmSuppliers form1 = new frmSuppliers();
+            frmEditSuppliers form1 = new frmEditSuppliers();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
+        }
+
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //this.Enabled = false;
+            //this.IsMdiContainer = true;
+            frmEditPackage form1 = new frmEditPackage();
+            form1.MdiParent = this;
+            //Form2.Enabled = true;
+            //Form2.BringToFront();
+            //menuMain.Enabled = false;
+            form1.Show();
+            form1.Activate();
+        }
+
+        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //this.Enabled = false;
+            //this.IsMdiContainer = true;
+            frmEditProducts form1 = new frmEditProducts();
             form1.MdiParent = this;
             //Form2.Enabled = true;
             //Form2.BringToFront();
