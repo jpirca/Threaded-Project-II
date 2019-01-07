@@ -86,8 +86,10 @@ namespace ThreadedProjectII
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
                 //log error message
+                Utils.WriteErrorLog("BaseADO.SelectData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+
+
             }
             finally
             {
@@ -160,7 +162,7 @@ namespace ThreadedProjectII
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.UpdateData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
                 //log error message
             }
             finally
@@ -218,7 +220,7 @@ namespace ThreadedProjectII
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.InsertData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
                 //log error message
             }
             finally
@@ -245,7 +247,7 @@ namespace ThreadedProjectII
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.DeleteData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -271,9 +273,9 @@ namespace ThreadedProjectII
                     cnn.Open();
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.GetDBConnection(): " + e.Message + " - " + e.GetType().ToString());
             }
             return cnn;
         }
@@ -289,9 +291,9 @@ namespace ThreadedProjectII
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.CloseDBConnection(): " + e.Message + " - " + e.GetType().ToString());
             }
 
             return false;
