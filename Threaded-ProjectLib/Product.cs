@@ -18,7 +18,7 @@ namespace ThreadedProjectLib
         private string _productName;
 
         List<Product> Products = new List<Product>();
-        
+
         //constructor
         public Product(int productId, string productName)
         {
@@ -44,7 +44,7 @@ namespace ThreadedProjectLib
                 {
                     while (reader.Read())
                     {
-                        Products.Add( new Product (Convert.ToInt32(reader[0]), reader[1].ToString()) );
+                        Products.Add(new Product(Convert.ToInt32(reader[0]), reader[1].ToString()));
                     }
                 }
                 finally
@@ -78,7 +78,7 @@ namespace ThreadedProjectLib
                 {
                     command.CommandText =
                         "SET IDENTITY_INSERT dbo.Products ON;" +
-                        "Insert into Products ( ProdName ) VALUES (@pname)"+
+                        "Insert into Products ( ProdName ) VALUES (@pname)" +
                         "SET IDENTITY_INSERT dbo.Products OFF;";
                     command.Prepare();
                     //command.Parameters.AddWithValue("@pid", "");

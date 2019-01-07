@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace ThreadedProjectLib
 {
-     public abstract class DBconnect
+    public abstract class DBconnect
     {
 
         protected SqlConnection GetConnection()
@@ -33,9 +33,9 @@ namespace ThreadedProjectLib
                 }
                 //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
             }
-            
+
             return null;
-            
+
         }
 
     }
