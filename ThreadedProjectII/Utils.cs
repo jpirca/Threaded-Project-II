@@ -11,6 +11,7 @@ namespace ThreadedProjectII
     class Utils
     {
         public static string configurationFilePath = "configurations.xml";
+        public static string errorLogFilePath = "error_log.txt";
 
         public static BDConfiguration GetDBConfiguration()
         {
@@ -40,7 +41,37 @@ namespace ThreadedProjectII
             return configs;
         }
 
-        
+        /*
+         * Error Log Recording functions -- Error Message will be logged into "error_log.txt"
+         * param: errorMsg - Error Message.
+         * 
+         */
+        public static void WriteErrorLog(string errorMsg)
+        {
+            FileStream fs = null;
+            StreamWriter sw = null;
+
+            try
+            {
+                if (File.Exists(configurationFilePath)) // append data when file exists
+                {
+                    //open the file for writing  and overwrite old content.
+                    sw = File.AppendText(errorLogFilePath);
+                }
+                else //create a new file with name "error_log.txt"
+                {
+                    fs = new FileStream(errorLogFilePath, FileMode.Create, FileAccess.Write);
+                    sw = new StreamWriter(fs);
+                }
+
+                // Write data
+                sw.WriteLine(DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() +  ": " + errorMsg);
+            }
+            finally
+            {
+                if (sw != null) sw.Close(); // also close fs
+            }
+        }
     }
 
     [Serializable]

@@ -1,0 +1,8 @@
+Monday, January 7, 2019-9:07:43 AM: Login failed for user 'jpirca'. - System.Data.SqlClient.SqlException
+Monday, January 7, 2019-9:07:44 AM: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
+Monday, January 7, 2019-9:08:51 AM: Login failed for user 'jpirca'. - System.Data.SqlClient.SqlException
+Monday, January 7, 2019-9:08:51 AM: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
+Monday, January 7, 2019 9:13:11 AM: Login failed for user 'jpirca'. - System.Data.SqlClient.SqlException
+Monday, January 7, 2019 9:13:11 AM: BaseADO.InsertData() - table name: Suppliers: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
+Monday, January 7, 2019 9:15:32 AM: BaseADO.GetDBConnection(): Login failed for user 'jpirca'. - System.Data.SqlClient.SqlException
+Monday, January 7, 2019 9:15:32 AM: BaseADO.InsertData() - table name: Suppliers: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
