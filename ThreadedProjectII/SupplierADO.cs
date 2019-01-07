@@ -15,24 +15,24 @@ namespace ThreadedProjectII
     class SupplierADO
     {
         // database connection variable
-        protected SqlConnection cnn;
+        private BaseADO baseADO = new BaseADO();
+        private SqlConnection con = null;
+        private string tableName = "Suppliers";
 
         /* Get List of Suppliers from database */
         public List<Supplier> GetSuppliers()
         {
-            List<Supplier> result = null;
-            string query = "SELECT * FROM Suppliers";
+            List<Supplier> result = new List<Supplier>();
+
             try
             {
                 // get connection
-                GetDBConnection();
+                List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
 
-                SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
-                SqlDataReader reader = command.ExecuteReader(); // execute query
-                while (reader.Read()) // parse data if there is
+                foreach(Dictionary<string, string> element in list)
                 {
-                    Supplier supplier = new Supplier(Convert.ToInt32(reader[0]), 
-                                                    Convert.ToString(reader[1]));
+                    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]), 
+                                                     element["supName"]);
                     result.Add(supplier);
                 }
             }
@@ -40,11 +40,7 @@ namespace ThreadedProjectII
             {
                 MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
-            finally
-            {
-                //close connection
-                CloseDBConnection();
-            }
+
             return result;
         }
 
@@ -52,149 +48,81 @@ namespace ThreadedProjectII
         public Supplier GetSupplier(int supplierId)
         {
             Supplier result = null;
+            IDictionary<string, string> conditions = new Dictionary<string, string>();
+            conditions.Add("supplierId", supplierId.ToString());
 
-            string query = "SELECT * FROM Suppliers WHERE supplierId = '" + supplierId + "'";
             try
             {
-                GetDBConnection();
+                List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
 
-                SqlCommand command = new SqlCommand(query, cnn);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                foreach (Dictionary<string, string> element in list)
                 {
-                    result = new Supplier(Convert.ToInt32(reader[0]),
-                                          Convert.ToString(reader[1]));
+                    result = new Supplier(Convert.ToInt32(element["supplierId"]),
+                                                     element["supName"]);
+
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
-            finally
-            {
-                //close connection
-                CloseDBConnection();
-            }
+
             return result;
         }
 
         /* Update Supplier Information */
         public bool UpdateSupplier(int supplierId, string supName)
         {
-            int rows = 0;
+            bool result = true;
 
-            string query = "UPDATE Suppliers SET supName ='" + supName + "' " +
-                            "WHERE supplierId = '" + supplierId + "'";
+            IDictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("supName", supName);
+
+            IDictionary<string, string> conditions = new Dictionary<string, string>();
+            conditions.Add("supplierId", supplierId.ToString());
+
             try
             {
-                GetDBConnection();
+                result = baseADO.UpdateData(tableName, values, conditions);
 
-                SqlCommand command = new SqlCommand(query, cnn);
-                rows = command.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
-            finally
-            {
-                //close connection
-                CloseDBConnection();
-            }
-            return (rows!=0);
+
+            return result;
         }
 
         /* Insert Supplier to database */
         public bool InsertSuppliers(Supplier supplier)
         {
-            int result = 0;
+            bool result = true;
 
-            string query = "INSERT INTO Suppliers (supName) VALUES (@supName)";
+            List<string> values = new List<string>();
+            values.Add(supplier.SupName);
+
             try
             {
-                GetDBConnection();
-                SqlCommand command = new SqlCommand(query, cnn);
-                command.Parameters.Add(supplier.SupName);
-                result = command.ExecuteNonQuery();
-              
-               
+                result = baseADO.InsertData(tableName, values);
+
             }
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
-            finally
-            {
-                //close connection
-                CloseDBConnection();
-            }
-            return (result != 0);
+
+            return result;
 
         }
 
         /* Delete Supplier by supplierId*/
-        public bool DeleteSupplier(int supplierId)
+        /*public bool DeleteSupplier(it supplierId)
         {
-            int result = 0;
-
-            string query = "DELETE Suppliers WHERE supplierId = '" + supplierId + "'";
-            try
-            {
-                GetDBConnection();
-
-                SqlCommand command = new SqlCommand(query, cnn);
-                result = command.ExecuteNonQuery();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
-            }
-            finally
-            {
-                //close connection
-                CloseDBConnection();
-            }
+            
             return (result!=0);
-        }
+        }*/
 
-        // get database connection
-        private SqlConnection GetDBConnection()
-        {
-            string connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=travelexperts;" +
-                                    "User ID=sa;Password=sa";
-            try
-            {
-                if(cnn == null) // initialize only when connection does not exist
-                {
-                    cnn = new SqlConnection(connetionString);
-                    cnn.Open();
-                }                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
-            }
-
-            return cnn;
-        }
-
-        // close database connection
-        private bool CloseDBConnection()
-        {
-            try
-            {
-                if (cnn != null)
-                {
-                    cnn.Close();
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
-            }
-
-            return false;
-        }
+        
     }
 }

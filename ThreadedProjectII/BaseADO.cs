@@ -15,10 +15,10 @@ namespace ThreadedProjectII
     class BaseADO
     {
         // database connection variable
-        protected SqlConnection cnn;
+        public SqlConnection cnn;
 
         /* Get List of Suppliers from database */
-        public List<IDictionary<string, string>> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, object> conditions = null)
+        public List<IDictionary<string, string>> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
         {
             List<IDictionary<string, string>> result = new List<IDictionary<string, string>>();
             string selectPhase = "SELECT ";
@@ -172,7 +172,7 @@ namespace ThreadedProjectII
         }
 
         /* Insert Supplier to database */
-        public bool InsertData(string tableName, List<object> values)
+        public bool InsertData(string tableName, List<string> values)
         {
             string insertPhase = "INSERT INTO ";
             string valuePhase = "VALUES(";
@@ -256,28 +256,30 @@ namespace ThreadedProjectII
         }
 
         // get database connection
-        private SqlConnection GetDBConnection()
+        public SqlConnection GetDBConnection()
         {
-            string connetionString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=travelexperts;" +
-                                    "User ID=sa;Password=sa";
+            BDConfiguration dbConf =  Utils.GetDBConfiguration();
+
+            string connetionString = @"Data Source=" + dbConf.ServerName + 
+                                        ";Initial Catalog=travelexperts;" +
+                                        "User ID=" + dbConf.UserName + ";Password=" + dbConf.Password;
             try
             {
-                if(cnn == null) // initialize only when connection does not exist
+                if (cnn == null) // initialize only when connection does not exist
                 {
                     cnn = new SqlConnection(connetionString);
                     cnn.Open();
-                }                
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
             }
-
             return cnn;
         }
 
         // close database connection
-        private bool CloseDBConnection()
+        public bool CloseDBConnection()
         {
             try
             {
@@ -289,10 +291,10 @@ namespace ThreadedProjectII
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
             }
 
             return false;
-        }
+        }       
     }
 }

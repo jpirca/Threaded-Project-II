@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseADO.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="frmEditPackage.cs">
       <SubType>Form</SubType>
     </Compile>
