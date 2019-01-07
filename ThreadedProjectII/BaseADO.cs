@@ -100,60 +100,138 @@ namespace ThreadedProjectII
         /* Update Supplier Information */
         public bool UpdateData(string tableName, IDictionary<string, string> updateColVals, IDictionary<string, string> conditions)
         {
+
+            string updatePhase = "UPDATE ";
+            string setPhase = "SET ";
+            string wherePhase = "WHERE ";
+            string query;
             int rows = 0;
 
-            // build the stuff here
-            string query = "";//"UPDATE Suppliers SET supName ='" + supName + "' " +
-                            //"WHERE supplierId = '" + supplierId + "'";
             try
             {
+                // get connection
                 GetDBConnection();
 
-                SqlCommand command = new SqlCommand(query, cnn);
-                rows = command.ExecuteNonQuery();
+                // build sql query
+                // update phase
+                if (String.IsNullOrEmpty(tableName))
+                {
+                    return false; //error code
+                }
+                else
+                {
+                    updatePhase += tableName;
+
+                }
+
+
+                // set phase
+                if (updateColVals == null || updateColVals.Count < 0)
+                {
+                    // return error code;
+                }
+                else
+                {
+                    foreach (string key in updateColVals.Keys)
+                    {
+                        setPhase += key + " = '" + updateColVals[key] + "', ";
+                    }
+                }
+
+                // conditions phase
+                if (conditions != null)
+                {
+                    foreach (string col in conditions.Keys)
+                    {
+                        wherePhase += col + " = '" + conditions[col] + "', ";
+                    }
+                }
+                else
+                    wherePhase = "";
+
+                // integrate query
+                query = updatePhase + " " +
+                        setPhase.Remove(wherePhase.LastIndexOf(","), 1) +
+                        wherePhase.Remove(wherePhase.LastIndexOf(","), 1);
+
+                SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+                rows = command.ExecuteNonQuery(); ; // execute query
+
             }
             catch (Exception e)
             {
                 //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                //log error message
             }
             finally
             {
                 //close connection
                 CloseDBConnection();
             }
-            return (rows!=0);
+            return (rows != 0);
         }
 
         /* Insert Supplier to database */
-        public bool InsertData(string tableName, IDictionary<string,object> keyValuePairs)
+        public bool InsertData(string tableName, List<object> values)
         {
-            int result = 0;
-            // build insert stuff here
-            string query = ""; // "INSERT INTO Suppliers (supName) VALUES (@supName)";
+            string insertPhase = "INSERT INTO ";
+            string valuePhase = "VALUES(";
+            string query;
+            int rows = 0;
+
             try
             {
+                // get connection
                 GetDBConnection();
-                SqlCommand command = new SqlCommand(query, cnn);
-                command.Parameters.Add(""/*supplier.SupName*/);
-                result = command.ExecuteNonQuery();
-              
-               
+
+                // build sql query
+                // update phase
+                if (String.IsNullOrEmpty(tableName))
+                {
+                    return false; //error code
+                }
+                else
+                {
+                    insertPhase += tableName;
+
+                }
+
+
+                // values phase
+                if (values != null && values.Count > 0)
+                {
+                    foreach (string val in values)
+                    {
+                        valuePhase += "'" + val + "', ";
+                    }
+                }
+                else
+                    return false; //error code
+
+                // integrate query
+                query = insertPhase + " " +
+                        valuePhase.Remove(valuePhase.LastIndexOf(","), 1) + ")";
+
+                SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+                rows = command.ExecuteNonQuery(); ; // execute query
+
             }
             catch (Exception e)
             {
                 //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                //log error message
             }
             finally
             {
                 //close connection
                 CloseDBConnection();
             }
-            return (result != 0);
+            return (rows != 0);
 
         }
 
-        /* Delete Supplier by supplierId*/
-        public bool DeleteData(string tableName, IDictionary<string, object> conditions)
+        /* Delete function will be implemented if there is a demand on deleting*/
+        private bool DeleteData(string tableName, IDictionary<string, object> conditions)
         {
             int result = 0;
 
