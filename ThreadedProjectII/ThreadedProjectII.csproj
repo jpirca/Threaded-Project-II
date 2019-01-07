@@ -173,5 +173,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Threaded-ProjectLib\Threaded-ProjectLib.csproj">
+      <Project>{64dacda3-7bce-41a6-91e9-3aa9d67094fd}</Project>
+      <Name>Threaded-ProjectLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

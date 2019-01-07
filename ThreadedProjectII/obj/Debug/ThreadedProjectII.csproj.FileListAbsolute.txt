@@ -35,3 +35,9 @@ C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\D
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditPackage.resources
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditProducts.resources
 C:\Projects200\ThreadedProjectII\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditSuppliers.resources
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditPackage.resources
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditProducts.resources
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditSuppliers.resources
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.dll
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.pdb
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CopyComplete

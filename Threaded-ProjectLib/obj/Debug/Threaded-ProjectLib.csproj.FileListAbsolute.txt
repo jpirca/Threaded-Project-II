@@ -1,0 +1,6 @@
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\obj\Debug\Threaded-ProjectLib.csprojAssemblyReference.cache
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\obj\Debug\Threaded-ProjectLib.csproj.CoreCompileInputs.cache
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\bin\Debug\Threaded-ProjectLib.dll
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\bin\Debug\Threaded-ProjectLib.pdb
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\obj\Debug\Threaded-ProjectLib.dll
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\Threaded-ProjectLib\obj\Debug\Threaded-ProjectLib.pdb

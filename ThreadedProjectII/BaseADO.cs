@@ -12,7 +12,7 @@ namespace ThreadedProjectII
      * Date: Dec - 17 - 2018
      * Implement base sql functions.
      */
-    class BaseADO
+    class BaseADO 
     {
         // database connection variable
         public SqlConnection cnn;
