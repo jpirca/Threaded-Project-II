@@ -174,9 +174,10 @@ namespace ThreadedProjectII
         }
 
         /* Insert Supplier to database */
-        public bool InsertData(string tableName, List<string> values)
+        public bool InsertData(string tableName, IDictionary<string,string> colValuePairs)
         {
             string insertPhase = "INSERT INTO ";
+            string colsPhase = "(";
             string valuePhase = "VALUES(";
             string query;
             int rows = 0;
@@ -200,11 +201,12 @@ namespace ThreadedProjectII
 
 
                 // values phase
-                if (values != null && values.Count > 0)
+                if (colValuePairs != null && colValuePairs.Count > 0)
                 {
-                    foreach (string val in values)
+                    foreach (string key in colValuePairs.Keys)
                     {
-                        valuePhase += "'" + val + "', ";
+                        colsPhase += key + ", ";
+                        valuePhase += "'" + colValuePairs[key] + "', ";
                     }
                 }
                 else
@@ -212,6 +214,7 @@ namespace ThreadedProjectII
 
                 // integrate query
                 query = insertPhase + " " +
+                        colsPhase.Remove(colsPhase.LastIndexOf(","), 1) + ") " +
                         valuePhase.Remove(valuePhase.LastIndexOf(","), 1) + ")";
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
@@ -260,14 +263,17 @@ namespace ThreadedProjectII
         // get database connection
         public SqlConnection GetDBConnection()
         {
-            BDConfiguration dbConf =  Utils.GetDBConfiguration();
+            //BDConfiguration dbConf =  Utils.GetDBConfiguration();
 
-            string connetionString = @"Data Source=" + dbConf.ServerName + 
-                                        ";Initial Catalog=travelexperts;" +
-                                        "User ID=" + dbConf.UserName + ";Password=" + dbConf.Password;
+            //string connetionString = @"Data Source=" + dbConf.ServerName + 
+            //                            ";Initial Catalog=travelexperts;" +
+            //                            "User ID=" + dbConf.UserName + ";Password=" + dbConf.Password;
+
+            string connetionString = Utils.GetDBConnectionString();
+
             try
             {
-                if (cnn == null) // initialize only when connection does not exist
+                if (cnn == null && connetionString != null) // initialize only when connection does not exist
                 {
                     cnn = new SqlConnection(connetionString);
                     cnn.Open();

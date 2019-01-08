@@ -5,7 +5,7 @@
 
 			<ServerName>oosd-new-rs.database.windows.net</ServerName>
 			<UserName>jpirca</UserName>
-			<Password>abcd1234</Password>
+			<Password>abcd1234*</Password>
 						<Enable>true</Enable>
 		</BDConfiguration>
 		<BDConfiguration>

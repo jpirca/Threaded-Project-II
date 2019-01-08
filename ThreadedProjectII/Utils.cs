@@ -5,40 +5,40 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Configuration;
 
 namespace ThreadedProjectII
 {
     class Utils
     {
-        public static string configurationFilePath = "configurations.xml";
+
         public static string errorLogFilePath = "error_log.txt";
 
-        public static BDConfiguration GetDBConfiguration()
-        {
-            BDConfiguration result = null;
-            DBConfigurations configs = LoadDatabaseConfigurations();
-            foreach(BDConfiguration conf in configs.Configurations)
-            {
-                if (conf.Enable == true)
-                {
-                    result = conf;
-                    break;
-                }
-            }
-            return result;
-        }
+        
         // Load customer data from file.
-        public static DBConfigurations LoadDatabaseConfigurations()
+        public static string GetDBConnectionString()
         {
-            DBConfigurations configs = new DBConfigurations();
-            if (File.Exists(configurationFilePath)) // load data when file exists
+            // To avoid storing the connection string in your code, 
+            // you can retrieve it from a configuration file, using the 
+            // System.Configuration.ConfigurationManager.ConnectionStrings property 
+            //Connects to the App config 
+
+            ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+
+            if (settings != null)
             {
-                XmlSerializer reader = new XmlSerializer(typeof(DBConfigurations));
-                StreamReader file = new StreamReader(configurationFilePath);
-                configs = (DBConfigurations)reader.Deserialize(file); // deserialize customers object from file data
-                file.Close();
+                foreach (ConnectionStringSettings cs in settings)
+                {
+                    return cs.ConnectionString;
+                }
+                //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
+            } else
+            {
+                WriteErrorLog("Missing database configuration, please check those information in App.config");
             }
-            return configs;
+
+            return null;
+            
         }
 
         /*
@@ -53,7 +53,7 @@ namespace ThreadedProjectII
 
             try
             {
-                if (File.Exists(configurationFilePath)) // append data when file exists
+                if (File.Exists(errorLogFilePath)) // append data when file exists
                 {
                     //open the file for writing  and overwrite old content.
                     sw = File.AppendText(errorLogFilePath);
@@ -73,53 +73,5 @@ namespace ThreadedProjectII
             }
         }
     }
-
-    [Serializable]
-    public class DBConfigurations
-    {
-        List<BDConfiguration> configurations = new List<BDConfiguration>();
-
-        public DBConfigurations() { }
-
-        public List<BDConfiguration> Configurations
-        {
-            get { return configurations; }
-            set { configurations = value; }
-        }
-    }
-
-    [Serializable]
-    public class BDConfiguration
-    {
-        private string serverName = "";
-        private string userName = "";
-        private string password = "";
-        private bool enable = false;
-
-        public BDConfiguration() { }
-
-        public string ServerName
-        {
-            get { return serverName; }
-            set { serverName = value; }
-        }
-
-        public string UserName
-        {
-            get { return userName; }
-            set { userName = value; }
-        }
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-
-        public bool Enable
-        {
-            get { return enable; }
-            set { enable = value; }
-        }
-    }
+    
 }
