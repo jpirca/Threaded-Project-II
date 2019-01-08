@@ -99,8 +99,8 @@ namespace ThreadedProjectII
         {
             bool result = true;
 
-            List<string> values = new List<string>();
-            values.Add(supplier.SupName);
+            IDictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("SupName", supplier.SupName);
 
             try
             {
