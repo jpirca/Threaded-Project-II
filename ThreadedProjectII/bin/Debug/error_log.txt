@@ -6,3 +6,10 @@ Monday, January 7, 2019 9:13:11 AM: Login failed for user 'jpirca'. - System.Dat
 Monday, January 7, 2019 9:13:11 AM: BaseADO.InsertData() - table name: Suppliers: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
 Monday, January 7, 2019 9:15:32 AM: BaseADO.GetDBConnection(): Login failed for user 'jpirca'. - System.Data.SqlClient.SqlException
 Monday, January 7, 2019 9:15:32 AM: BaseADO.InsertData() - table name: Suppliers: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException
+Monday, January 7, 2019 10:27:33 AM: BaseADO.InsertData() - table name: Suppliers: Column name or number of supplied values does not match table definition. - System.Data.SqlClient.SqlException
+Monday, January 7, 2019 10:29:31 AM: BaseADO.InsertData() - table name: Suppliers: Column name or number of supplied values does not match table definition. - System.Data.SqlClient.SqlException
+Tuesday, January 8, 2019 1:13:04 PM: BaseADO.InsertData() - table name: Suppliers: Column name or number of supplied values does not match table definition. - System.Data.SqlClient.SqlException
+Tuesday, January 8, 2019 1:19:53 PM: BaseADO.InsertData() - table name: Suppliers: Violation of PRIMARY KEY constraint 'aaaaaSuppliers_PK'. Cannot insert duplicate key in object 'dbo.Suppliers'. The duplicate key value is (0).
+The statement has been terminated. - System.Data.SqlClient.SqlException
+Tuesday, January 8, 2019 1:52:05 PM: BaseADO.GetDBConnection(): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - The wait operation timed out.) - System.Data.SqlClient.SqlException
+Tuesday, January 8, 2019 1:52:05 PM: BaseADO.InsertData() - table name: Suppliers: ExecuteNonQuery requires an open and available Connection. The connection's current state is closed. - System.InvalidOperationException

@@ -5,90 +5,106 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using System.Configuration;
+using System.Reflection;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
     class Utils
     {
-        public static string configurationFilePath = "configurations.xml";
 
-        public static BDConfiguration GetDBConfiguration()
-        {
-            BDConfiguration result = null;
-            DBConfigurations configs = LoadDatabaseConfigurations();
-            foreach(BDConfiguration conf in configs.Configurations)
+        public static string errorLogFilePath = "error_log.txt";
+        public static IDictionary<string, object> dbTableObjectClassMappings = new Dictionary<string, object>()
             {
-                if (conf.Enable == true)
-                {
-                    result = conf;
-                    break;
-                }
-            }
-            return result;
-        }
+                {"Suppliers", new Supplier()},
+                {"Products", new Product()},
+                {"Packages", "Package" }
+            };
         // Load customer data from file.
-        public static DBConfigurations LoadDatabaseConfigurations()
+        public static string GetDBConnectionString()
         {
-            DBConfigurations configs = new DBConfigurations();
-            if (File.Exists(configurationFilePath)) // load data when file exists
+            // To avoid storing the connection string in your code, 
+            // you can retrieve it from a configuration file, using the 
+            // System.Configuration.ConfigurationManager.ConnectionStrings property 
+            //Connects to the App config 
+
+            ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
+
+            if (settings != null)
             {
-                XmlSerializer reader = new XmlSerializer(typeof(DBConfigurations));
-                StreamReader file = new StreamReader(configurationFilePath);
-                configs = (DBConfigurations)reader.Deserialize(file); // deserialize customers object from file data
-                file.Close();
+                foreach (ConnectionStringSettings cs in settings)
+                {
+                    return cs.ConnectionString;
+                }
+                //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
+            } else
+            {
+                WriteErrorLog("Missing database configuration, please check those information in App.config");
             }
-            return configs;
+
+            return null;
+            
         }
 
-        
+        /*
+         * Error Log Recording functions -- Error Message will be logged into "error_log.txt"
+         * param: errorMsg - Error Message.
+         * 
+         */
+        public static void WriteErrorLog(string errorMsg)
+        {
+            FileStream fs = null;
+            StreamWriter sw = null;
+
+            try
+            {
+                if (File.Exists(errorLogFilePath)) // append data when file exists
+                {
+                    //open the file for writing  and overwrite old content.
+                    sw = File.AppendText(errorLogFilePath);
+                }
+                else //create a new file with name "error_log.txt"
+                {
+                    fs = new FileStream(errorLogFilePath, FileMode.Create, FileAccess.Write);
+                    sw = new StreamWriter(fs);
+                }
+
+                // Write data
+                sw.WriteLine(DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToLongTimeString() +  ": " + errorMsg);
+            }
+            finally
+            {
+                if (sw != null) sw.Close(); // also close fs
+            }
+        }
+
+        /* Casting DB Element to relevent Object */
+        public static Object CastDBElementToObject(IDictionary<string,string> element, string tableName)
+        {
+            Object instance = null;
+            try
+            {
+                Object objectClassName = dbTableObjectClassMappings[tableName];
+                Type objType = objectClassName.GetType();
+
+                // Create an instance of the type
+                instance = Activator.CreateInstance(objType);
+                // Get MethodInfo, reflection class that is responsible for storing all relevant information about one method that type defines
+                MethodInfo method = objType.GetMethod("CopyDataFromDBElement");
+
+                // So we pass an instance to call it on and empty parameter list
+                IDictionary<string,string>[] list = new IDictionary<string, string>[1];
+                list[0] = element;
+
+                method.Invoke(instance, list);
+            }
+            catch (Exception e)
+            {
+                Utils.WriteErrorLog("Utils.CastDBElementToObject(): " + e.Message + " - " + e.GetType().ToString());
+            }
+
+            return instance;
+        }
     }
-
-    [Serializable]
-    public class DBConfigurations
-    {
-        List<BDConfiguration> configurations = new List<BDConfiguration>();
-
-        public DBConfigurations() { }
-
-        public List<BDConfiguration> Configurations
-        {
-            get { return configurations; }
-            set { configurations = value; }
-        }
-    }
-
-    [Serializable]
-    public class BDConfiguration
-    {
-        private string serverName = "";
-        private string userName = "";
-        private string password = "";
-        private bool enable = false;
-
-        public BDConfiguration() { }
-
-        public string ServerName
-        {
-            get { return serverName; }
-            set { serverName = value; }
-        }
-
-        public string UserName
-        {
-            get { return userName; }
-            set { userName = value; }
-        }
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-
-        public bool Enable
-        {
-            get { return enable; }
-            set { enable = value; }
-        }
-    }
+    
 }

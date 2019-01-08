@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
     /* Author: Quynh Nguyen (Queenie)
      * Date: Dec - 17 - 2018
@@ -18,6 +18,8 @@ namespace Threaded_ProjectLib
 
         /* Constructor: 
          * when supplierId = -1, Supplier object is initialized */
+        public Supplier() { }
+
         public Supplier(int supplierId = -1, string supName = "")
         {
             this.supplierId = supplierId;
@@ -32,6 +34,13 @@ namespace Threaded_ProjectLib
         public override string ToString()
         {
             return supplierId + ": " + supName;
+        }
+
+        // Copy Data From Database Element
+        public void CopyDataFromDBElement(IDictionary<string, string> element)
+        {
+            this.supplierId = Convert.ToInt32(element["SupplierId"]);
+            this.supName = element["SupName"];
         }
     }
 }

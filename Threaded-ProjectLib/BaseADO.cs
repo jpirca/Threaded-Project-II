@@ -4,9 +4,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Threaded_ProjectLib;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
     /* Author: Quynh Nguyen (Queenie)
      * Date: Dec - 17 - 2018
@@ -18,9 +17,9 @@ namespace Threaded_ProjectLib
         public SqlConnection cnn;
 
         /* Get List of Suppliers from database */
-        public List<IDictionary<string, string>> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
+        public List<Object> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
         {
-            List<IDictionary<string, string>> result = new List<IDictionary<string, string>>();
+            List<Object> result = new List<Object>();
             string selectPhase = "SELECT ";
             string fromPhase = "FROM ";
             string wherePhase = "WHERE ";
@@ -64,7 +63,7 @@ namespace Threaded_ProjectLib
                     }
                 }
                 else
-                    wherePhase = "";
+                    wherePhase = ",";
 
                 // integrate query
                 query = selectPhase.Remove(selectPhase.LastIndexOf(","), 1) +
@@ -81,13 +80,16 @@ namespace Threaded_ProjectLib
                         element.Add(reader.GetName(i), reader[i].ToString());
                     }
                    
-                    result.Add(element);
+                    // cast to object before adding to List
+                    result.Add(Utils.CastDBElementToObject(element, tableName));
                 }
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
                 //log error message
+                Utils.WriteErrorLog("BaseADO.SelectData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+
+
             }
             finally
             {
@@ -160,7 +162,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.UpdateData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
                 //log error message
             }
             finally
@@ -172,9 +174,10 @@ namespace Threaded_ProjectLib
         }
 
         /* Insert Supplier to database */
-        public bool InsertData(string tableName, List<string> values)
+        public bool InsertData(string tableName, IDictionary<string,string> colValuePairs)
         {
             string insertPhase = "INSERT INTO ";
+            string colsPhase = "(";
             string valuePhase = "VALUES(";
             string query;
             int rows = 0;
@@ -198,11 +201,12 @@ namespace Threaded_ProjectLib
 
 
                 // values phase
-                if (values != null && values.Count > 0)
+                if (colValuePairs != null && colValuePairs.Count > 0)
                 {
-                    foreach (string val in values)
+                    foreach (string key in colValuePairs.Keys)
                     {
-                        valuePhase += "'" + val + "', ";
+                        colsPhase += key + ", ";
+                        valuePhase += "'" + colValuePairs[key] + "', ";
                     }
                 }
                 else
@@ -210,6 +214,7 @@ namespace Threaded_ProjectLib
 
                 // integrate query
                 query = insertPhase + " " +
+                        colsPhase.Remove(colsPhase.LastIndexOf(","), 1) + ") " +
                         valuePhase.Remove(valuePhase.LastIndexOf(","), 1) + ")";
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
@@ -218,7 +223,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.InsertData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
                 //log error message
             }
             finally
@@ -245,7 +250,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.DeleteData() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -258,22 +263,25 @@ namespace Threaded_ProjectLib
         // get database connection
         public SqlConnection GetDBConnection()
         {
-            BDConfiguration dbConf =  Utils.GetDBConfiguration();
+            //BDConfiguration dbConf =  Utils.GetDBConfiguration();
 
-            string connetionString = @"Data Source=" + dbConf.ServerName + 
-                                        ";Initial Catalog=travelexperts;" +
-                                        "User ID=" + dbConf.UserName + ";Password=" + dbConf.Password;
+            //string connetionString = @"Data Source=" + dbConf.ServerName + 
+            //                            ";Initial Catalog=travelexperts;" +
+            //                            "User ID=" + dbConf.UserName + ";Password=" + dbConf.Password;
+
+            string connetionString = Utils.GetDBConnectionString();
+
             try
             {
-                if (cnn == null) // initialize only when connection does not exist
+                if (cnn == null && connetionString != null) // initialize only when connection does not exist
                 {
                     cnn = new SqlConnection(connetionString);
                     cnn.Open();
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.GetDBConnection(): " + e.Message + " - " + e.GetType().ToString());
             }
             return cnn;
         }
@@ -289,9 +297,9 @@ namespace Threaded_ProjectLib
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                //MessageBox.Show("Connection Error: " + ex.Message, ex.GetType().ToString());
+                Utils.WriteErrorLog("BaseADO.CloseDBConnection(): " + e.Message + " - " + e.GetType().ToString());
             }
 
             return false;

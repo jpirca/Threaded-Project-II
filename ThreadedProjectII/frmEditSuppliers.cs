@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
@@ -15,6 +16,10 @@ namespace ThreadedProjectII
         public frmEditSuppliers()
         {
             InitializeComponent();
+            SupplierADO supADO = new SupplierADO();
+            List<Object> suppliers = supADO.GetSuppliers();
+            this.listBox1.Items.Clear();
+            this.listBox1.Items.AddRange(suppliers.ToArray());
         }
 
         private void btnNextPkg_Click(object sender, EventArgs e)
@@ -29,5 +34,6 @@ namespace ThreadedProjectII
         {
             this.Close();
         }
+
     }
 }
