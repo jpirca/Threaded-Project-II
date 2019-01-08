@@ -41,3 +41,4 @@ C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\D
 C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.dll
 C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.pdb
 C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CopyComplete
+C:\Users\693235\Desktop\GroupProject\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmAddProducts.resources
