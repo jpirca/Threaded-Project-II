@@ -19,21 +19,22 @@ namespace ThreadedProjectLib
         private string tableName = "Suppliers";
 
         /* Get List of Suppliers from database */
-        public List<Supplier> GetSuppliers()
+        public List<Object> GetSuppliers()
         {
-            List<Supplier> result = new List<Supplier>();
-
+            //List<Supplier> result = new List<Supplier>();
+            List<Object> result = new List<Object>();
             try
             {
                 // get connection
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
+                //List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
 
-                foreach(Dictionary<string, string> element in list)
-                {
-                    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]), 
-                                                     element["supName"]);
-                    result.Add(supplier);
-                }
+                //foreach(Dictionary<string, string> element in list)
+                //{
+                //    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]), 
+                //                                     element["supName"]);
+                //    result.Add(supplier);
+                //}
+                result = baseADO.SelectData(tableName);
             }
             catch (Exception e)
             {
@@ -52,13 +53,13 @@ namespace ThreadedProjectLib
 
             try
             {
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
+                List<Object> list = baseADO.SelectData(tableName, null, conditions);
 
-                foreach (Dictionary<string, string> element in list)
+                foreach (Object element in list)
                 {
-                    result = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                     element["supName"]);
-
+                    //result = new Supplier(Convert.ToInt32(element["supplierId"]),
+                                                    // element["supName"]);
+                    result = (Supplier)element;
                 }
             }
             catch (Exception e)

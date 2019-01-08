@@ -17,9 +17,9 @@ namespace ThreadedProjectLib
         public SqlConnection cnn;
 
         /* Get List of Suppliers from database */
-        public List<IDictionary<string, string>> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
+        public List<Object> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
         {
-            List<IDictionary<string, string>> result = new List<IDictionary<string, string>>();
+            List<Object> result = new List<Object>();
             string selectPhase = "SELECT ";
             string fromPhase = "FROM ";
             string wherePhase = "WHERE ";
@@ -63,7 +63,7 @@ namespace ThreadedProjectLib
                     }
                 }
                 else
-                    wherePhase = "";
+                    wherePhase = ",";
 
                 // integrate query
                 query = selectPhase.Remove(selectPhase.LastIndexOf(","), 1) +
@@ -80,7 +80,8 @@ namespace ThreadedProjectLib
                         element.Add(reader.GetName(i), reader[i].ToString());
                     }
                    
-                    result.Add(element);
+                    // cast to object before adding to List
+                    result.Add(Utils.CastDBElementToObject(element, tableName));
                 }
             }
             catch (Exception e)

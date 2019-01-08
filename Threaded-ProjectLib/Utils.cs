@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Configuration;
+using System.Reflection;
 
 namespace ThreadedProjectLib
 {
@@ -13,8 +14,12 @@ namespace ThreadedProjectLib
     {
 
         public static string errorLogFilePath = "error_log.txt";
-
-        
+        public static IDictionary<string, object> dbTableObjectClassMappings = new Dictionary<string, object>()
+            {
+                {"Suppliers", new Supplier()},
+                {"Products", new Product()},
+                {"Packages", "Package" }
+            };
         // Load customer data from file.
         public static string GetDBConnectionString()
         {
@@ -71,6 +76,34 @@ namespace ThreadedProjectLib
             {
                 if (sw != null) sw.Close(); // also close fs
             }
+        }
+
+        /* Casting DB Element to relevent Object */
+        public static Object CastDBElementToObject(IDictionary<string,string> element, string tableName)
+        {
+            Object instance = null;
+            try
+            {
+                Object objectClassName = dbTableObjectClassMappings[tableName];
+                Type objType = objectClassName.GetType();
+
+                // Create an instance of the type
+                instance = Activator.CreateInstance(objType);
+                // Get MethodInfo, reflection class that is responsible for storing all relevant information about one method that type defines
+                MethodInfo method = objType.GetMethod("CopyDataFromDBElement");
+
+                // So we pass an instance to call it on and empty parameter list
+                IDictionary<string,string>[] list = new IDictionary<string, string>[1];
+                list[0] = element;
+
+                method.Invoke(instance, list);
+            }
+            catch (Exception e)
+            {
+                Utils.WriteErrorLog("Utils.CastDBElementToObject(): " + e.Message + " - " + e.GetType().ToString());
+            }
+
+            return instance;
         }
     }
     

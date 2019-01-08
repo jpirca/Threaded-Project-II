@@ -20,7 +20,9 @@ namespace ThreadedProjectLib
         List<Product> Products = new List<Product>();
 
         //constructor
-        public Product(int productId, string productName)
+        public Product() { }
+
+        public Product(int productId = -1, string productName = "")
         {
             this._productId = productId;
             this._productName = productName;
@@ -130,6 +132,12 @@ namespace ThreadedProjectLib
                 Console.WriteLine("State: {0}", connection.State);
             }
 
+        }
+        // Copy Data From Database Element
+        public void CopyDataFromDBElement(IDictionary<string, string> element)
+        {
+            this._productId = Convert.ToInt32(element["ProductId"]);
+            this._productName = element["ProdName"];
         }
     }
 }
