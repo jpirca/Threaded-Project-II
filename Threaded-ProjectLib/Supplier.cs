@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
     /* Author: Quynh Nguyen (Queenie)
      * Date: Dec - 17 - 2018

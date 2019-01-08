@@ -4,16 +4,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using Threaded_ProjectLib;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
     /* Author: Quynh Nguyen (Queenie)
      * Date: Dec - 17 - 2018
      * Implement sql functions to work with Supplier.
      */
-    class SupplierADO
+    public class SupplierADO
     {
         // database connection variable
         private BaseADO baseADO = new BaseADO();
@@ -39,8 +37,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                //We shouldnt use message box in the library change it to console or sent it to a logger file
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.GetSuppliers() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -66,7 +63,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.GetSupplier() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -90,7 +87,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.UpdateSupplier() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -101,8 +98,8 @@ namespace Threaded_ProjectLib
         {
             bool result = true;
 
-            List<string> values = new List<string>();
-            values.Add(supplier.SupName);
+            IDictionary<string, string> values = new Dictionary<string, string>();
+            values.Add("SupName", supplier.SupName);
 
             try
             {
@@ -111,7 +108,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.InsertSuppliers() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
