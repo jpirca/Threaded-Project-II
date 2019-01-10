@@ -19,11 +19,15 @@ namespace ThreadedProjectLib
         /* Get List of Suppliers from database */
         public List<Object> SelectData(string tableName, List<string> selectColNames = null, IDictionary<string, string> conditions = null)
         {
+            // variables declaration
             List<Object> result = new List<Object>();
+            List<string> conditionKeys = new List<string>();
+
             string selectPhase = "SELECT ";
             string fromPhase = "FROM ";
             string wherePhase = "WHERE ";
             string query;
+
             try
             {
                 // get connection
@@ -33,7 +37,7 @@ namespace ThreadedProjectLib
                 //select phase
                 if(selectColNames == null)
                 {
-                    selectPhase += " *,";
+                    selectPhase += " * ,";
                 }
                 else
                 {
@@ -54,23 +58,30 @@ namespace ThreadedProjectLib
                     fromPhase += tableName + " ";
                 }
 
-                // conditions phase
-                if (conditions != null)
+                // where phase
+                if (conditions != null && conditions.Count > 0)
                 {
-                    foreach (string col in conditions.Keys.ToArray())
-                    {
-                        wherePhase += col + " = '" + conditions[col] + "', ";
-                    }
+                    conditionKeys = conditions.Keys.ToList();
+                    wherePhase += Utils.BuildConditionStatement(conditionKeys);                    
                 }
                 else
-                    wherePhase = ",";
+                {
+                    wherePhase = "";
+                }
 
                 // integrate query
                 query = selectPhase.Remove(selectPhase.LastIndexOf(","), 1) +
                         fromPhase +
-                        wherePhase.Remove(wherePhase.LastIndexOf(","), 1); 
+                        wherePhase; 
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+
+                // bind values to where statement
+                if (conditions != null && conditions.Count > 0)
+                {
+                    Utils.PutValuesToDBCommand(conditions, command);
+                }
+
                 SqlDataReader reader = command.ExecuteReader(); // execute query
                 while (reader.Read()) // parse data if there is
                 {
@@ -123,40 +134,48 @@ namespace ThreadedProjectLib
                 else
                 {
                     updatePhase += tableName;
-
                 }
 
 
                 // set phase
-                if (updateColVals == null || updateColVals.Count < 0)
+                if (updateColVals != null && updateColVals.Count > 0)
                 {
-                    // return error code;
+                    setPhase += Utils.BuildConditionStatement(updateColVals.Keys.ToList());
                 }
                 else
                 {
-                    foreach (string key in updateColVals.Keys)
-                    {
-                        setPhase += key + " = '" + updateColVals[key] + "', ";
-                    }
+                    return false; //error code
                 }
 
-                // conditions phase
-                if (conditions != null)
+                // where phase
+                if (conditions != null && conditions.Count > 0)
                 {
-                    foreach (string col in conditions.Keys)
-                    {
-                        wherePhase += col + " = '" + conditions[col] + "', ";
-                    }
+                    wherePhase += Utils.BuildConditionStatement(conditions.Keys.ToList());
                 }
                 else
+                {
                     wherePhase = "";
+                }
 
                 // integrate query
                 query = updatePhase + " " +
-                        setPhase.Remove(wherePhase.LastIndexOf(","), 1) +
-                        wherePhase.Remove(wherePhase.LastIndexOf(","), 1);
+                        setPhase +
+                        wherePhase;
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+
+                // bind values to set statement
+                if (updateColVals != null && updateColVals.Count > 0)
+                {
+                    Utils.PutValuesToDBCommand(updateColVals, command);
+                }
+
+                // bind values to where statement
+                if (conditions != null && conditions.Count > 0)
+                {
+                    Utils.PutValuesToDBCommand(conditions, command);
+                }
+
                 rows = command.ExecuteNonQuery(); ; // execute query
 
             }
@@ -206,7 +225,7 @@ namespace ThreadedProjectLib
                     foreach (string key in colValuePairs.Keys)
                     {
                         colsPhase += key + ", ";
-                        valuePhase += "'" + colValuePairs[key] + "', ";
+                        valuePhase += "@" + key + ", ";
                     }
                 }
                 else
@@ -218,6 +237,13 @@ namespace ThreadedProjectLib
                         valuePhase.Remove(valuePhase.LastIndexOf(","), 1) + ")";
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
+
+                // bind values to db statement
+                if (colValuePairs != null && colValuePairs.Count > 0)
+                {
+                    Utils.PutValuesToDBCommand(colValuePairs, command);
+                }
+
                 rows = command.ExecuteNonQuery(); ; // execute query
 
             }
@@ -236,16 +262,27 @@ namespace ThreadedProjectLib
         }
 
         /* Delete function will be implemented if there is a demand on deleting*/
-        private bool DeleteData(string tableName, IDictionary<string, object> conditions)
+        private bool DeleteData(string tableName, IDictionary<string, string> conditions)
         {
             int result = 0;
 
-            string query = "";// "DELETE Suppliers WHERE supplierId = '" + supplierId + "'";
+            string query = "DELETE FROM " + tableName + " WHERE " +
+                            (conditions.Count>0 ? 
+                                Utils.BuildConditionStatement(conditions.Keys.ToList()) :
+                                "1=1");            
+
             try
             {
                 GetDBConnection();
 
                 SqlCommand command = new SqlCommand(query, cnn);
+
+                // bind values to db statement
+                if (conditions != null && conditions.Count > 0)
+                {
+                    Utils.PutValuesToDBCommand(conditions, command);
+                }
+
                 result = command.ExecuteNonQuery();
             }
             catch (Exception e)
@@ -294,6 +331,8 @@ namespace ThreadedProjectLib
                 if (cnn != null)
                 {
                     cnn.Close();
+                    cnn = null;
+
                     return true;
                 }
             }
