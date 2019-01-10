@@ -1,80 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Threaded_ProjectLib
+namespace ThreadedProjectLib
 {
-    class ProductADO
+    class ProductADO : BaseADO
     {
         // database connection variable
         private BaseADO baseADO = new BaseADO();
-        private SqlConnection con = null;
-        private string tableName = "Suppliers";
+        
+        private string tableName = "Products";
 
         /* Get List of Suppliers from database */
-        public List<Supplier> GetSuppliers()
+        public List<object> GetProducts()
         {
-            List<Supplier> result = new List<Supplier>();
-
+            //List<Supplier> result = new List<Supplier>();
+            List<object> result = new List<object>();
             try
             {
-                // get connection
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
-
-                foreach (Dictionary<string, string> element in list)
-                {
-                    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                     element["supName"]);
-                    result.Add(supplier);
-                }
+                result = baseADO.SelectData(tableName);
             }
             catch (Exception e)
             {
-                //We shouldnt use message box in the library change it to console or sent it to a logger file
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                Utils.WriteErrorLog("ProductADO.GETProducts() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
         }
 
         /* Get Supplier Information by supplierId*/
-        public Supplier GetSupplier(int supplierId)
+        public Supplier GetProductName(int productId)
         {
             Supplier result = null;
             IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
+            conditions.Add("supplierId", productId.ToString());
 
             try
             {
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
+                List<object> list = SelectData(tableName, null, conditions);
 
-                foreach (Dictionary<string, string> element in list)
-                {
-                    result = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                     element["supName"]);
+                Console.Write(list);
+                //foreach (Dictionary<string, string> element in list)
+                //{
+                //    result = new Supplier(Convert.ToInt32(element["supplierId"]),
+                //                                     element["supName"]);
 
-                }
+                //}
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
 
             return result;
         }
 
         /* Update Supplier Information */
-        public bool UpdateSupplier(int supplierId, string supName)
+        public bool UpdateProduct(int productId, string productName)
         {
             bool result = true;
 
             IDictionary<string, string> values = new Dictionary<string, string>();
-            values.Add("supName", supName);
+            values.Add("ProdName", productName);
 
             IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
+            conditions.Add("ProductId", productId.ToString());
 
             try
             {
@@ -83,7 +76,7 @@ namespace Threaded_ProjectLib
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
 
             return result;
@@ -99,15 +92,35 @@ namespace Threaded_ProjectLib
 
             try
             {
-                result = baseADO.InsertData(tableName, values);
+               /// result = baseADO.InsertData(tableName, values);
 
             }
             catch (Exception e)
             {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+                //MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
             }
 
             return result;
+
+        }
+
+        public void TestingConnection()
+        {
+            /// only for testing purposes remove once done
+            SqlConnection connection;
+            using (connection = GetDBConnection())
+            {
+                connection.Open();
+                Console.WriteLine("ServerVersion: {0}", connection.ServerVersion);
+                Console.WriteLine("State: {0}", connection.State);
+            }
+
+            if (connection != null)
+            {
+                Console.WriteLine(connection);
+                Console.WriteLine();
+                Console.WriteLine("State: {0}", connection.State);
+            }
 
         }
 
@@ -121,4 +134,4 @@ namespace Threaded_ProjectLib
 
     }
 }
-}
+
