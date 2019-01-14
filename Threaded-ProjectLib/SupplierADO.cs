@@ -21,19 +21,9 @@ namespace ThreadedProjectLib
         /* Get List of Suppliers from database */
         public List<Object> GetSuppliers()
         {
-            //List<Supplier> result = new List<Supplier>();
             List<Object> result = new List<Object>();
             try
             {
-                // get connection
-                //List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
-
-                //foreach(Dictionary<string, string> element in list)
-                //{
-                //    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]), 
-                //                                     element["supName"]);
-                //    result.Add(supplier);
-                //}
                 result = baseADO.SelectData(tableName);
             }
             catch (Exception e)

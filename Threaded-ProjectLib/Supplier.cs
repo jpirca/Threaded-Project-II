@@ -26,6 +26,11 @@ namespace ThreadedProjectLib
             this.supName = supName;
         }
 
+        public int SupplierId
+        {
+            get; set;
+        }
+
         public string SupName {
             set { supName = value; }
             get { return supName; }

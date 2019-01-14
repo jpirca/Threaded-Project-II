@@ -111,6 +111,7 @@
             this.MinimizeBox = false;
             this.Name = "frmSuppliers";
             this.Text = "Add New Supplier";
+            this.Load += new System.EventHandler(this.frmSuppliers_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
