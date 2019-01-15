@@ -4,7 +4,7 @@ Authors
 >Jeremiah Lobo, 
 >Jonanthan Pirca, 
 >Muhammad Islam, and 
->Quynh Nguyen
+>Quynh Nguyen (Queenie)
 
 Basic Rules
 -----------
@@ -25,7 +25,7 @@ C# Code Style
 
          Normal Class name: uppercase first letter CamelCase format eg. MyClassName
          
-         Model Class name: uppercase first letter CamelCase format and suffix ADO eg. MyClassNameADO
+         Business Class name: uppercase first letter CamelCase format and suffix DB eg. MyClassNameDB
          
          Variables/Parameters: lowercase first letter CamelCase format eg. myVariable
          
