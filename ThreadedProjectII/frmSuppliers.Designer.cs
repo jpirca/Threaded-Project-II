@@ -42,9 +42,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(8, 14);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(354, 39);
+            this.label10.Size = new System.Drawing.Size(492, 39);
             this.label10.TabIndex = 51;
-            this.label10.Text = "Create New Supplier";
+            this.label10.Text = "Create New/ Update Supplier";
             // 
             // btnCancelSup
             // 
@@ -92,15 +92,15 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(12, 81);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(369, 16);
+            this.lblTitle.Size = new System.Drawing.Size(406, 16);
             this.lblTitle.TabIndex = 40;
-            this.lblTitle.Text = "Please insert all the information require to create a \"Supplier\":";
+            this.lblTitle.Text = "Please fill all the required information to create/ update a \"Supplier\":";
             // 
             // frmSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 233);
+            this.ClientSize = new System.Drawing.Size(506, 233);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancelSup);
             this.Controls.Add(this.btnNextSup);

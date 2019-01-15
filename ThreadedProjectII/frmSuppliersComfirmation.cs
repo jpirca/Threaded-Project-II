@@ -21,7 +21,7 @@ namespace ThreadedProjectII
 
         private void btnAddSup_Click(object sender, EventArgs e)
         {
-            SupplierADO ado = new SupplierADO();
+            SupplierDB ado = new SupplierDB();
             if(this.supplier == null || supplier.SupplierId == -1)
             {
                 supplier = new Supplier(-1, txtSupplierName.Text);

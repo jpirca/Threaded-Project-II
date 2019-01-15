@@ -11,12 +11,10 @@ namespace ThreadedProjectLib
      * Date: Dec - 17 - 2018
      * Implement sql functions to work with Supplier.
      */
-    public class SupplierADO
+    public class SupplierDB
     {
         // database connection variable
         private BaseADO baseADO = new BaseADO();
-        private SqlConnection con = null;
-        private string tableName = "Suppliers";
 
         /* Get List of Suppliers from database */
         public List<Object> GetSuppliers()
@@ -24,11 +22,11 @@ namespace ThreadedProjectLib
             List<Object> result = new List<Object>();
             try
             {
-                result = baseADO.SelectData(tableName);
+                result = baseADO.SelectData(Utils.supplierTableName);
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.GetSuppliers() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.GetSuppliers() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -43,7 +41,7 @@ namespace ThreadedProjectLib
 
             try
             {
-                List<Object> list = baseADO.SelectData(tableName, null, conditions);
+                List<Object> list = baseADO.SelectData(Utils.supplierTableName, null, conditions);
 
                 foreach (Object element in list)
                 {
@@ -54,7 +52,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.GetSupplier() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.GetSupplier() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -73,12 +71,12 @@ namespace ThreadedProjectLib
 
             try
             {
-                result = baseADO.UpdateData(tableName, values, conditions);
+                result = baseADO.UpdateData(Utils.supplierTableName, values, conditions);
 
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.UpdateSupplier() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.UpdateSupplier() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
@@ -94,12 +92,12 @@ namespace ThreadedProjectLib
 
             try
             {
-                result = baseADO.InsertData(tableName, values);
+                result = baseADO.InsertData(Utils.supplierTableName, values);
 
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.InsertSuppliers() - table name: " + tableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierADO.InsertSuppliers() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
 
             return result;
