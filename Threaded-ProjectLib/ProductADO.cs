@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using ThreadedProjectLib;
 
 namespace Threaded_ProjectLib
 {
@@ -21,14 +24,14 @@ namespace Threaded_ProjectLib
             try
             {
                 // get connection
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
+               // List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
 
-                foreach (Dictionary<string, string> element in list)
-                {
-                    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                     element["supName"]);
-                    result.Add(supplier);
-                }
+                //foreach (Dictionary<string, string> element in list)
+                //{
+                //    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]),
+                //                                     element["supName"]);
+                //    result.Add(supplier);
+                //}
             }
             catch (Exception e)
             {
@@ -48,14 +51,14 @@ namespace Threaded_ProjectLib
 
             try
             {
-                List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
+                ////List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
 
-                foreach (Dictionary<string, string> element in list)
-                {
-                    result = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                     element["supName"]);
+                //foreach (Dictionary<string, string> element in list)
+                //{
+                //    result = new Supplier(Convert.ToInt32(element["supplierId"]),
+                //                                     element["supName"]);
 
-                }
+                //}
             }
             catch (Exception e)
             {
@@ -99,7 +102,7 @@ namespace Threaded_ProjectLib
 
             try
             {
-                result = baseADO.InsertData(tableName, values);
+              // result = baseADO.InsertData(tableName, values);
 
             }
             catch (Exception e)
@@ -121,4 +124,4 @@ namespace Threaded_ProjectLib
 
     }
 }
-}
+//}
