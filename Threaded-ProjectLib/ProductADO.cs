@@ -12,114 +12,114 @@ namespace Threaded_ProjectLib
     class ProductADO
     {
         // database connection variable
-        private BaseADO baseADO = new BaseADO();
-        private SqlConnection con = null;
-        private string tableName = "Suppliers";
+    //    private BaseADO baseADO = new BaseADO();
+    //    private SqlConnection con = null;
+    //    private string tableName = "Suppliers";
 
-        /* Get List of Suppliers from database */
-        public List<Supplier> GetSuppliers()
-        {
-            List<Supplier> result = new List<Supplier>();
+    //    /* Get List of Suppliers from database */
+    //    public List<Supplier> GetSuppliers()
+    //    {
+    //        List<Supplier> result = new List<Supplier>();
 
-            try
-            {
-                // get connection
-               // List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
+    //        try
+    //        {
+    //            // get connection
+    //           // List<IDictionary<string, string>> list = baseADO.SelectData(tableName);
 
-                //foreach (Dictionary<string, string> element in list)
-                //{
-                //    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]),
-                //                                     element["supName"]);
-                //    result.Add(supplier);
-                //}
-            }
-            catch (Exception e)
-            {
-                //We shouldnt use message box in the library change it to console or sent it to a logger file
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
-            }
+    //            //foreach (Dictionary<string, string> element in list)
+    //            //{
+    //            //    Supplier supplier = new Supplier(Convert.ToInt32(element["supplierId"]),
+    //            //                                     element["supName"]);
+    //            //    result.Add(supplier);
+    //            //}
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            //We shouldnt use message box in the library change it to console or sent it to a logger file
+    //            MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+    //        }
 
-            return result;
-        }
+    //        return result;
+    //    }
 
-        /* Get Supplier Information by supplierId*/
-        public Supplier GetSupplier(int supplierId)
-        {
-            Supplier result = null;
-            IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
+    //    /* Get Supplier Information by supplierId*/
+    //    public Supplier GetSupplier(int supplierId)
+    //    {
+    //        Supplier result = null;
+    //        IDictionary<string, string> conditions = new Dictionary<string, string>();
+    //        conditions.Add("supplierId", supplierId.ToString());
 
-            try
-            {
-                ////List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
+    //        try
+    //        {
+    //            ////List<IDictionary<string, string>> list = baseADO.SelectData(tableName, null, conditions);
 
-                //foreach (Dictionary<string, string> element in list)
-                //{
-                //    result = new Supplier(Convert.ToInt32(element["supplierId"]),
-                //                                     element["supName"]);
+    //            //foreach (Dictionary<string, string> element in list)
+    //            //{
+    //            //    result = new Supplier(Convert.ToInt32(element["supplierId"]),
+    //            //                                     element["supName"]);
 
-                //}
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
-            }
+    //            //}
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+    //        }
 
-            return result;
-        }
+    //        return result;
+    //    }
 
-        /* Update Supplier Information */
-        public bool UpdateSupplier(int supplierId, string supName)
-        {
-            bool result = true;
+    //    /* Update Supplier Information */
+    //    public bool UpdateSupplier(int supplierId, string supName)
+    //    {
+    //        bool result = true;
 
-            IDictionary<string, string> values = new Dictionary<string, string>();
-            values.Add("supName", supName);
+    //        IDictionary<string, string> values = new Dictionary<string, string>();
+    //        values.Add("supName", supName);
 
-            IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
+    //        IDictionary<string, string> conditions = new Dictionary<string, string>();
+    //        conditions.Add("supplierId", supplierId.ToString());
 
-            try
-            {
-                result = baseADO.UpdateData(tableName, values, conditions);
+    //        try
+    //        {
+    //            result = baseADO.UpdateData(tableName, values, conditions);
 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
-            }
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+    //        }
 
-            return result;
-        }
+    //        return result;
+    //    }
 
-        /* Insert Supplier to database */
-        public bool InsertSuppliers(Supplier supplier)
-        {
-            bool result = true;
+    //    /* Insert Supplier to database */
+    //    public bool InsertSuppliers(Supplier supplier)
+    //    {
+    //        bool result = true;
 
-            List<string> values = new List<string>();
-            values.Add(supplier.SupName);
+    //        List<string> values = new List<string>();
+    //        values.Add(supplier.SupName);
 
-            try
-            {
-              // result = baseADO.InsertData(tableName, values);
+    //        try
+    //        {
+    //          // result = baseADO.InsertData(tableName, values);
 
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
-            }
+    //        }
+    //        catch (Exception e)
+    //        {
+    //            MessageBox.Show("Error: " + e.Message, e.GetType().ToString());
+    //        }
 
-            return result;
+    //        return result;
 
-        }
+    //    }
 
-        /* Delete Supplier by supplierId*/
-        /*public bool DeleteSupplier(it supplierId)
-        {
+    //    /* Delete Supplier by supplierId*/
+    //    /*public bool DeleteSupplier(it supplierId)
+    //    {
             
-            return (result!=0);
-        }*/
+    //        return (result!=0);
+    //    }*/
 
 
     }
