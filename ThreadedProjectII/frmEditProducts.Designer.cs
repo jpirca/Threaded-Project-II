@@ -32,15 +32,15 @@
             this.btnEditProducts = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.listEditProducts = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnCancelPkg
             // 
             this.btnCancelPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelPkg.Location = new System.Drawing.Point(361, 376);
+            this.btnCancelPkg.Location = new System.Drawing.Point(385, 444);
             this.btnCancelPkg.Name = "btnCancelPkg";
             this.btnCancelPkg.Size = new System.Drawing.Size(75, 23);
             this.btnCancelPkg.TabIndex = 41;
@@ -51,7 +51,7 @@
             // btnEditProducts
             // 
             this.btnEditProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProducts.Location = new System.Drawing.Point(266, 376);
+            this.btnEditProducts.Location = new System.Drawing.Point(290, 444);
             this.btnEditProducts.Name = "btnEditProducts";
             this.btnEditProducts.Size = new System.Drawing.Size(75, 23);
             this.btnEditProducts.TabIndex = 40;
@@ -63,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(298, 169);
+            this.label2.Location = new System.Drawing.Point(402, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 16);
             this.label2.TabIndex = 38;
@@ -73,27 +73,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(116, 169);
+            this.label1.Location = new System.Drawing.Point(220, 155);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 16);
             this.label1.TabIndex = 37;
             this.label1.Text = "Product";
             // 
-            // listEditProducts
-            // 
-            this.listEditProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.listEditProducts.FormattingEnabled = true;
-            this.listEditProducts.ItemHeight = 16;
-            this.listEditProducts.Location = new System.Drawing.Point(105, 188);
-            this.listEditProducts.Name = "listEditProducts";
-            this.listEditProducts.Size = new System.Drawing.Size(331, 132);
-            this.listEditProducts.TabIndex = 36;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(126, 63);
+            this.label10.Location = new System.Drawing.Point(230, 49);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(253, 42);
             this.label10.TabIndex = 35;
@@ -103,26 +93,35 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(70, 129);
+            this.lblTitle.Location = new System.Drawing.Point(174, 115);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(339, 16);
             this.lblTitle.TabIndex = 34;
             this.lblTitle.Text = "Please select the product to edit and press button \"Edit\":";
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(170, 186);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(188, 225);
+            this.listBox1.TabIndex = 42;
+            // 
             // frmEditProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(531, 438);
+            this.ClientSize = new System.Drawing.Size(739, 508);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnCancelPkg);
             this.Controls.Add(this.btnEditProducts);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listEditProducts);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lblTitle);
             this.Name = "frmEditProducts";
             this.Text = "Edit Product";
+            this.Load += new System.EventHandler(this.frmEditProducts_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,8 +133,8 @@
         private System.Windows.Forms.Button btnEditProducts;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listEditProducts;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

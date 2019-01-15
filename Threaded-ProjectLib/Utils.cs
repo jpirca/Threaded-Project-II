@@ -20,6 +20,7 @@ namespace ThreadedProjectLib
                 {"Products", new Product()},
                 {"Packages", "Package" }
             };
+
         // Load customer data from file.
         public static string GetDBConnectionString()
         {

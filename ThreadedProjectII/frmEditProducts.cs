@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
@@ -28,6 +29,19 @@ namespace ThreadedProjectII
         private void btnCancelPkg_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmEditProducts_Load(object sender, EventArgs e)
+        {
+            //Display all Products
+
+            ProductADO productList = new ProductADO();
+            Console.WriteLine(productList);
+
+            //foreach (Product perProduct in productList)
+            //{
+
+            //}
         }
     }
 }
