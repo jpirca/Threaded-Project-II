@@ -16,16 +16,17 @@ namespace ThreadedProjectII
         public frmEditSuppliers()
         {
             InitializeComponent();
-            SupplierADO supADO = new SupplierADO();
+            SupplierDB supADO = new SupplierDB();
             List<Object> suppliers = supADO.GetSuppliers();
             this.listBox1.Items.Clear();
-            this.listBox1.Items.AddRange(suppliers.ToArray());
+            this.listBox1.DataSource = suppliers;
         }
 
         private void btnNextPkg_Click(object sender, EventArgs e)
         {
             this.Close();
             frmSuppliers form1 = new frmSuppliers();
+            form1.setEditedSupplier((Supplier)this.listBox1.SelectedItem);
             form1.Show();
             form1.Activate();
         }

@@ -26,6 +26,12 @@ namespace ThreadedProjectLib
             this.supName = supName;
         }
 
+        public int SupplierId
+        {
+            get { return this.supplierId; }
+            set { this.supplierId = value; }
+        }
+
         public string SupName {
             set { supName = value; }
             get { return supName; }
@@ -33,7 +39,7 @@ namespace ThreadedProjectLib
 
         public override string ToString()
         {
-            return supplierId + ": " + supName;
+            return /*supplierId + ": " + */supName;
         }
 
         // Copy Data From Database Element

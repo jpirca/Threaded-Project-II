@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 using System.Configuration;
 using System.Reflection;
+using System.Data.SqlClient;
 
 namespace ThreadedProjectLib
 {
@@ -20,6 +21,8 @@ namespace ThreadedProjectLib
                 {"Products", new Product()},
                 {"Packages", "Package" }
             };
+
+        public static string supplierTableName = "Suppliers";
         // Load customer data from file.
         public static string GetDBConnectionString()
         {
@@ -104,6 +107,46 @@ namespace ThreadedProjectLib
             }
 
             return instance;
+        }
+
+        /* build condition statement for Database Query
+         * variable "conditions" is a list of column Names
+         * return string of conditions with @param to add compared value.
+         */        
+        public static string BuildConditionStatement(List<string> conditions)
+        {
+            string statement = "";
+            
+            foreach(string col in conditions)
+            {
+                statement += col + " = @" + col + ", ";
+            }
+            return statement.Remove(statement.LastIndexOf(","), 1);
+        }
+
+        /* Bind values to database command
+         * Variables:
+         *    conditions: key-value pairs
+         *    command: sql command to bind value to
+         * Return true | false
+         */
+        public static bool PutValuesToDBCommand(IDictionary<string, string> conditions, SqlCommand command)
+        {
+            try
+            {
+                List<string> conditionKeys = conditions.Keys.ToList();
+                for (int i = 0; i < conditions.Count; i++)
+                {
+                    command.Parameters.AddWithValue("@" + conditionKeys[i], conditions[conditionKeys[i]]);
+                }
+            }
+            catch (Exception e)
+            {
+                // error happen :(
+                Utils.WriteErrorLog("Utils.PutValuesToDBCommand(): " + e.Message + " - " + e.GetType().ToString());
+                return false; 
+            }
+            return true;
         }
     }
     
