@@ -11,7 +11,7 @@ namespace ThreadedProjectLib
      * Date: Dec - 17 - 2018
      * Implement sql functions to work with Supplier.
      */
-    public class SupplierDB : DBconnect
+    public class SupplierDB : BaseDB
     {
         SqlConnection conn = null;
 

@@ -8,7 +8,7 @@ using System.Configuration;
 
 namespace ThreadedProjectLib
 {
-    public class Product : DBconnect
+    public class Product
     {
         /* Author: Jeremiah Lobo
          * Date: Jan - 5 - 2018
