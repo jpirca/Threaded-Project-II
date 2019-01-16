@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadedProjectII", "ThreadedProjectII\ThreadedProjectII.csproj", "{48A9B405-93A3-46B2-AF27-794D9237780E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threaded-ProjectLib", "Threaded-ProjectLib\Threaded-ProjectLib.csproj", "{64DACDA3-7BCE-41A6-91E9-3AA9D67094FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadedProjectLib", "Threaded-ProjectLib\ThreadedProjectLib.csproj", "{64DACDA3-7BCE-41A6-91E9-3AA9D67094FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threaded_ProjectLib.Tests", "Threaded_ProjectLib.Tests\Threaded_ProjectLib.Tests.csproj", "{4B2A20E9-F1D2-49F3-B4DC-6FA133D7255C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Threaded_ProjectLib.Tests", "Threaded_ProjectLib.Tests\Threaded_ProjectLib.Tests.csproj", "{4B2A20E9-F1D2-49F3-B4DC-6FA133D7255C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

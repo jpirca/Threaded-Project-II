@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Threaded-ProjectLib\Threaded-ProjectLib.csproj" />
+    <ProjectReference Include="..\Threaded-ProjectLib\ThreadedProjectLib.csproj" />
   </ItemGroup>
 
 </Project>

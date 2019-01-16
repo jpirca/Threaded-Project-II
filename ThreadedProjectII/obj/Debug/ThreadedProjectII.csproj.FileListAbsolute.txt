@@ -60,3 +60,9 @@ C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\Threaded
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CoreCompileInputs.cache
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.exe
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.pdb
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\ThreadedProjectII.exe.config
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\ThreadedProjectII.exe
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\ThreadedProjectII.pdb
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.dll
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.pdb
+C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CopyComplete
