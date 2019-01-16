@@ -345,3 +345,7 @@ healthchecksdb
 *.ide-wal
 *.cache
 *.json
+.vs/ThreadedProjectII/v15/Server/sqlite3/storage.ide
+.vs/ThreadedProjectII/v15/Server/sqlite3/storage.ide-shm
+Threaded_ProjectLib.Tests/obj/Threaded_ProjectLib.Tests.csproj.nuget.g.props
+Threaded_ProjectLib.Tests/obj/Threaded_ProjectLib.Tests.csproj.nuget.cache
