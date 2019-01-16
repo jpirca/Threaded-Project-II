@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstboxProducts = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnCancelPkg
@@ -99,20 +99,20 @@
             this.lblTitle.TabIndex = 34;
             this.lblTitle.Text = "Please select the product to edit and press button \"Edit\":";
             // 
-            // listBox1
+            // lstboxProducts
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(170, 186);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(188, 225);
-            this.listBox1.TabIndex = 42;
+            this.lstboxProducts.FormattingEnabled = true;
+            this.lstboxProducts.Location = new System.Drawing.Point(170, 186);
+            this.lstboxProducts.Name = "lstboxProducts";
+            this.lstboxProducts.Size = new System.Drawing.Size(188, 225);
+            this.lstboxProducts.TabIndex = 42;
             // 
             // frmEditProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 508);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lstboxProducts);
             this.Controls.Add(this.btnCancelPkg);
             this.Controls.Add(this.btnEditProducts);
             this.Controls.Add(this.label2);
@@ -135,6 +135,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lstboxProducts;
     }
 }

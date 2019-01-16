@@ -17,7 +17,7 @@ namespace ThreadedProjectLib
         private int productId;
         private string productName;
 
-        List<Product> Products = new List<Product>();
+        
 
         //constructor
         public Product() { }

@@ -38,10 +38,10 @@ namespace ThreadedProjectII
             ProductADO productList = new ProductADO();
             Console.WriteLine(productList);
 
-            //foreach (Product perProduct in productList)
-            //{
-
-            //}
+            foreach (Product perProduct in productList)
+            {
+                lstboxProducts.Add(perProduct);
+            }
         }
     }
 }
