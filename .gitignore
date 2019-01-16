@@ -340,3 +340,9 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database 
 healthchecksdb
+.vs/ThreadedProjectII/v15/.suo
+.vs/ThreadedProjectII/v15/Server/sqlite3/storage.ide
+.vs/ThreadedProjectII/v15/Server/sqlite3/storage.ide-shm
+.vs/ThreadedProjectII/v15/Server/sqlite3/storage.ide-wal
+Threaded_ProjectLib.Tests/obj/Debug/netcoreapp2.1/Threaded_ProjectLib.Tests.csprojAssemblyReference.cache
+ThreadedProjectII/obj/Debug/ThreadedProjectII.csprojAssemblyReference.cache
