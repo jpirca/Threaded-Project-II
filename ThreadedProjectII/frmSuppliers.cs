@@ -37,6 +37,7 @@ namespace ThreadedProjectII
                 }
                 else
                 {
+                    editedSupplier.SupName = txtSupplierName.Text; // set new supplier name supplier object
                     ado.UpdateSupplier(editedSupplier.SupplierId, editedSupplier.SupName);
                     MessageBox.Show("The supplier \"" + txtSupplierName.Text + "\" was updated sussccefully", "Updating Supplier");
                 }                
