@@ -15,6 +15,7 @@ namespace ThreadedProjectLib
     {
         private int supplierId;
         private string supName;
+        private int suppProductId;
 
         /* Constructor: 
          * when supplierId = -1, Supplier object is initialized */
@@ -24,6 +25,13 @@ namespace ThreadedProjectLib
         {
             this.supplierId = supplierId;
             this.supName = supName;
+        }
+
+        public Supplier(int supplierId = -1, string supName = "", int suppProductId = -1)
+        {
+            this.supplierId = supplierId;
+            this.supName = supName;
+            this.suppProductId = suppProductId;
         }
 
         public int SupplierId
@@ -37,7 +45,13 @@ namespace ThreadedProjectLib
             get { return supName; }
         }
 
-        public override string ToString()
+        public int SuppProductId
+        {
+            set { suppProductId = value; }
+            get { return suppProductId; }
+        }
+
+    public override string ToString()
         {
             return /*supplierId + ": " + */supName;
         }

@@ -12,7 +12,7 @@ namespace ThreadedProjectLib
      * Date: Dec - 17 - 2018
      * Implement base sql functions.
      */
-    public class BaseDB 
+    public class BaseDB
     {
 
         protected SqlConnection GetConnection()
@@ -31,11 +31,7 @@ namespace ThreadedProjectLib
 
             if (settings != null)
             {
-                foreach (ConnectionStringSettings cs in settings)
-                {
-                    return cs.ConnectionString;
-                }
-                //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
+                return ConfigurationManager.ConnectionStrings["travelexpertsLocalDB"].ConnectionString;
             }
 
             return null;
@@ -63,7 +59,7 @@ namespace ThreadedProjectLib
 
                 // build sql query
                 //select phase
-                if(selectColNames == null)
+                if (selectColNames == null)
                 {
                     selectPhase += " * ,";
                 }
@@ -74,10 +70,10 @@ namespace ThreadedProjectLib
                         selectPhase += colName + ", ";
                     }
                 }
-                
+
 
                 // from phase
-                if(String.IsNullOrEmpty(tableName))
+                if (String.IsNullOrEmpty(tableName))
                 {
                     // return error code;
                 }
@@ -90,7 +86,7 @@ namespace ThreadedProjectLib
                 if (conditions != null && conditions.Count > 0)
                 {
                     conditionKeys = conditions.Keys.ToList();
-                    wherePhase += Utils.BuildConditionStatement(conditionKeys);                    
+                    wherePhase += Utils.BuildConditionStatement(conditionKeys);
                 }
                 else
                 {
@@ -100,7 +96,7 @@ namespace ThreadedProjectLib
                 // integrate query
                 query = selectPhase.Remove(selectPhase.LastIndexOf(","), 1) +
                         fromPhase +
-                        wherePhase; 
+                        wherePhase;
 
                 SqlCommand command = new SqlCommand(query, cnn); // prepare query statement
 
@@ -114,11 +110,11 @@ namespace ThreadedProjectLib
                 while (reader.Read()) // parse data if there is
                 {
                     IDictionary<string, string> element = new Dictionary<string, string>();
-                    for(int i = 0; i < reader.FieldCount; i++)
+                    for (int i = 0; i < reader.FieldCount; i++)
                     {
                         element.Add(reader.GetName(i), reader[i].ToString());
                     }
-                   
+
                     // cast to object before adding to List
                     result.Add(Utils.CastDBElementToObject(element, tableName));
                 }
@@ -221,7 +217,7 @@ namespace ThreadedProjectLib
         }
 
         /* Insert Supplier to database */
-        public bool InsertData(string tableName, IDictionary<string,string> colValuePairs)
+        public bool InsertData(string tableName, IDictionary<string, string> colValuePairs)
         {
             string insertPhase = "INSERT INTO ";
             string colsPhase = "(";
@@ -295,9 +291,9 @@ namespace ThreadedProjectLib
             int result = 0;
 
             string query = "DELETE FROM " + tableName + " WHERE " +
-                            (conditions.Count>0 ? 
+                            (conditions.Count > 0 ?
                                 Utils.BuildConditionStatement(conditions.Keys.ToList()) :
-                                "1=1");            
+                                "1=1");
 
             try
             {
@@ -322,7 +318,7 @@ namespace ThreadedProjectLib
                 //close connection
                 CloseDBConnection();
             }
-            return (result!=0);
+            return (result != 0);
         }
 
         // get database connection
@@ -370,6 +366,6 @@ namespace ThreadedProjectLib
             }
 
             return false;
-        }       
+        }
     }
 }

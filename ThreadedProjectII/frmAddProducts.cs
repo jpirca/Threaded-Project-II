@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
     public partial class frmAddProducts : Form
     {
+        ProductDB perProduct = new ProductDB();
         public frmAddProducts()
         {
             InitializeComponent();
@@ -21,10 +23,16 @@ namespace ThreadedProjectII
         {
             string addProductName = txtAddProductName.Text;
 
-            //Validate product name 
-
             //Insert Product Name
+            perProduct.AddProduct(addProductName);
+            MessageBox.Show("Product has been added");
+            txtAddProductName.Text = "";
 
+        }
+
+        private void btnCancelPkg_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
