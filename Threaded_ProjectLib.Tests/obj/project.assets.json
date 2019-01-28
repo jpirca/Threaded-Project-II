@@ -5836,11 +5836,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\803919\\Documents\\GitHub\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
       "projectName": "Threaded_ProjectLib.Tests",
-      "projectPath": "C:\\Users\\803919\\Documents\\GitHub\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
+      "projectPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
       "packagesPath": "C:\\Users\\803919\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\803919\\Documents\\GitHub\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\obj\\",
+      "outputPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -5859,8 +5859,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\803919\\Documents\\GitHub\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj": {
-              "projectPath": "C:\\Users\\803919\\Documents\\GitHub\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj"
+            "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj": {
+              "projectPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj"
             }
           }
         }

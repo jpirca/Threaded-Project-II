@@ -172,11 +172,18 @@ namespace ThreadedProjectLib
             command = new SqlCommand(query, Con);
             command.Parameters.AddWithValue("@pkgId", getPkgId);
             command.Parameters.AddWithValue("@pordsupid",getProductSupplierId);
-            int RowsAffected = command.ExecuteNonQuery();
-            if (RowsAffected > 0)
+            try
             {
-                productAdded = true;
-                Con.Close();
+                int RowsAffected = command.ExecuteNonQuery();
+                if (RowsAffected > 0)
+                {
+                    productAdded = true;
+                    Con.Close();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Package should be Uinque " + ex.Message);
             }
             
             return productAdded;

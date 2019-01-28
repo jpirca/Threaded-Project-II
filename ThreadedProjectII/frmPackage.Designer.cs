@@ -148,6 +148,7 @@
             // 
             // pkgDataGrid
             // 
+            this.pkgDataGrid.AllowUserToAddRows = false;
             this.pkgDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pkgDataGrid.Location = new System.Drawing.Point(320, 21);
             this.pkgDataGrid.Name = "pkgDataGrid";
@@ -357,6 +358,7 @@
             // 
             // pkgProductGrid
             // 
+            this.pkgProductGrid.AllowUserToAddRows = false;
             this.pkgProductGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.pkgProductGrid.Location = new System.Drawing.Point(303, 19);
             this.pkgProductGrid.Name = "pkgProductGrid";

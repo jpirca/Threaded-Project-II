@@ -112,13 +112,23 @@ namespace ThreadedProjectLib
 
         }
         //Fetch suppliersid based on a join query to display data into product packages
-        public bool FetchSuppliers(string prod)
+        public bool FetchSuppliers(string prod, int packageID)
         {
             bool dataFound = false;
-            string query = "select SupName from products,products_suppliers,suppliers" +
-                " where suppliers.SupplierId=products_suppliers.SupplierId " +
-                "and products.ProductId=products_suppliers.ProductId" +
-                " and prodName= @cmbProducts";
+            // Newly added on Jan 28 2019
+            string query = "select SupName from Suppliers s join Products_Suppliers ps " +
+                "on s.SupplierId = ps.SupplierId join Products p on ps.ProductId = p.ProductId " +
+                "where p.ProdName = @cmbProducts " +
+                "and ps.SupplierId not in (select SupplierId from Products_Suppliers ps " +
+                "join Packages_Products_Suppliers pps on ps.ProductSupplierId = pps.ProductSupplierId " +
+                "where PackageId = @PackageId) " +
+                "order by 1";
+                
+            //string query = "select SupName from products,products_suppliers,suppliers" +
+            //    " where suppliers.SupName not in (select SupName from Products_Suppliers)" +
+            //    " and suppliers.SupplierId=products_suppliers.SupplierId " +
+            //    "and products.ProductId=products_suppliers.ProductId" +
+            //    " and prodName= @cmbProducts";
             string dbConnect = GetDBConnectionString();
             // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = new SqlConnection(dbConnect);
@@ -128,6 +138,7 @@ namespace ThreadedProjectLib
             command = new SqlCommand(query, Con);
             //   command.Parameters.AddWithValue("@Name",criteria);
             command.Parameters.AddWithValue("@cmbProducts", prod);
+            command.Parameters.AddWithValue("@PackageId", packageID);
             reader = command.ExecuteReader();
             dataFound = true;
             return dataFound;

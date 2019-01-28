@@ -55,7 +55,8 @@ namespace ThreadedProjectII
                && (validaterClass.isProvided(txtPkgBasePrice, "Package Base Price can not be null"))
                && (validaterClass.isNonNegativeDoub(txtPkgBasePrice, "Package Price must be a Positive Whole number"))
                && (validaterClass.isProvided(txtPkgComision, "Agency Comm can not be null"))
-               && (validaterClass.isNonNegativeDoub(txtPkgComision, "Agency Comm must be a positive whole number"))))
+               && (validaterClass.isNonNegativeDoub(txtPkgComision, "Agency Comm must be a positive whole number")
+               &&(validaterClass.isValidateComm(txtPkgBasePrice,txtPkgComision)))))
             {
                 try
                 {
@@ -108,7 +109,21 @@ namespace ThreadedProjectII
         private void cmbProducts_SelectedIndexChanged(object sender, EventArgs e)
         {
             PackageDB supplierObj = new PackageDB();
-            if (supplierObj.FetchSuppliers(Convert.ToString(cmbProducts.Text)))
+            int getPkgId = 0;
+
+            if (pkgDataGrid.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = pkgDataGrid.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = pkgDataGrid.Rows[selectedrowindex];
+
+                getPkgId = Convert.ToInt32(selectedRow.Cells["PackageId"].Value);
+                Package_AddProduct_DB getSupIdobj = new Package_AddProduct_DB();
+                getSupIdobj.GetSupplierId(getPkgId);
+                pkgProductGrid.DataSource = getSupIdobj.getPackageProduct();
+
+            }
+            if (supplierObj.FetchSuppliers(Convert.ToString(cmbProducts.Text), getPkgId))
             {
                 lstSuppliers.Items.Clear();
                 while (supplierObj.reader.Read())
@@ -135,6 +150,7 @@ namespace ThreadedProjectII
                 pkgProductGrid.DataSource = getSupIdobj.getPackageProduct();
 
             }
+          
 
         }
         //Function to load the package products into grid on call
@@ -259,7 +275,8 @@ namespace ThreadedProjectII
               && (validaterClass.isProvided(txtPkgBasePrice, "Package Base Price can not be null"))
               && (validaterClass.isNonNegativeDoub(txtPkgBasePrice, "Package Price must be a Positive Whole number"))
               && (validaterClass.isProvided(txtPkgComision, "Agency Comm can not be null"))
-              && (validaterClass.isNonNegativeDoub(txtPkgComision, "Agency Comm must be a positive whole number"))))
+              && (validaterClass.isNonNegativeDoub(txtPkgComision, "Agency Comm must be a positive whole number")
+              && (validaterClass.isValidateComm(txtPkgBasePrice, txtPkgComision)))))
             {
                 int getPkgId = 0;
                 string pkgName = txtPkgName.Text;
@@ -340,6 +357,7 @@ namespace ThreadedProjectII
                 btnDeletePkgProduct.Enabled = false;
                 btnClearproductForm.Enabled = false;
                 btnPkgDelete.Enabled = false;
+
             }
         }
         //update products of a specific package
@@ -348,22 +366,29 @@ namespace ThreadedProjectII
             string prodName = cmbProducts.Text;
             string suppName = lstSuppliers.Text;
             int getPkgId = 0;
-            if (pkgDataGrid.SelectedCells.Count > 0)
+            if (lstSuppliers.Text == "")
             {
-                int selectedrowindex = pkgDataGrid.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = pkgDataGrid.Rows[selectedrowindex];
-                getPkgId = Convert.ToInt32(selectedRow.Cells["PackageId"].Value);
-                Package_AddProduct_DB pkgUpdateProductObj = new Package_AddProduct_DB();
-                if (pkgUpdateProductObj.Update_Package_Product(suppName, prodName, getPkgId, pkgUpdateSuppId))
+                 MessageBox.Show("Please choose a Supplier");
+            }
+            else {
+                if (pkgDataGrid.SelectedCells.Count > 0)
                 {
-                    MessageBox.Show("Packages products updated Successfully");
-                    btnAddProduct.Enabled = true;
-                    cmbProducts.Enabled = true;
-                    btnClearproductForm.Enabled = true;
-                    btnUpdatPackageProduct.Enabled = false;
-                    btnDeletePkgProduct.Enabled = true;
-                    btnPkgDelete.Enabled = true;
-                    Load_PkgProducts();                    
+                    int selectedrowindex = pkgDataGrid.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = pkgDataGrid.Rows[selectedrowindex];
+                    getPkgId = Convert.ToInt32(selectedRow.Cells["PackageId"].Value);
+                    Package_AddProduct_DB pkgUpdateProductObj = new Package_AddProduct_DB();
+                    if (pkgUpdateProductObj.Update_Package_Product(suppName, prodName, getPkgId, pkgUpdateSuppId))
+                    {
+                        MessageBox.Show("Packages products updated Successfully");
+                        btnAddProduct.Enabled = true;
+                        cmbProducts.Enabled = true;
+                        btnClearproductForm.Enabled = true;
+                        btnUpdatPackageProduct.Enabled = false;
+                        btnDeletePkgProduct.Enabled = true;
+                        btnPkgDelete.Enabled = true;
+                        
+                    }
+                    Load_PkgProducts();
                     cmbProducts.SelectedIndex = -1;
                 }
                 
@@ -401,6 +426,7 @@ namespace ThreadedProjectII
                         pkgDataGrid.DataSource = ObjDeletePkg.dt;
                     }
                     Load_PkgProducts();
+                    cmbProducts.SelectedIndex = -1;
                 }
             }
         }
@@ -408,6 +434,9 @@ namespace ThreadedProjectII
         private void btnClearForm_Click(object sender, EventArgs e)
         {
             Clear_Form();
+            btnAddPackage.Enabled = true;
+           btnPkgDelete.Enabled = true;
+            btnSaveUpdate.Enabled = false;
 
 
         }

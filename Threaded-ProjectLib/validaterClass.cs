@@ -19,7 +19,7 @@ namespace ThreadedProjectLib
             if (tb.Text == "")
             {
                 result = false;
-                MessageBox.Show(name + " is required","data entry error");
+                MessageBox.Show(name + " ","data entry error");
                 tb.Focus();
             }
 
@@ -99,6 +99,23 @@ namespace ThreadedProjectLib
             }
             return result;
         }
-    
+
+        public static bool isValidateComm(TextBox bp, TextBox comm)
+        {
+            bool result = true; //innocent until proven guilty
+
+
+
+            if (Convert.ToDecimal(comm.Text)>Convert.ToDecimal(bp.Text))
+            {
+                result = false;
+                MessageBox.Show("Agency Comm cant'be greater than Base Price");
+                comm.Focus();
+            }
+
+            return result;
+        }
+
+
     }
 }
