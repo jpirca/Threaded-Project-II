@@ -17,7 +17,7 @@ namespace ThreadedProjectII
         {
             InitializeComponent();
             SupplierDB supADO = new SupplierDB();
-            List<Object> suppliers = supADO.GetSuppliers();
+            List<Supplier> suppliers = supADO.GetSuppliers();
             this.listBox1.Items.Clear();
             this.listBox1.DataSource = suppliers;
         }

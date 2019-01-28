@@ -13,7 +13,6 @@ namespace ThreadedProjectII
 {
     public partial class frmSuppliersComfirmation : Form
     {
-        private Supplier supplier = null;
         public frmSuppliersComfirmation()
         {
             InitializeComponent();
@@ -21,20 +20,10 @@ namespace ThreadedProjectII
 
         private void btnAddSup_Click(object sender, EventArgs e)
         {
-            SupplierDB ado = new SupplierDB();
-            if(this.supplier == null || supplier.SupplierId == -1)
-            {
-                supplier = new Supplier(-1, txtSupplierName.Text);
-                ado.InsertSuppliers(supplier);
-            }
-            else
-            {
-                ado.UpdateSupplier(supplier.SupplierId, supplier.SupName);
-            }
-            
-           
-
-            MessageBox.Show("The supplier \"" + txtSupplierName.Text + "\" was created sussccefully", "Adding Supplier");
+            //SupplierADO ado = new SupplierADO();
+            Supplier supplier = new Supplier(-1, txtSupplierName.Text);
+            //ado.InsertSuppliers(supplier);
+            MessageBox.Show("The supplier \"Supplier Name\" was created sussccefully", "Adding Supplier");
             this.Close();
         }
 
@@ -56,19 +45,6 @@ namespace ThreadedProjectII
             else if (dialogResult == DialogResult.No)
             {
                 //do something else
-            }
-        }
-
-        public void setSupplier(Supplier supplier)
-        {
-            this.supplier = supplier;
-        }
-
-        private void frmSuppliersComfirmation_Load(object sender, EventArgs e)
-        {
-            if(this.supplier != null)
-            {
-                txtSupplierName.Text = supplier.SupName;
             }
         }
     }

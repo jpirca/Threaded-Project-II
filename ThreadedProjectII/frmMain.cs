@@ -50,7 +50,7 @@ namespace ThreadedProjectII
 
         private void addToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmProducts form1 = new frmProducts();
+            frmAddProducts form1 = new frmAddProducts();
             form1.MdiParent = this;
             //Form2.Enabled = true;
             //Form2.BringToFront();
@@ -105,10 +105,8 @@ namespace ThreadedProjectII
             form1.Activate();
         }
 
-        private void editToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void editProducts_Click(object sender, EventArgs e)
         {
-            //this.Enabled = false;
-            //this.IsMdiContainer = true;
             frmEditProducts form1 = new frmEditProducts();
             form1.MdiParent = this;
             //Form2.Enabled = true;

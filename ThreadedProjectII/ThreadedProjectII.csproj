@@ -95,12 +95,6 @@
     <Compile Include="frmPkgConfirmation.Designer.cs">
       <DependentUpon>frmPkgConfirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProducts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProducts.Designer.cs">
-      <DependentUpon>frmProducts.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmProductsComfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,9 +139,6 @@
     <EmbeddedResource Include="frmPkgConfirmation.resx">
       <DependentUpon>frmPkgConfirmation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmProducts.resx">
-      <DependentUpon>frmProducts.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmProductsComfirmation.resx">
       <DependentUpon>frmProductsComfirmation.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,9 +171,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Threaded-ProjectLib\Threaded-ProjectLib.csproj">
+    <ProjectReference Include="..\Threaded-ProjectLib\ThreadedProjectLib.csproj">
       <Project>{64dacda3-7bce-41a6-91e9-3aa9d67094fd}</Project>
-      <Name>Threaded-ProjectLib</Name>
+      <Name>ThreadedProjectLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

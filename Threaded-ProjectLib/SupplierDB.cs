@@ -11,24 +11,40 @@ namespace ThreadedProjectLib
      * Date: Dec - 17 - 2018
      * Implement sql functions to work with Supplier.
      */
-    public class SupplierDB
+    public class SupplierDB : BaseDB
     {
-        // database connection variable
-        private BaseADO baseADO = new BaseADO();
+        List<Supplier> AssocSuppliers = new List<Supplier>();
+        SqlConnection conn = null;
 
         /* Get List of Suppliers from database */
-        public List<Object> GetSuppliers()
+        public List<Supplier> GetSuppliers()
         {
-            List<Object> result = new List<Object>();
+            List<Supplier> result = new List<Supplier>();
+            string query = "SELECT * FROM Suppliers";
             try
             {
-                result = baseADO.SelectData(Utils.supplierTableName);
+                conn = GetConnection();
+                conn.Open();
+
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Supplier supplier = new Supplier(Convert.ToInt32(reader[0]),
+                                                    Convert.ToString(reader[1]));
+                    result.Add(supplier);
+                }
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.GetSuppliers() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: " + 
+                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
-
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
             return result;
         }
 
@@ -36,81 +52,151 @@ namespace ThreadedProjectLib
         public Supplier GetSupplier(int supplierId)
         {
             Supplier result = null;
-            IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
 
+            string query = "SELECT * FROM Suppliers WHERE SupplierId = @SupplierId ";
             try
             {
-                List<Object> list = baseADO.SelectData(Utils.supplierTableName, null, conditions);
+                conn = GetConnection();
+                conn.Open();
 
-                foreach (Object element in list)
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("SupplierId", supplierId);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    //result = new Supplier(Convert.ToInt32(element["supplierId"]),
-                                                    // element["supName"]);
-                    result = (Supplier)element;
+                    result = new Supplier(Convert.ToInt32(reader[0]),
+                                          Convert.ToString(reader[1]));
                 }
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.GetSupplier() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: " + 
+                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
-
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
             return result;
         }
 
         /* Update Supplier Information */
         public bool UpdateSupplier(int supplierId, string supName)
         {
-            bool result = true;
+            int rows = 0;
 
-            IDictionary<string, string> values = new Dictionary<string, string>();
-            values.Add("supName", supName);
-
-            IDictionary<string, string> conditions = new Dictionary<string, string>();
-            conditions.Add("supplierId", supplierId.ToString());
-
+            string query = "UPDATE Suppliers SET SupName = @SupName " +
+                            "WHERE SupplierId = @SupplierId ";
             try
             {
-                result = baseADO.UpdateData(Utils.supplierTableName, values, conditions);
+                conn = GetConnection();
+                conn.Open();
 
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("SupplierId", supplierId);
+                command.Parameters.AddWithValue("SupName", supName);
+                rows = command.ExecuteNonQuery();
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.UpdateSupplier() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + 
+                Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
-
-            return result;
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
+            return (rows != 0);
         }
 
+        public List<Supplier> getSupplierByProductId(int productID)
+        {
+            string query = "SELECT [ProductSupplierId], [Supplierid], [SupName] " +
+            "FROM[TravelExperts].[dbo].[PRODUCT_SUPPLIER] Where Productid =" + productID;
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand( query, connection);
+                //open the connection
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    Supplier supp = new Supplier();
+                    while (reader.Read())
+                    {
+                        AssocSuppliers.Add(new Supplier(Convert.ToInt32(reader[1]), Convert.ToString(reader[2]), Convert.ToInt32(reader[0])));
+                    }
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+
+                return AssocSuppliers;
+            }
+        }
         /* Insert Supplier to database */
         public bool InsertSuppliers(Supplier supplier)
         {
-            bool result = true;
 
-            IDictionary<string, string> values = new Dictionary<string, string>();
-            values.Add("SupName", supplier.SupName);
+            int result = 0;
 
+            string query = "INSERT INTO Suppliers (SupName) VALUES (@SupName)";
             try
             {
-                result = baseADO.InsertData(Utils.supplierTableName, values);
+                conn = GetConnection();
+                conn.Open();
+
+                SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("SupName", supplier.SupName);
+                result = command.ExecuteNonQuery();
+
 
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierADO.InsertSuppliers() - table name: " + Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: " + 
+                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
-
-            return result;
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
+            return (result != 0);
 
         }
 
-        /* Delete Supplier by supplierId*/
-        /*public bool DeleteSupplier(it supplierId)
+        public bool DeleteSupplier(int supplierId)
         {
-            
-            return (result!=0);
-        }*/
+            int result = 0;
 
-        
+            string query = "DELETE Suppliers WHERE SupplierId = @SupplierId";
+            try
+            {
+                conn = GetConnection();
+                conn.Open();
+
+                SqlCommand command = new SqlCommand(query, conn);
+                result = command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: " +
+                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+            }
+            finally
+            {
+                //close connection
+                conn.Close();
+            }
+
+            return (result != 0);
+        }
+
+
     }
 }

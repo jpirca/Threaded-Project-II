@@ -77,6 +77,7 @@
             this.txtSupplierName.ReadOnly = true;
             this.txtSupplierName.Size = new System.Drawing.Size(263, 22);
             this.txtSupplierName.TabIndex = 54;
+            this.txtSupplierName.Text = "Supplier AAA";
             // 
             // label1
             // 
@@ -122,7 +123,6 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmSuppliersComfirmation";
             this.Text = "frmSuppliersComfirmation";
-            this.Load += new System.EventHandler(this.frmSuppliersComfirmation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
