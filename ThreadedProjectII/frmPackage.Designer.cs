@@ -28,325 +28,445 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPkgName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPkgDesc = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPkgBasePrice = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtPkgStartDate = new System.Windows.Forms.DateTimePicker();
+            this.lblManagePkges = new System.Windows.Forms.Label();
+            this.grpAddPackages = new System.Windows.Forms.GroupBox();
+            this.btnClearForm = new System.Windows.Forms.Button();
+            this.btnPkgDelete = new System.Windows.Forms.Button();
+            this.btnSaveUpdate = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.pkgDataGrid = new System.Windows.Forms.DataGridView();
             this.dtPkgEndDate = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbPkgAgency = new System.Windows.Forms.ComboBox();
+            this.dtPkgStartDate = new System.Windows.Forms.DateTimePicker();
+            this.btnAddPackage = new System.Windows.Forms.Button();
             this.txtPkgComision = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.lstProductsAva = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.lstPckProducts = new System.Windows.Forms.ListBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.btnNextPkg = new System.Windows.Forms.Button();
-            this.btnCancelPkg = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
+            this.txtPkgBasePrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPkgDesc = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPkgName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.grpPkgDetails = new System.Windows.Forms.GroupBox();
+            this.btnClearproductForm = new System.Windows.Forms.Button();
+            this.btnDeletePkgProduct = new System.Windows.Forms.Button();
+            this.btnUpdatPackageProduct = new System.Windows.Forms.Button();
+            this.btnUpdatSpecificPkg = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.pkgProductGrid = new System.Windows.Forms.DataGridView();
+            this.lblSuppliers = new System.Windows.Forms.Label();
+            this.lstSuppliers = new System.Windows.Forms.ListBox();
+            this.lblProducts = new System.Windows.Forms.Label();
+            this.cmbProducts = new System.Windows.Forms.ComboBox();
+            this.lblPackagesMangaeProd = new System.Windows.Forms.Label();
+            this.grpAddPackages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pkgDataGrid)).BeginInit();
+            this.grpPkgDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pkgProductGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblTitle
+            // lblManagePkges
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(12, 87);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(374, 16);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Please insert all the information require to create a \"Package\":";
+            this.lblManagePkges.AutoSize = true;
+            this.lblManagePkges.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblManagePkges.Location = new System.Drawing.Point(323, 7);
+            this.lblManagePkges.Name = "lblManagePkges";
+            this.lblManagePkges.Size = new System.Drawing.Size(253, 31);
+            this.lblManagePkges.TabIndex = 25;
+            this.lblManagePkges.Text = "Manage Packages";
             // 
-            // label1
+            // grpAddPackages
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 138);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Name:";
+            this.grpAddPackages.Controls.Add(this.btnClearForm);
+            this.grpAddPackages.Controls.Add(this.btnPkgDelete);
+            this.grpAddPackages.Controls.Add(this.btnSaveUpdate);
+            this.grpAddPackages.Controls.Add(this.btnUpdate);
+            this.grpAddPackages.Controls.Add(this.pkgDataGrid);
+            this.grpAddPackages.Controls.Add(this.dtPkgEndDate);
+            this.grpAddPackages.Controls.Add(this.dtPkgStartDate);
+            this.grpAddPackages.Controls.Add(this.btnAddPackage);
+            this.grpAddPackages.Controls.Add(this.txtPkgComision);
+            this.grpAddPackages.Controls.Add(this.label7);
+            this.grpAddPackages.Controls.Add(this.txtPkgBasePrice);
+            this.grpAddPackages.Controls.Add(this.label5);
+            this.grpAddPackages.Controls.Add(this.txtPkgDesc);
+            this.grpAddPackages.Controls.Add(this.label4);
+            this.grpAddPackages.Controls.Add(this.label3);
+            this.grpAddPackages.Controls.Add(this.label2);
+            this.grpAddPackages.Controls.Add(this.txtPkgName);
+            this.grpAddPackages.Controls.Add(this.label1);
+            this.grpAddPackages.Controls.Add(this.lblTitle);
+            this.grpAddPackages.Location = new System.Drawing.Point(26, 41);
+            this.grpAddPackages.Name = "grpAddPackages";
+            this.grpAddPackages.Size = new System.Drawing.Size(888, 298);
+            this.grpAddPackages.TabIndex = 26;
+            this.grpAddPackages.TabStop = false;
+            this.grpAddPackages.Text = "Add Packages";
             // 
-            // txtPkgName
+            // btnClearForm
             // 
-            this.txtPkgName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgName.Location = new System.Drawing.Point(108, 138);
-            this.txtPkgName.Name = "txtPkgName";
-            this.txtPkgName.Size = new System.Drawing.Size(200, 22);
-            this.txtPkgName.TabIndex = 2;
+            this.btnClearForm.Location = new System.Drawing.Point(99, 253);
+            this.btnClearForm.Name = "btnClearForm";
+            this.btnClearForm.Size = new System.Drawing.Size(201, 32);
+            this.btnClearForm.TabIndex = 49;
+            this.btnClearForm.Text = "Clear Form";
+            this.btnClearForm.UseVisualStyleBackColor = true;
+            this.btnClearForm.Click += new System.EventHandler(this.btnClearForm_Click);
             // 
-            // label2
+            // btnPkgDelete
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(22, 180);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Start Date:";
+            this.btnPkgDelete.Location = new System.Drawing.Point(200, 219);
+            this.btnPkgDelete.Name = "btnPkgDelete";
+            this.btnPkgDelete.Size = new System.Drawing.Size(100, 28);
+            this.btnPkgDelete.TabIndex = 48;
+            this.btnPkgDelete.Text = "Delete Package";
+            this.btnPkgDelete.UseVisualStyleBackColor = true;
+            this.btnPkgDelete.Click += new System.EventHandler(this.btnPkgDelete_Click);
             // 
-            // label3
+            // btnSaveUpdate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(22, 219);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "End Date:";
+            this.btnSaveUpdate.Enabled = false;
+            this.btnSaveUpdate.Location = new System.Drawing.Point(599, 254);
+            this.btnSaveUpdate.Name = "btnSaveUpdate";
+            this.btnSaveUpdate.Size = new System.Drawing.Size(261, 31);
+            this.btnSaveUpdate.TabIndex = 47;
+            this.btnSaveUpdate.Text = "Save Upadate to Package";
+            this.btnSaveUpdate.UseVisualStyleBackColor = true;
+            this.btnSaveUpdate.Click += new System.EventHandler(this.pkgSaveUpdate_Click);
             // 
-            // txtPkgDesc
+            // btnUpdate
             // 
-            this.txtPkgDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgDesc.Location = new System.Drawing.Point(107, 258);
-            this.txtPkgDesc.Multiline = true;
-            this.txtPkgDesc.Name = "txtPkgDesc";
-            this.txtPkgDesc.Size = new System.Drawing.Size(201, 54);
-            this.txtPkgDesc.TabIndex = 8;
+            this.btnUpdate.Location = new System.Drawing.Point(320, 254);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(273, 31);
+            this.btnUpdate.TabIndex = 46;
+            this.btnUpdate.Text = "Update Package";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // label4
+            // pkgDataGrid
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 258);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Description:";
-            // 
-            // txtPkgBasePrice
-            // 
-            this.txtPkgBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgBasePrice.Location = new System.Drawing.Point(108, 331);
-            this.txtPkgBasePrice.Name = "txtPkgBasePrice";
-            this.txtPkgBasePrice.Size = new System.Drawing.Size(200, 22);
-            this.txtPkgBasePrice.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(22, 335);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 16);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Base Price:";
-            // 
-            // dtPkgStartDate
-            // 
-            this.dtPkgStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPkgStartDate.Location = new System.Drawing.Point(108, 176);
-            this.dtPkgStartDate.Name = "dtPkgStartDate";
-            this.dtPkgStartDate.Size = new System.Drawing.Size(200, 22);
-            this.dtPkgStartDate.TabIndex = 11;
+            this.pkgDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pkgDataGrid.Location = new System.Drawing.Point(320, 21);
+            this.pkgDataGrid.Name = "pkgDataGrid";
+            this.pkgDataGrid.ReadOnly = true;
+            this.pkgDataGrid.Size = new System.Drawing.Size(540, 226);
+            this.pkgDataGrid.TabIndex = 45;
+            this.pkgDataGrid.Click += new System.EventHandler(this.pkgDataGrid_Click);
             // 
             // dtPkgEndDate
             // 
-            this.dtPkgEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPkgEndDate.Location = new System.Drawing.Point(108, 216);
+            this.dtPkgEndDate.Location = new System.Drawing.Point(100, 75);
             this.dtPkgEndDate.Name = "dtPkgEndDate";
-            this.dtPkgEndDate.Size = new System.Drawing.Size(200, 22);
-            this.dtPkgEndDate.TabIndex = 12;
+            this.dtPkgEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dtPkgEndDate.TabIndex = 44;
             // 
-            // label6
+            // dtPkgStartDate
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(22, 379);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(57, 16);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Agency:";
+            this.dtPkgStartDate.Location = new System.Drawing.Point(100, 49);
+            this.dtPkgStartDate.Name = "dtPkgStartDate";
+            this.dtPkgStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dtPkgStartDate.TabIndex = 43;
+            this.dtPkgStartDate.CloseUp += new System.EventHandler(this.dtPkgStartDate_CloseUp);
             // 
-            // cbPkgAgency
+            // btnAddPackage
             // 
-            this.cbPkgAgency.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPkgAgency.FormattingEnabled = true;
-            this.cbPkgAgency.Location = new System.Drawing.Point(108, 374);
-            this.cbPkgAgency.Name = "cbPkgAgency";
-            this.cbPkgAgency.Size = new System.Drawing.Size(200, 24);
-            this.cbPkgAgency.TabIndex = 14;
+            this.btnAddPackage.Location = new System.Drawing.Point(99, 219);
+            this.btnAddPackage.Name = "btnAddPackage";
+            this.btnAddPackage.Size = new System.Drawing.Size(95, 28);
+            this.btnAddPackage.TabIndex = 42;
+            this.btnAddPackage.Text = "Add Package";
+            this.btnAddPackage.UseVisualStyleBackColor = true;
+            this.btnAddPackage.Click += new System.EventHandler(this.btnAddPackage_Click_1);
             // 
             // txtPkgComision
             // 
             this.txtPkgComision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPkgComision.Location = new System.Drawing.Point(107, 415);
+            this.txtPkgComision.Location = new System.Drawing.Point(99, 191);
             this.txtPkgComision.Name = "txtPkgComision";
             this.txtPkgComision.Size = new System.Drawing.Size(200, 22);
-            this.txtPkgComision.TabIndex = 16;
+            this.txtPkgComision.TabIndex = 41;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(21, 418);
+            this.label7.Location = new System.Drawing.Point(17, 197);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 16);
-            this.label7.TabIndex = 15;
+            this.label7.TabIndex = 40;
             this.label7.Text = "Comision:";
             // 
-            // lstProductsAva
+            // txtPkgBasePrice
             // 
-            this.lstProductsAva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstProductsAva.FormattingEnabled = true;
-            this.lstProductsAva.ItemHeight = 16;
-            this.lstProductsAva.Location = new System.Drawing.Point(335, 177);
-            this.lstProductsAva.Name = "lstProductsAva";
-            this.lstProductsAva.Size = new System.Drawing.Size(129, 260);
-            this.lstProductsAva.TabIndex = 17;
+            this.txtPkgBasePrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPkgBasePrice.Location = new System.Drawing.Point(100, 163);
+            this.txtPkgBasePrice.Name = "txtPkgBasePrice";
+            this.txtPkgBasePrice.Size = new System.Drawing.Size(200, 22);
+            this.txtPkgBasePrice.TabIndex = 37;
             // 
-            // button1
+            // label5
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(491, 267);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(38, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "> >";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(17, 166);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 16);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "Base Price:";
             // 
-            // button2
+            // txtPkgDesc
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(491, 308);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(38, 23);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "< <";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtPkgDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPkgDesc.Location = new System.Drawing.Point(99, 103);
+            this.txtPkgDesc.Multiline = true;
+            this.txtPkgDesc.Name = "txtPkgDesc";
+            this.txtPkgDesc.Size = new System.Drawing.Size(201, 54);
+            this.txtPkgDesc.TabIndex = 35;
             // 
-            // lstPckProducts
+            // label4
             // 
-            this.lstPckProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstPckProducts.FormattingEnabled = true;
-            this.lstPckProducts.ItemHeight = 16;
-            this.lstPckProducts.Location = new System.Drawing.Point(550, 177);
-            this.lstPckProducts.Name = "lstPckProducts";
-            this.lstPckProducts.Size = new System.Drawing.Size(129, 260);
-            this.lstPckProducts.TabIndex = 20;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(17, 116);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 16);
+            this.label4.TabIndex = 34;
+            this.label4.Text = "Description:";
             // 
-            // label8
+            // label3
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(335, 147);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(124, 16);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Products Available:";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(17, 79);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.TabIndex = 33;
+            this.label3.Text = "End Date:";
             // 
-            // label9
+            // label2
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(547, 147);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 16);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Products Selected:";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(14, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 16);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Start Date:";
             // 
-            // btnNextPkg
+            // txtPkgName
             // 
-            this.btnNextPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextPkg.Location = new System.Drawing.Point(509, 469);
-            this.btnNextPkg.Name = "btnNextPkg";
-            this.btnNextPkg.Size = new System.Drawing.Size(75, 23);
-            this.btnNextPkg.TabIndex = 23;
-            this.btnNextPkg.Text = "&Next";
-            this.btnNextPkg.UseVisualStyleBackColor = true;
-            this.btnNextPkg.Click += new System.EventHandler(this.button3_Click);
+            this.txtPkgName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPkgName.Location = new System.Drawing.Point(100, 21);
+            this.txtPkgName.Name = "txtPkgName";
+            this.txtPkgName.Size = new System.Drawing.Size(200, 22);
+            this.txtPkgName.TabIndex = 31;
+            this.txtPkgName.TextChanged += new System.EventHandler(this.txtPkgName_TextChanged);
             // 
-            // btnCancelPkg
+            // label1
             // 
-            this.btnCancelPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelPkg.Location = new System.Drawing.Point(604, 469);
-            this.btnCancelPkg.Name = "btnCancelPkg";
-            this.btnCancelPkg.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelPkg.TabIndex = 24;
-            this.btnCancelPkg.Text = "&Cancel";
-            this.btnCancelPkg.UseVisualStyleBackColor = true;
-            this.btnCancelPkg.Click += new System.EventHandler(this.button4_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(14, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 16);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Name:";
             // 
-            // label10
+            // lblTitle
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(175, 21);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(390, 42);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Create New Package";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(159, -49);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(374, 16);
+            this.lblTitle.TabIndex = 29;
+            this.lblTitle.Text = "Please insert all the information require to create a \"Package\":";
+            // 
+            // grpPkgDetails
+            // 
+            this.grpPkgDetails.Controls.Add(this.btnClearproductForm);
+            this.grpPkgDetails.Controls.Add(this.btnDeletePkgProduct);
+            this.grpPkgDetails.Controls.Add(this.btnUpdatPackageProduct);
+            this.grpPkgDetails.Controls.Add(this.btnUpdatSpecificPkg);
+            this.grpPkgDetails.Controls.Add(this.btnAddProduct);
+            this.grpPkgDetails.Controls.Add(this.pkgProductGrid);
+            this.grpPkgDetails.Controls.Add(this.lblSuppliers);
+            this.grpPkgDetails.Controls.Add(this.lstSuppliers);
+            this.grpPkgDetails.Controls.Add(this.lblProducts);
+            this.grpPkgDetails.Controls.Add(this.cmbProducts);
+            this.grpPkgDetails.Location = new System.Drawing.Point(26, 378);
+            this.grpPkgDetails.Name = "grpPkgDetails";
+            this.grpPkgDetails.Size = new System.Drawing.Size(888, 252);
+            this.grpPkgDetails.TabIndex = 27;
+            this.grpPkgDetails.TabStop = false;
+            this.grpPkgDetails.Text = "Package Details";
+            // 
+            // btnClearproductForm
+            // 
+            this.btnClearproductForm.Location = new System.Drawing.Point(83, 210);
+            this.btnClearproductForm.Name = "btnClearproductForm";
+            this.btnClearproductForm.Size = new System.Drawing.Size(199, 32);
+            this.btnClearproductForm.TabIndex = 50;
+            this.btnClearproductForm.Text = "Clear Form";
+            this.btnClearproductForm.UseVisualStyleBackColor = true;
+            this.btnClearproductForm.Click += new System.EventHandler(this.btnClearproductForm_Click);
+            // 
+            // btnDeletePkgProduct
+            // 
+            this.btnDeletePkgProduct.Location = new System.Drawing.Point(184, 179);
+            this.btnDeletePkgProduct.Name = "btnDeletePkgProduct";
+            this.btnDeletePkgProduct.Size = new System.Drawing.Size(98, 27);
+            this.btnDeletePkgProduct.TabIndex = 49;
+            this.btnDeletePkgProduct.Text = "Delete Product";
+            this.btnDeletePkgProduct.UseVisualStyleBackColor = true;
+            this.btnDeletePkgProduct.Click += new System.EventHandler(this.btnDeletePkgProduct_Click);
+            // 
+            // btnUpdatPackageProduct
+            // 
+            this.btnUpdatPackageProduct.Enabled = false;
+            this.btnUpdatPackageProduct.Location = new System.Drawing.Point(524, 179);
+            this.btnUpdatPackageProduct.Name = "btnUpdatPackageProduct";
+            this.btnUpdatPackageProduct.Size = new System.Drawing.Size(215, 31);
+            this.btnUpdatPackageProduct.TabIndex = 48;
+            this.btnUpdatPackageProduct.Text = "Save Update to Package Product";
+            this.btnUpdatPackageProduct.UseVisualStyleBackColor = true;
+            this.btnUpdatPackageProduct.Click += new System.EventHandler(this.btnUpdatPackageProduct_Click);
+            // 
+            // btnUpdatSpecificPkg
+            // 
+            this.btnUpdatSpecificPkg.Location = new System.Drawing.Point(303, 180);
+            this.btnUpdatSpecificPkg.Name = "btnUpdatSpecificPkg";
+            this.btnUpdatSpecificPkg.Size = new System.Drawing.Size(215, 31);
+            this.btnUpdatSpecificPkg.TabIndex = 47;
+            this.btnUpdatSpecificPkg.Text = "Update Package Product";
+            this.btnUpdatSpecificPkg.UseVisualStyleBackColor = true;
+            this.btnUpdatSpecificPkg.Click += new System.EventHandler(this.btnUpdatSpecificPkg_Click);
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.Location = new System.Drawing.Point(84, 180);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(98, 27);
+            this.btnAddProduct.TabIndex = 5;
+            this.btnAddProduct.Text = "Add Product";
+            this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            // 
+            // pkgProductGrid
+            // 
+            this.pkgProductGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.pkgProductGrid.Location = new System.Drawing.Point(303, 19);
+            this.pkgProductGrid.Name = "pkgProductGrid";
+            this.pkgProductGrid.ReadOnly = true;
+            this.pkgProductGrid.Size = new System.Drawing.Size(436, 150);
+            this.pkgProductGrid.TabIndex = 4;
+            // 
+            // lblSuppliers
+            // 
+            this.lblSuppliers.AutoSize = true;
+            this.lblSuppliers.Location = new System.Drawing.Point(5, 41);
+            this.lblSuppliers.Name = "lblSuppliers";
+            this.lblSuppliers.Size = new System.Drawing.Size(50, 13);
+            this.lblSuppliers.TabIndex = 3;
+            this.lblSuppliers.Text = "Suppliers";
+            // 
+            // lstSuppliers
+            // 
+            this.lstSuppliers.FormattingEnabled = true;
+            this.lstSuppliers.Location = new System.Drawing.Point(84, 41);
+            this.lstSuppliers.Name = "lstSuppliers";
+            this.lstSuppliers.Size = new System.Drawing.Size(199, 134);
+            this.lstSuppliers.TabIndex = 2;
+            // 
+            // lblProducts
+            // 
+            this.lblProducts.AutoSize = true;
+            this.lblProducts.Location = new System.Drawing.Point(6, 22);
+            this.lblProducts.Name = "lblProducts";
+            this.lblProducts.Size = new System.Drawing.Size(49, 13);
+            this.lblProducts.TabIndex = 1;
+            this.lblProducts.Text = "Products";
+            // 
+            // cmbProducts
+            // 
+            this.cmbProducts.FormattingEnabled = true;
+            this.cmbProducts.Location = new System.Drawing.Point(84, 14);
+            this.cmbProducts.Name = "cmbProducts";
+            this.cmbProducts.Size = new System.Drawing.Size(199, 21);
+            this.cmbProducts.TabIndex = 0;
+            this.cmbProducts.SelectedIndexChanged += new System.EventHandler(this.cmbProducts_SelectedIndexChanged);
+            // 
+            // lblPackagesMangaeProd
+            // 
+            this.lblPackagesMangaeProd.AutoSize = true;
+            this.lblPackagesMangaeProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPackagesMangaeProd.Location = new System.Drawing.Point(323, 342);
+            this.lblPackagesMangaeProd.Name = "lblPackagesMangaeProd";
+            this.lblPackagesMangaeProd.Size = new System.Drawing.Size(377, 31);
+            this.lblPackagesMangaeProd.TabIndex = 28;
+            this.lblPackagesMangaeProd.Text = "Manage Packages Products";
             // 
             // frmPackage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(710, 515);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.btnCancelPkg);
-            this.Controls.Add(this.btnNextPkg);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lstPckProducts);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lstProductsAva);
-            this.Controls.Add(this.txtPkgComision);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.cbPkgAgency);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.dtPkgEndDate);
-            this.Controls.Add(this.dtPkgStartDate);
-            this.Controls.Add(this.txtPkgBasePrice);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtPkgDesc);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtPkgName);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblTitle);
+            this.ClientSize = new System.Drawing.Size(955, 640);
+            this.Controls.Add(this.lblPackagesMangaeProd);
+            this.Controls.Add(this.grpPkgDetails);
+            this.Controls.Add(this.grpAddPackages);
+            this.Controls.Add(this.lblManagePkges);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPackage";
             this.Text = "Package";
+            this.Load += new System.EventHandler(this.frmPackage_Load);
+            this.grpAddPackages.ResumeLayout(false);
+            this.grpAddPackages.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pkgDataGrid)).EndInit();
+            this.grpPkgDetails.ResumeLayout(false);
+            this.grpPkgDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pkgProductGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPkgName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtPkgDesc;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPkgBasePrice;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dtPkgStartDate;
+        private System.Windows.Forms.Label lblManagePkges;
+        private System.Windows.Forms.GroupBox grpAddPackages;
         private System.Windows.Forms.DateTimePicker dtPkgEndDate;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbPkgAgency;
+        private System.Windows.Forms.DateTimePicker dtPkgStartDate;
+        private System.Windows.Forms.Button btnAddPackage;
         private System.Windows.Forms.TextBox txtPkgComision;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox lstProductsAva;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ListBox lstPckProducts;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnNextPkg;
-        private System.Windows.Forms.Button btnCancelPkg;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtPkgBasePrice;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPkgDesc;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPkgName;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DataGridView pkgDataGrid;
+        private System.Windows.Forms.GroupBox grpPkgDetails;
+        private System.Windows.Forms.DataGridView pkgProductGrid;
+        private System.Windows.Forms.Label lblSuppliers;
+        private System.Windows.Forms.ListBox lstSuppliers;
+        private System.Windows.Forms.Label lblProducts;
+        private System.Windows.Forms.ComboBox cmbProducts;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnSaveUpdate;
+        private System.Windows.Forms.Button btnUpdatSpecificPkg;
+        private System.Windows.Forms.Button btnUpdatPackageProduct;
+        private System.Windows.Forms.Button btnPkgDelete;
+        private System.Windows.Forms.Button btnClearForm;
+        private System.Windows.Forms.Button btnDeletePkgProduct;
+        private System.Windows.Forms.Button btnClearproductForm;
+        private System.Windows.Forms.Label lblPackagesMangaeProd;
     }
 }

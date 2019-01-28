@@ -4854,11 +4854,12 @@
       ]
     },
     "System.Runtime.InteropServices.RuntimeInformation/4.0.0": {
-      "sha512": "hWPhJxc453RCa8Z29O91EmfGeZIHX1ZH2A8L6lYQVSaKzku2DfArSfMEb1/MYYzPQRJZeu0c9dmYeJKxW5Fgng==",
+      "sha512": "vMoSAMtzOedZjsFyVSeSV9nUBxPqO/Q7NeIYuuhlDzyDW4TdVV9aUU1qJsUW7LK0ctzcnJeWlVPaLnnS/N4SIw==",
       "type": "package",
       "path": "system.runtime.interopservices.runtimeinformation/4.0.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -5829,23 +5830,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\693235\\.nuget\\packages\\": {},
+    "C:\\Users\\803919\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\693235\\Desktop\\GroupProject\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
       "projectName": "Threaded_ProjectLib.Tests",
-      "projectPath": "C:\\Users\\693235\\Desktop\\GroupProject\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
-      "packagesPath": "C:\\Users\\693235\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\693235\\Desktop\\GroupProject\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\obj\\",
+      "projectPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\Threaded_ProjectLib.Tests.csproj",
+      "packagesPath": "C:\\Users\\803919\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded_ProjectLib.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\693235\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\803919\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5858,8 +5859,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\693235\\Desktop\\GroupProject\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj": {
-              "projectPath": "C:\\Users\\693235\\Desktop\\GroupProject\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj"
+            "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj": {
+              "projectPath": "C:\\Users\\803919\\Desktop\\Threaded-Project-II\\Threaded-ProjectLib\\Threaded-ProjectLib.csproj"
             }
           }
         }
