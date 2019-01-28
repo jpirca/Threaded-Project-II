@@ -95,12 +95,6 @@
     <Compile Include="frmPkgConfirmation.Designer.cs">
       <DependentUpon>frmPkgConfirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmProducts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmProducts.Designer.cs">
-      <DependentUpon>frmProducts.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmProductsComfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,9 +138,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPkgConfirmation.resx">
       <DependentUpon>frmPkgConfirmation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmProducts.resx">
-      <DependentUpon>frmProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProductsComfirmation.resx">
       <DependentUpon>frmProductsComfirmation.cs</DependentUpon>

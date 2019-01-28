@@ -13,6 +13,7 @@ namespace ThreadedProjectLib
      */
     public class SupplierDB : BaseDB
     {
+        List<Supplier> AssocSuppliers = new List<Supplier>();
         SqlConnection conn = null;
 
         /* Get List of Suppliers from database */
@@ -100,7 +101,7 @@ namespace ThreadedProjectLib
             catch (Exception e)
             {
                 Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + 
-                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -110,6 +111,33 @@ namespace ThreadedProjectLib
             return (rows != 0);
         }
 
+        public List<Supplier> getSupplierByProductId(int productID)
+        {
+            string query = "SELECT [ProductSupplierId], [Supplierid], [SupName] " +
+            "FROM[TravelExperts].[dbo].[PRODUCT_SUPPLIER] Where Productid =" + productID;
+            using (SqlConnection connection = GetConnection())
+            {
+                SqlCommand command = new SqlCommand( query, connection);
+                //open the connection
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                try
+                {
+                    Supplier supp = new Supplier();
+                    while (reader.Read())
+                    {
+                        AssocSuppliers.Add(new Supplier(Convert.ToInt32(reader[1]), Convert.ToString(reader[2]), Convert.ToInt32(reader[0])));
+                    }
+                }
+                finally
+                {
+                    // Always call Close when done reading.
+                    reader.Close();
+                }
+
+                return AssocSuppliers;
+            }
+        }
         /* Insert Supplier to database */
         public bool InsertSuppliers(Supplier supplier)
         {

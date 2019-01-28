@@ -7,26 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
     public partial class frmProductsComfirmation : Form
     {
+        ProductDB ourProducts = new ProductDB();
         public frmProductsComfirmation()
         {
             InitializeComponent();
         }
 
-        private void btnAddProd_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("The product \"Product Name\" was created sussccefully","Adding Product");
-            this.Close();
-        }
+        
 
         private void btnBackProd_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmProducts form1 = new frmProducts();
+            frmEditProducts form1 = new frmEditProducts();
             form1.Activate();
             form1.Show();
         }
@@ -42,6 +40,26 @@ namespace ThreadedProjectII
             {
                 //do something else
             }
+        }
+
+        private void frmProductsComfirmation_Load(object sender, EventArgs e)
+        {
+            txtConfProdName.Text = frmEditProducts.ProdName;
+
+            foreach (Supplier assocSupplier in frmEditProducts.sa)
+            {
+                lstSuppliers.Items.Add(assocSupplier);
+            }
+
+           
+        }
+
+        private void btnUpdateProd_Click(object sender, EventArgs e)
+        {
+            ourProducts.UpdateProduct(frmEditProducts.Prodid, frmEditProducts.sa, frmEditProducts.ProdName);
+
+            MessageBox.Show("Records updated");
+
         }
     }
 }

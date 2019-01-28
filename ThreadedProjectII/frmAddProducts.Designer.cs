@@ -44,6 +44,7 @@
             this.btnCancelPkg.TabIndex = 48;
             this.btnCancelPkg.Text = "&Cancel";
             this.btnCancelPkg.UseVisualStyleBackColor = true;
+            this.btnCancelPkg.Click += new System.EventHandler(this.btnCancelPkg_Click);
             // 
             // btnAddProduct
             // 
