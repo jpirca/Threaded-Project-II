@@ -106,14 +106,14 @@
             // addToolStripMenuItem1
             // 
             this.addToolStripMenuItem1.Name = "addToolStripMenuItem1";
-            this.addToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.addToolStripMenuItem1.Text = "Add...";
             this.addToolStripMenuItem1.Click += new System.EventHandler(this.addToolStripMenuItem1_Click);
             // 
             // editToolStripMenuItem1
             // 
             this.editToolStripMenuItem1.Name = "editToolStripMenuItem1";
-            this.editToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem1.Size = new System.Drawing.Size(105, 22);
             this.editToolStripMenuItem1.Text = "Edit...";
             this.editToolStripMenuItem1.Click += new System.EventHandler(this.editToolStripMenuItem1_Click);
             // 
@@ -129,15 +129,15 @@
             // mnuAddSupplier
             // 
             this.mnuAddSupplier.Name = "mnuAddSupplier";
-            this.mnuAddSupplier.Size = new System.Drawing.Size(105, 22);
+            this.mnuAddSupplier.Size = new System.Drawing.Size(180, 22);
             this.mnuAddSupplier.Text = "Add...";
             this.mnuAddSupplier.Click += new System.EventHandler(this.mnuAddSupplier_Click);
             // 
             // mnuEditSupplier
             // 
             this.mnuEditSupplier.Name = "mnuEditSupplier";
-            this.mnuEditSupplier.Size = new System.Drawing.Size(105, 22);
-            this.mnuEditSupplier.Text = "Edit..";
+            this.mnuEditSupplier.Size = new System.Drawing.Size(180, 22);
+            this.mnuEditSupplier.Text = "Edit/ Delete...";
             this.mnuEditSupplier.Click += new System.EventHandler(this.mnuEditSupplier_Click);
             // 
             // frmMain

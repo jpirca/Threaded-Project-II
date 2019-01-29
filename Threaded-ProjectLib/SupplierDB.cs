@@ -81,26 +81,31 @@ namespace ThreadedProjectLib
         }
 
         /* Update Supplier Information */
-        public bool UpdateSupplier(int supplierId, string supName)
+        public bool UpdateSupplier(Supplier supplier)
         {
             int rows = 0;
 
             string query = "UPDATE Suppliers SET SupName = @SupName " +
                             "WHERE SupplierId = @SupplierId ";
+
+            if (supplier == null) // null parameter
+                throw new ArgumentNullException();
+
             try
             {
                 conn = GetConnection();
                 conn.Open();
 
                 SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.AddWithValue("SupplierId", supplierId);
-                command.Parameters.AddWithValue("SupName", supName);
+                command.Parameters.AddWithValue("SupplierId", supplier.SupplierId);
+                command.Parameters.AddWithValue("SupName", supplier.SupName);
                 rows = command.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + 
                     Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                throw e;
             }
             finally
             {
@@ -153,12 +158,14 @@ namespace ThreadedProjectLib
                 conn.Open();
 
                 SqlCommand command = new SqlCommand(query, conn);
+                command.Parameters.AddWithValue("SupplierId", supplierId);
                 result = command.ExecuteNonQuery();
             }
             catch (Exception e)
             {
                 Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: " +
                     Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                throw e;
             }
             finally
             {

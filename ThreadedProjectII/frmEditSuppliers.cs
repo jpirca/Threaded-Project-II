@@ -36,5 +36,41 @@ namespace ThreadedProjectII
             this.Close();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Supplier selectedSupplier = (Supplier)this.listBox1.SelectedItem;
+            if(selectedSupplier == null)
+            {
+                MessageBox.Show("Please select the supplier which you want to delete and try again.", "Not Select Supplier.");
+            } else
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure to delete the supplier with Name - \"" + selectedSupplier.SupName + "\"?",
+                "Delete Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SupplierDB ado = new SupplierDB();
+                    try
+                    {
+                        if (ado.DeleteSupplier(selectedSupplier.SupplierId)) // delete successfully
+                        {
+                            MessageBox.Show("The supplier \"" + selectedSupplier.SupName + "\" was deleted sussccefully",
+                                "Deleting Supplier");
+                        }
+                        else
+                        {
+                            MessageBox.Show("The supplier \"" + selectedSupplier.SupName + "\" was not deleted sussccefully",
+                                "Deleting Supplier");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Deleting Supplier Error");
+                    }                   
+
+                }
+
+                this.Close();
+            }            
+        }
     }
 }

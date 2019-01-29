@@ -34,6 +34,7 @@
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label10 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCancelPkg
@@ -50,7 +51,7 @@
             // btnNextPkg
             // 
             this.btnNextPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextPkg.Location = new System.Drawing.Point(198, 303);
+            this.btnNextPkg.Location = new System.Drawing.Point(212, 303);
             this.btnNextPkg.Name = "btnNextPkg";
             this.btnNextPkg.Size = new System.Drawing.Size(75, 23);
             this.btnNextPkg.TabIndex = 47;
@@ -89,7 +90,6 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(305, 132);
             this.listBox1.TabIndex = 44;
-
             // 
             // label10
             // 
@@ -111,11 +111,23 @@
             this.lblTitle.TabIndex = 42;
             this.lblTitle.Text = "Please select the supplier to edit and press button \"Edit\":";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(131, 303);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 49;
+            this.btnDelete.Text = "&Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // frmEditSuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 348);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnCancelPkg);
             this.Controls.Add(this.btnNextPkg);
             this.Controls.Add(this.label1);
@@ -137,5 +149,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
