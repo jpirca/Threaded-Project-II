@@ -12,7 +12,7 @@ namespace ThreadedProjectLib
      * Date: Dec - 17 - 2018
      * Implement base sql functions.
      */
-    public class BaseDB 
+    public class BaseDB
     {
 
         protected SqlConnection GetConnection()
@@ -31,16 +31,11 @@ namespace ThreadedProjectLib
 
             if (settings != null)
             {
-                foreach (ConnectionStringSettings cs in settings)
-                {
-                    return cs.ConnectionString;
-                }
-                //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
+                return ConfigurationManager.ConnectionStrings["travelexpertsLocalDB"].ConnectionString;
             }
 
             return null;
 
         }
-       
     }
 }
