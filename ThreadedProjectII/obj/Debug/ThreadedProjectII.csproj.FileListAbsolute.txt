@@ -49,7 +49,6 @@ C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\bin\Debug\Threaded-ProjectLib.pdb
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csprojAssemblyReference.cache
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmAddProducts.resources
-C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditPackage.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditProducts.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmEditSuppliers.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmLogin.resources
@@ -58,7 +57,6 @@ C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\Threaded
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmPkgConfirmation.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmProductsComfirmation.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmSuppliers.resources
-C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.frmSuppliersComfirmation.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.Properties.Resources.resources
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.GenerateResource.cache
 C:\Users\693235\Desktop\Threaded-Project-II\ThreadedProjectII\obj\Debug\ThreadedProjectII.csproj.CoreCompileInputs.cache
