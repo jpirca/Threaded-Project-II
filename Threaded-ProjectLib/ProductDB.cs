@@ -102,8 +102,13 @@ namespace ThreadedProjectLib
             }
         }
 
+        public void UpdateProduct(List<Supplier> sa, Product product)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpdateProduct(
-            int Prodid, List<Supplier> assocSuppliers, string ProductName)
+            int Prodid, List<Supplier> assocSuppliers, Product product)
         {
             //Console.WriteLine(ProductName);
             using (SqlConnection connection = base.GetConnection())
@@ -140,8 +145,9 @@ namespace ThreadedProjectLib
                         command.ExecuteNonQuery();
                     }
 
-                    command.CommandText = "UPDATE [dbo].[Products] SET[Products].[ProdName] = @prodName WHERE ProductId = 1 ";
-                    command.Parameters.AddWithValue("@prodName", ProductName);
+                    command.CommandText = "UPDATE [dbo].[Products] SET[Products].[ProdName] = @prodName WHERE ProductId = @prodId";
+                    command.Parameters.AddWithValue("@prodId", product.ProductId);
+                    command.Parameters.AddWithValue("@prodName", product.ProductName);
                     command.ExecuteNonQuery();
 
                     // Attempt to commit the transaction.

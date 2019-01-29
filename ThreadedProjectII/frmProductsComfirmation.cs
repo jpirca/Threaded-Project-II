@@ -56,7 +56,8 @@ namespace ThreadedProjectII
 
         private void btnUpdateProd_Click(object sender, EventArgs e)
         {
-            ourProducts.UpdateProduct(frmEditProducts.Prodid, frmEditProducts.sa, frmEditProducts.ProdName);
+
+            ourProducts.UpdateProduct(frmEditProducts.sa, new Product(){ ProductId = frmEditProducts.Prodid, ProductName = frmEditProducts.ProdName });
 
             MessageBox.Show("Records updated");
 

@@ -94,11 +94,9 @@
             // 
             // txtConfProdName
             // 
-            this.txtConfProdName.Enabled = false;
             this.txtConfProdName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConfProdName.Location = new System.Drawing.Point(107, 126);
             this.txtConfProdName.Name = "txtConfProdName";
-            this.txtConfProdName.ReadOnly = true;
             this.txtConfProdName.Size = new System.Drawing.Size(363, 22);
             this.txtConfProdName.TabIndex = 42;
             // 
