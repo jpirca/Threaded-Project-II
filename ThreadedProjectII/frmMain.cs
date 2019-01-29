@@ -92,19 +92,6 @@ namespace ThreadedProjectII
             form1.Activate();
         }
 
-        private void editToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //this.Enabled = false;
-            //this.IsMdiContainer = true;
-            frmEditPackage form1 = new frmEditPackage();
-            form1.MdiParent = this;
-            //Form2.Enabled = true;
-            //Form2.BringToFront();
-            //menuMain.Enabled = false;
-            form1.Show();
-            form1.Activate();
-        }
-
         private void editProducts_Click(object sender, EventArgs e)
         {
             frmEditProducts form1 = new frmEditProducts();
@@ -115,5 +102,7 @@ namespace ThreadedProjectII
             form1.Show();
             form1.Activate();
         }
+
+
     }
 }

@@ -53,12 +53,6 @@
     <Compile Include="frmAddProducts.Designer.cs">
       <DependentUpon>frmAddProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEditPackage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmEditPackage.Designer.cs">
-      <DependentUpon>frmEditPackage.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmEditProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,13 +80,13 @@
     <Compile Include="frmPackage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPackage.Designer.cs">
+    <Compile Include="frmPackage.designer.cs">
       <DependentUpon>frmPackage.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPkgConfirmation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPkgConfirmation.Designer.cs">
+    <Compile Include="frmPkgConfirmation.designer.cs">
       <DependentUpon>frmPkgConfirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="frmProductsComfirmation.cs">
@@ -107,19 +101,10 @@
     <Compile Include="frmSuppliers.Designer.cs">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSuppliersComfirmation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmSuppliersComfirmation.Designer.cs">
-      <DependentUpon>frmSuppliersComfirmation.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAddProducts.resx">
       <DependentUpon>frmAddProducts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmEditPackage.resx">
-      <DependentUpon>frmEditPackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEditProducts.resx">
       <DependentUpon>frmEditProducts.cs</DependentUpon>
@@ -144,9 +129,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuppliers.resx">
       <DependentUpon>frmSuppliers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmSuppliersComfirmation.resx">
-      <DependentUpon>frmSuppliersComfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
