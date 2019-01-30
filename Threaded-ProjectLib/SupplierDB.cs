@@ -148,15 +148,26 @@ namespace ThreadedProjectLib
 
             int result = 0;
 
-            string query = "INSERT INTO Suppliers (SupName) VALUES (@SupName)";
             try
             {
                 conn = GetConnection();
                 conn.Open();
 
-                SqlCommand command = new SqlCommand(query, conn);
-                command.Parameters.AddWithValue("SupName", supplier.SupName);
-                result = command.ExecuteNonQuery();
+                SqlCommand command = conn.CreateCommand();
+                
+                command.CommandText = @"Select(MAX(SupplierId) + 1) From Suppliers;";
+                int maxPId = (int)command.ExecuteScalar();
+
+                command.CommandText =
+                    "SET IDENTITY_INSERT dbo.Suppliers ON;" +
+                    "INSERT INTO dbo.Suppliers ( SupplierId, SupName ) VALUES (@maxPid, @SupName) " +
+                    "SET IDENTITY_INSERT dbo.Suppliers OFF;";
+                command.Prepare();
+
+                command.Parameters.AddWithValue("@SupName", supplier.SupName);
+                command.Parameters.AddWithValue("@maxPid", maxPId);
+                command.ExecuteNonQuery();
+
 
 
             }
@@ -174,6 +185,7 @@ namespace ThreadedProjectLib
 
         }
 
+        // Delete supplier by SupplierId
         public bool DeleteSupplier(int supplierId)
         {
             int result = 0;
