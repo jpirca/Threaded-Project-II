@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.emailLogin = new System.Windows.Forms.TextBox();
+            this.passwordLogin = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -42,25 +42,25 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(32, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.Size = new System.Drawing.Size(56, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "User ID:";
+            this.label1.Text = "Email :";
             // 
-            // textBox1
+            // emailLogin
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(116, 39);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(173, 26);
-            this.textBox1.TabIndex = 1;
+            this.emailLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailLogin.Location = new System.Drawing.Point(116, 39);
+            this.emailLogin.Name = "emailLogin";
+            this.emailLogin.Size = new System.Drawing.Size(173, 26);
+            this.emailLogin.TabIndex = 1;
             // 
-            // textBox2
+            // passwordLogin
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(116, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(173, 26);
-            this.textBox2.TabIndex = 3;
+            this.passwordLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLogin.Location = new System.Drawing.Point(116, 81);
+            this.passwordLogin.Name = "passwordLogin";
+            this.passwordLogin.Size = new System.Drawing.Size(173, 26);
+            this.passwordLogin.TabIndex = 3;
             // 
             // label2
             // 
@@ -68,9 +68,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 85);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(86, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Password:";
+            this.label2.Text = "Password :";
             // 
             // btnOK
             // 
@@ -104,9 +104,9 @@
             this.ClientSize = new System.Drawing.Size(337, 193);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.passwordLogin);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.emailLogin);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -121,8 +121,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox emailLogin;
+        private System.Windows.Forms.TextBox passwordLogin;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;

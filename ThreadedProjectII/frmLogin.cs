@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Threaded_ProjectLib;
 
 namespace ThreadedProjectII
 {
@@ -22,17 +23,22 @@ namespace ThreadedProjectII
         private void btnOK_Click(object sender, EventArgs e)
         {
             bool result = false;
-
-            // Harcord to always login
-            result = true;
-
-            //result = AgentLogin(userId,userPassword)
+            AgentDB agentDB = new AgentDB();
+            string passsword = "abcd1234";
+            //HashSalt hashy = new HashSalt();
+            AgentDB.GenerateSaltedHash(passsword);
+            
+            result = agentDB.AgentLogin(new Agent(emailLogin.Text, passwordLogin.Text));
 
             if (result)
             {
-                this.Close();
- 
+                //Open dashboard and close this form 
+                MessageBox.Show("Successfully Logged in");
             }
+            else {
+                MessageBox.Show("Your email or Password is wrong");
+            }
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v2.1": {
+      "BCrypt-Official/0.1.109": {
+        "type": "package",
+        "compile": {
+          "lib/BCrypt.Net.dll": {}
+        },
+        "runtime": {
+          "lib/BCrypt.Net.dll": {}
+        }
+      },
       "Microsoft.CodeCoverage/15.9.0": {
         "type": "package",
         "compile": {
@@ -1630,6 +1639,21 @@
     }
   },
   "libraries": {
+    "BCrypt-Official/0.1.109": {
+      "sha512": "KYwnmWablKUOQeENOxO2W1FFqq3F3q3MV13/zatgukhRg5XE0hF7TZ3E/V3MqTu+55T+sUyCEi+Wqi56tULyXg==",
+      "type": "package",
+      "path": "bcrypt-official/0.1.109",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt-official.0.1.109.nupkg.sha512",
+        "bcrypt-official.nuspec",
+        "content/LICENSE.txt",
+        "lib/BCrypt.Net.XML",
+        "lib/BCrypt.Net.dll",
+        "lib/BCrypt.Net.pdb"
+      ]
+    },
     "Microsoft.CodeCoverage/15.9.0": {
       "sha512": "7hLVTRUCxAALZakJQgGfWJammOBXWiLyGGpaFz/+zDR+Rwj+sB4RMgEZAw8HQDpc1tjpbnzq9JEs/+OmFI94XA==",
       "type": "package",
@@ -5821,6 +5845,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
+      "BCrypt-Official >= 0.1.109",
       "MSTest.TestAdapter >= 1.3.2",
       "MSTest.TestFramework >= 1.3.2",
       "Microsoft.NET.Test.Sdk >= 15.9.0",
@@ -5873,6 +5898,10 @@
     "frameworks": {
       "netcoreapp2.1": {
         "dependencies": {
+          "BCrypt-Official": {
+            "target": "Package",
+            "version": "[0.1.109, )"
+          },
           "MSTest.TestAdapter": {
             "target": "Package",
             "version": "[1.3.2, )"
@@ -5898,5 +5927,17 @@
         "warn": true
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'BCrypt-Official 0.1.109' was restored using '.NETFramework,Version=v4.6.1' instead of the project target framework '.NETCoreApp,Version=v2.1'. This package may not be fully compatible with your project.",
+      "libraryId": "BCrypt-Official",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v2.1"
+      ]
+    }
+  ]
 }

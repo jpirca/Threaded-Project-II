@@ -23,32 +23,6 @@ namespace ThreadedProjectLib
         SqlDataAdapter adapter;
         public DataTable dt = new DataTable();
         public SqlDataReader reader;
-        //function to get the connection, to TravelExperts database
-        //public string GetDBConnectionString()
-        //{
-        //    // To avoid storing the connection string in your code, 
-        //    // you can retrieve it from a configuration file, using the 
-        //    // System.Configuration.ConfigurationManager.ConnectionStrings property 
-        //    //Connects to the App config 
-
-        //    ConnectionStringSettingsCollection settings = ConfigurationManager.ConnectionStrings;
-
-        //    if (settings != null)
-        //    {
-        //        foreach (ConnectionStringSettings cs in settings)
-        //        {
-        //            return cs.ConnectionString;
-        //        }
-        //        //string connectionToString = @"Data Source=WIN-50GP30FGO75;Initial Catalog=Demodb;User ID=sa;Password=demol23";
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Missing database configuration, please check those information in App.config");
-        //    }
-
-        //    return null;
-
-        //}
 
         //Add packages function getting data from form into arguments and sets the member variables
         public void addPackage(string pkgName, DateTime pkgStartDate, DateTime pkgEndDate, string pkgDesc
@@ -123,13 +97,7 @@ namespace ThreadedProjectLib
                 "join Packages_Products_Suppliers pps on ps.ProductSupplierId = pps.ProductSupplierId " +
                 "where PackageId = @PackageId) " +
                 "order by 1";
-                
-            //string query = "select SupName from products,products_suppliers,suppliers" +
-            //    " where suppliers.SupName not in (select SupName from Products_Suppliers)" +
-            //    " and suppliers.SupplierId=products_suppliers.SupplierId " +
-            //    "and products.ProductId=products_suppliers.ProductId" +
-            //    " and prodName= @cmbProducts";
-           // string dbConnect = GetDBConnectionString();
+
             // create sql connection object.  Be sure to put a valid connection string
             SqlConnection Con = GetConnection();
             Con.Open();
