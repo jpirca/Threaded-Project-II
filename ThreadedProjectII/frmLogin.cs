@@ -24,6 +24,8 @@ namespace ThreadedProjectII
         {
             bool result = false;
             AgentDB agentDB = new AgentDB();
+            //example
+            //usernmae = janet.delton@travelexperts.com
             string passsword = "abcd1234";
             //HashSalt hashy = new HashSalt();
             AgentDB.GenerateSaltedHash(passsword);
