@@ -12,7 +12,6 @@ namespace ThreadedProjectLib
     {
         /* Author: Jeremiah Lobo
          * Date: Jan - 5 - 2018
-         * Implementing sql functions to work with Product.
          */
         public int ProductId;
         public string ProductName;

@@ -78,8 +78,8 @@ namespace ThreadedProjectII
             }
             else {
                 lstAssocSupplier.Enabled = true;
-                //Add item to the Assoc list
-                Console.WriteLine(Convert.ToInt32(((Supplier)lstAvailSuppliers.SelectedItem).SuppProductId));
+                //Add item to the Associated Supplier list
+               
                 lstAssocSupplier.Items.Add( new Supplier( Convert.ToInt32(((Supplier)lstAvailSuppliers.SelectedItem).SupplierId), 
                                                           lstAvailSuppliers.SelectedItem.ToString(), Convert.ToInt32(((Supplier)lstAvailSuppliers.SelectedItem).SuppProductId)));
                 lstAvailSuppliers.Items.Remove(new Supplier(Convert.ToInt32(((Supplier)lstAvailSuppliers.SelectedItem).SupplierId),
@@ -101,7 +101,8 @@ namespace ThreadedProjectII
             else
             {
                 lstAvailSuppliers.Enabled = true;
-                //Add item to the Assoc list
+                //Add item to the Associated Supplier list
+
                 lstAssocSupplier.Items.Remove(new Supplier(Convert.ToInt32(((Supplier)lstAssocSupplier.SelectedItem).SupplierId),
                                                               lstAssocSupplier.SelectedItem.ToString(), Convert.ToInt32(((Supplier)lstAssocSupplier.SelectedItem).SuppProductId)));
 

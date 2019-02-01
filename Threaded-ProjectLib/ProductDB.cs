@@ -102,11 +102,6 @@ namespace ThreadedProjectLib
             }
         }
 
-        public void UpdateProduct(List<Supplier> sa, Product product)
-        {
-            throw new NotImplementedException();
-        }
-
         public void UpdateProduct(
             int Prodid, List<Supplier> assocSuppliers, Product product)
         {
