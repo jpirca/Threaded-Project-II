@@ -24,7 +24,7 @@ namespace ThreadedProjectII
         {
             bool result = false;
             AgentDB agentDB = new AgentDB();
-            //example
+            //example too
             //usernmae = janet.delton@travelexperts.com
             string passsword = "abcd1234";
             //HashSalt hashy = new HashSalt();
