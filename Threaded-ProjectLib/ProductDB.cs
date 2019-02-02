@@ -102,8 +102,7 @@ namespace ThreadedProjectLib
             }
         }
 
-        public void UpdateProduct(
-            int Prodid, List<Supplier> assocSuppliers, Product product)
+        public void UpdateProduct( List<Supplier> assocSuppliers, Product product)
         {
             //Console.WriteLine(ProductName);
             using (SqlConnection connection = base.GetConnection())
@@ -135,7 +134,7 @@ namespace ThreadedProjectLib
                         Console.WriteLine(assocSuppliers[i].SupplierId);
 
                         command.Parameters.AddWithValue("@supid", assocSuppliers[i].SupplierId);
-                        command.Parameters.AddWithValue("@prodid", Prodid);
+                        command.Parameters.AddWithValue("@prodid", product.ProductId);
                         command.Parameters.AddWithValue("@prodSupid", assocSuppliers[i].SuppProductId);
                         command.ExecuteNonQuery();
                     }
