@@ -21,12 +21,15 @@ namespace ThreadedProjectII
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
-            string addProductName = txtAddProductName.Text;
+            if (validaterClass.isProvided(txtAddProductName, "Product Name needs to be provided"))
+            {
+                string addProductName = txtAddProductName.Text;
 
-            //Insert Product Name
-            perProduct.AddProduct(addProductName);
-            MessageBox.Show("Product has been added");
-            txtAddProductName.Text = "";
+                //Insert Product Name
+                perProduct.AddProduct(addProductName);
+                txtAddProductName.Text = "";
+            }
+            
 
         }
 

@@ -94,7 +94,7 @@ namespace ThreadedProjectLib
             }
             else
             {
-                MessageBox.Show("Invalied Date");
+                MessageBox.Show("Invalid Date");
                 result = false;
             }
             return result;

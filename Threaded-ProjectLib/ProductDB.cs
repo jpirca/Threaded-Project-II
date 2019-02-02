@@ -12,13 +12,10 @@ namespace ThreadedProjectLib
     {
 
         List<Product> Products = new List<Product>();
-        
-
         // Get all products
         public List<Product> GetAllProducts()
         {
-            string queryString =
-                "SELECT Productid, ProdName FROM dbo.Products";
+            string queryString ="SELECT Productid, ProdName FROM dbo.Products";
             using (SqlConnection connection = GetConnection())
             {
                 SqlCommand command = new SqlCommand(
@@ -78,6 +75,7 @@ namespace ThreadedProjectLib
                     // Attempt to commit the transaction.
                     transaction.Commit();
                     Utils.WriteErrorLog("Records are written to database.");
+                    MessageBox.Show("Product has been added");
                 }
                 catch (Exception ex)
                 {
