@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using System.Configuration;
 using System.Reflection;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ThreadedProjectLib
 {
@@ -44,6 +45,22 @@ namespace ThreadedProjectLib
             {
                 if (sw != null) sw.Close(); // also close fs
             }
+        }
+
+        public static void ErrorManager(Exception type, string tableName, string errorMethod="")
+        {
+            if (type.GetType().FullName == "System.Data.SqlClient.SqlException")
+            {
+                Utils.WriteErrorLog("Table: "+tableName+" Method: "+errorMethod+" Message :"+type.Message + " -> " + type.GetType().ToString());
+                MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
+            }
+            else if (type.GetType().FullName == "System.Data.SqlClient.InvalidOperationException")
+            {
+                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
+                MessageBox.Show("Query isn't executing, Please Contact your administrator");
+
+            }
+            
         }
     }
     

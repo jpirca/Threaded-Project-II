@@ -15,7 +15,7 @@ namespace ThreadedProjectLib
         
 
         // Get all products
-        public List<Product> getAllProducts()
+        public List<Product> GetAllProducts()
         {
             string queryString =
                 "SELECT Productid, ProdName1 FROM dbo.Products";
@@ -23,24 +23,20 @@ namespace ThreadedProjectLib
             {
                 SqlCommand command = new SqlCommand(
                     queryString, connection);
-                //open the connection
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                try
-                {
+
+                try{
+                    //open the connection
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    
                     while (reader.Read())
                     {
                         Products.Add(new Product() { ProductId = Convert.ToInt32(reader[0]), ProductName = reader[1].ToString() });
                     }
                 }
-                catch (SqlException sqx)
-                {
-                    MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
-                    Utils.WriteErrorLog("Commit Exception Type: " + sqx.GetType() + "  Message: " + sqx.Message);
-                }
                 catch (Exception ex)
                 {
-                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "ProductDB", "getAllProducts()");
                 }
                 
 
@@ -51,7 +47,6 @@ namespace ThreadedProjectLib
         //Add a product with  prepare
         public void AddProduct(string ProductName)
         {
-            Console.WriteLine(ProductName);
             using (SqlConnection connection = base.GetConnection())
             {
                 connection.Open();
@@ -87,7 +82,7 @@ namespace ThreadedProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "ProductDB", "AddProduct()");
 
                     // Attempt to roll back the transaction. 
                     try
@@ -99,7 +94,7 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
+                        Utils.ErrorManager(ex2, "ProductDB", "AddProduct()");
                     }
                 }
             }

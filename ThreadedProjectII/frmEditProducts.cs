@@ -26,7 +26,7 @@ namespace ThreadedProjectII
         private void frmEditProducts_Load(object sender, EventArgs e)
         {
             //Get All Products 
-            List<Product> listProducts =  perProduct.getAllProducts();
+            List<Product> listProducts =  perProduct.GetAllProducts();
             //Add Products and disable list view
             foreach (Product a in listProducts)
                 cmbSelectProduct.Items.Add(a);
