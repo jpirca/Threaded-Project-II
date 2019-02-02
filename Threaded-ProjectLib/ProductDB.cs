@@ -36,7 +36,7 @@ namespace ThreadedProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.ErrorManager(ex, "ProductDB", "getAllProducts()");
+                    Utils.ErrorManager(ex, "Products", "getAllProducts()");
                 }
                 
 
@@ -82,7 +82,7 @@ namespace ThreadedProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.ErrorManager(ex, "ProductDB", "AddProduct()");
+                    Utils.ErrorManager(ex, "Products", "AddProduct()");
 
                     // Attempt to roll back the transaction. 
                     try
@@ -94,7 +94,7 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Utils.ErrorManager(ex2, "ProductDB", "AddProduct()");
+                        Utils.ErrorManager(ex2, "Products", "AddProduct()");
                     }
                 }
             }
@@ -145,8 +145,8 @@ namespace ThreadedProjectLib
                 catch (Exception ex)
                 {
                     //send this to logs
-                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
-
+                    //Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "Products, Products_Suppliers", "UpdateProduct()");                    
                     // Attempt to roll back the transaction. 
                     try
                     {
@@ -157,7 +157,8 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
+                        //Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
+                        Utils.ErrorManager(ex2, "Products, Products_Suppliers", "UpdateProduct()");
                     }
                 }
             }

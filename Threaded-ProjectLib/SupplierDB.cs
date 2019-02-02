@@ -37,7 +37,8 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: Supplier "+ e.Message + " - " + e.GetType().ToString());
+                //Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: Supplier "+ e.Message + " - " + e.GetType().ToString());
+                Utils.ErrorManager(e, "Supplier", "SupplierDB.GetSuppliers()");
             }
             finally
             {
@@ -69,7 +70,8 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
+                Utils.ErrorManager(e, "Supplier", "SupplierDB.GetSupplier()");
+                //Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -102,7 +104,8 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + e.Message + " - " + e.GetType().ToString());
+                Utils.ErrorManager(e, "Supplier", "SupplierDB.UpdateSupplier()");
+                //Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -130,6 +133,10 @@ namespace ThreadedProjectLib
                         AssocSuppliers.Add(new Supplier(Convert.ToInt32(reader[1]), Convert.ToString(reader[2]), Convert.ToInt32(reader[0])));
                     }
                 }
+                catch(Exception e)
+                {
+                    Utils.ErrorManager(e, "PRODUCT_SUPPLIER", "SupplierDB.getSupplierByProductId()");
+                }
                 finally
                 {
                     // Always call Close when done reading.
@@ -156,9 +163,9 @@ namespace ThreadedProjectLib
                 int maxPId = (int)command.ExecuteScalar();
 
                 command.CommandText =
-                    "SET IDENTITY_INSERT dbo.Suppliers ON;" +
-                    "INSERT INTO dbo.Suppliers ( SupplierId, SupName ) VALUES (@maxPid, @SupName) " +
-                    "SET IDENTITY_INSERT dbo.Suppliers OFF;";
+                    //"SET IDENTITY_INSERT dbo.Suppliers ON;" +
+                    "INSERT INTO dbo.Suppliers ( SupplierId, SupName ) VALUES (@maxPid, @SupName) "; //+
+                    //"SET IDENTITY_INSERT dbo.Suppliers OFF;";
                 command.Prepare();
 
                 command.Parameters.AddWithValue("@SupName", supplier.SupName);
@@ -170,7 +177,8 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: Suppliers" + e.Message + " - " + e.GetType().ToString());
+                Utils.ErrorManager(e, "Supplier", "SupplierDB.InsertSuppliers()");
+                //Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: Suppliers" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -198,8 +206,9 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
-                throw e;
+                //Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
+                //throw e;
+                Utils.ErrorManager(e, "Supplier", "SupplierDB.DeleteSupplier()");
             }
             finally
             {
