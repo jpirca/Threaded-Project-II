@@ -33,6 +33,9 @@ namespace ThreadedProjectLib
             {
                 return ConfigurationManager.ConnectionStrings["travelexpertsLocalDB"].ConnectionString;
             }
+            else {
+                Utils.WriteErrorLog("Missing database configuration, please check those information in App.config");
+            }
 
             return null;
 

@@ -37,8 +37,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: " +
-                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: Supplier "+ e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -70,8 +69,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: " +
-                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -104,8 +102,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " +
-                Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -173,8 +170,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: " +
-                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: Suppliers" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
@@ -202,8 +198,7 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: " +
-                    Utils.supplierTableName + ": " + e.Message + " - " + e.GetType().ToString());
+                Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
                 throw e;
             }
             finally

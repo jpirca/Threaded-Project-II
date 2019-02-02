@@ -56,34 +56,40 @@ namespace Threaded_ProjectLib
 
         private bool CheckAgentEmail( Agent agent)
         {
-            
+
             using (SqlConnection connection = GetConnection())
             {
-                //open the connection
-                connection.Open();
-                SqlCommand checkEmail = new SqlCommand("SELECT COUNT(*) FROM Agents WHERE Agents.AgtEmail = @email", connection);
-                checkEmail.Parameters.AddWithValue("@email", agent.AgtEmail);
-                int UserExist = (int)checkEmail.ExecuteScalar();
-
-                if (UserExist > 0)
+                try
                 {
-                    SqlCommand command = new SqlCommand("SELECT AgentId FROM Agents WHERE Agents.AgtEmail = @email", connection);
-                    command.Parameters.AddWithValue("@email", agent.AgtEmail);
-
-                    SqlDataReader reader = command.ExecuteReader();
-                    while (reader.Read())
+                    //open the connection
+                    connection.Open();
+                    SqlCommand checkEmail = new SqlCommand("SELECT COUNT(*) FROM Agents WHERE Agents.AgtEmail = @email", connection);
+                    checkEmail.Parameters.AddWithValue("@email", agent.AgtEmail);
+                    int UserExist = (int)checkEmail.ExecuteScalar();
+                    if (UserExist > 0)
                     {
-                        //Set Agent ID
-                        agent.AgentId = Convert.ToInt32(reader["AgentId"]);
+                        SqlCommand command = new SqlCommand("SELECT AgentId FROM Agents WHERE Agents.AgtEmail = @email", connection);
+                        command.Parameters.AddWithValue("@email", agent.AgtEmail);
+
+                        SqlDataReader reader = command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            //Set Agent ID
+                            agent.AgentId = Convert.ToInt32(reader["AgentId"]);
+                        }
+                        return true;
                     }
-                    return true;
+                    else
+                    {
+                        //Username doesn't exist.
+                        return false;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    //Username doesn't exist.
+                    Utils.WriteErrorLog("Login failed Type: " + ex.GetType() + "  Message: " + ex.Message);
                     return false;
                 }
-
             }
         }
 

@@ -18,7 +18,7 @@ namespace ThreadedProjectLib
         public List<Product> getAllProducts()
         {
             string queryString =
-                "SELECT Productid, ProdName FROM dbo.Products";
+                "SELECT Productid, ProdName1 FROM dbo.Products";
             using (SqlConnection connection = GetConnection())
             {
                 SqlCommand command = new SqlCommand(
@@ -33,11 +33,16 @@ namespace ThreadedProjectLib
                         Products.Add(new Product() { ProductId = Convert.ToInt32(reader[0]), ProductName = reader[1].ToString() });
                     }
                 }
-                finally
+                catch (SqlException sqx)
                 {
-                    // Always call Close when done reading.
-                    reader.Close();
+                    MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
+                    Utils.WriteErrorLog("Commit Exception Type: " + sqx.GetType() + "  Message: " + sqx.Message);
                 }
+                catch (Exception ex)
+                {
+                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                }
+                
 
                 return Products;
             }
@@ -78,12 +83,11 @@ namespace ThreadedProjectLib
 
                     // Attempt to commit the transaction.
                     transaction.Commit();
-                    Console.WriteLine("Records are written to database.");
+                    Utils.WriteErrorLog("Records are written to database.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-                    Console.WriteLine("  Message: {0}", ex.Message);
+                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
 
                     // Attempt to roll back the transaction. 
                     try
@@ -95,8 +99,7 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-                        Console.WriteLine("  Message: {0}", ex2.Message);
+                        Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
                     }
                 }
             }
@@ -124,15 +127,10 @@ namespace ThreadedProjectLib
                     command.CommandText += string.Format("UPDATE [dbo].[Products_Suppliers] " +
                                                   "SET [ProductId] = @prodid, [SupplierId] = @supid " +
                                                   "where [ProductSupplierId] = @prodSupid");
-
                     // Set connection, etc.
                     for (int i = 0; i < assocSuppliers.Count; i++)
                     {
                         command.Parameters.Clear();
-                        Console.WriteLine(assocSuppliers[i].SuppProductId);
-                        Console.WriteLine("UPdate since supplier has product supplier id");
-                        Console.WriteLine(assocSuppliers[i].SupplierId);
-
                         command.Parameters.AddWithValue("@supid", assocSuppliers[i].SupplierId);
                         command.Parameters.AddWithValue("@prodid", product.ProductId);
                         command.Parameters.AddWithValue("@prodSupid", assocSuppliers[i].SuppProductId);
@@ -147,13 +145,12 @@ namespace ThreadedProjectLib
                     // Attempt to commit the transaction.
 
                     transaction.Commit();
-                    Console.WriteLine("Records are written to database.");
+                    Utils.WriteErrorLog("Records are updated to database.");
                 }
                 catch (Exception ex)
                 {
                     //send this to logs
-                    Console.WriteLine("Commit Exception Type: {0}", ex.GetType());
-                    Console.WriteLine("  Message: {0}", ex.Message);
+                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
 
                     // Attempt to roll back the transaction. 
                     try
@@ -165,31 +162,10 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Console.WriteLine("Rollback Exception Type: {0}", ex2.GetType());
-                        Console.WriteLine("  Message: {0}", ex2.Message);
+                        Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
                     }
                 }
             }
-        }
-
-        public void TestingConnection()
-        {
-            /// only for testing purposes remove once done
-            SqlConnection connection;
-            using (connection = base.GetConnection())
-            {
-                connection.Open();
-                Console.WriteLine("ServerVersion: {0}", connection.ServerVersion);
-                Console.WriteLine("State: {0}", connection.State);
-            }
-
-            if (connection != null)
-            {
-                Console.WriteLine(connection);
-                Console.WriteLine();
-                Console.WriteLine("State: {0}", connection.State);
-            }
-
         }
     }
 }
