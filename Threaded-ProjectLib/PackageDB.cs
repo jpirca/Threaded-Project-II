@@ -28,38 +28,49 @@ namespace ThreadedProjectLib
         public void addPackage(string pkgName, DateTime pkgStartDate, DateTime pkgEndDate, string pkgDesc
             , decimal pkgBasePrice, decimal pkgAgencyComm)
         {
-            //pkgObj.packageId = pkgId;
-            pkgObj.pkgName = pkgName;
-            pkgObj.pkgStartDate = pkgStartDate;
-            pkgObj.pkgEndDate = pkgEndDate;
-            pkgObj.pkgDesc = pkgDesc;
-            pkgObj.pkgBasePrice = pkgBasePrice;
-            pkgObj.pkgAgencyComm = pkgAgencyComm;
+            SqlConnection Con = null;
+            try
+            {
+                //pkgObj.packageId = pkgId;
+                pkgObj.pkgName = pkgName;
+                pkgObj.pkgStartDate = pkgStartDate;
+                pkgObj.pkgEndDate = pkgEndDate;
+                pkgObj.pkgDesc = pkgDesc;
+                pkgObj.pkgBasePrice = pkgBasePrice;
+                pkgObj.pkgAgencyComm = pkgAgencyComm;
 
-            //string dbConnect = GetConnectionString();
-            // create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = GetConnection();
-            // create command object with SQL query and link to connection object
-            SqlCommand Cmd = new SqlCommand("INSERT INTO Packages " +
-        "(PkgName, PkgStartDate, PkgEndDate,PkgDesc, PkgBasePrice,PkgAgencyCommission) " +
-                "VALUES(@PackageName, @PackageStartDate,@PackageEndDate,@PackageDesc," +
-                "@PackageBasePrice,@PackageAgencyCommission)", Con);
+                //string dbConnect = GetConnectionString();
+                // create sql connection object.  Be sure to put a valid connection string
+                Con = GetConnection();
+                // create command object with SQL query and link to connection object
+                SqlCommand Cmd = new SqlCommand("INSERT INTO Packages " +
+            "(PkgName, PkgStartDate, PkgEndDate,PkgDesc, PkgBasePrice,PkgAgencyCommission) " +
+                    "VALUES(@PackageName, @PackageStartDate,@PackageEndDate,@PackageDesc," +
+                    "@PackageBasePrice,@PackageAgencyCommission)", Con);
 
-            //create your parameters
-            Cmd.Parameters.AddWithValue("@PackageName", pkgObj.pkgName);
-            Cmd.Parameters.AddWithValue("@PackageStartDate", pkgObj.pkgStartDate);
-            Cmd.Parameters.AddWithValue("@PackageEndDate", pkgObj.pkgEndDate);
-            Cmd.Parameters.AddWithValue("@PackageDesc", pkgObj.pkgDesc);
-            Cmd.Parameters.AddWithValue("@PackageBasePrice", pkgObj.pkgBasePrice);
-            Cmd.Parameters.AddWithValue("@PackageAgencyCommission", pkgObj.pkgAgencyComm);
+                //create your parameters
+                Cmd.Parameters.AddWithValue("@PackageName", pkgObj.pkgName);
+                Cmd.Parameters.AddWithValue("@PackageStartDate", pkgObj.pkgStartDate);
+                Cmd.Parameters.AddWithValue("@PackageEndDate", pkgObj.pkgEndDate);
+                Cmd.Parameters.AddWithValue("@PackageDesc", pkgObj.pkgDesc);
+                Cmd.Parameters.AddWithValue("@PackageBasePrice", pkgObj.pkgBasePrice);
+                Cmd.Parameters.AddWithValue("@PackageAgencyCommission", pkgObj.pkgAgencyComm);
 
-            Con.Open();
+                Con.Open();
 
-            // execute the query and return number of rows affected, should be one
-            int RowsAffected = Cmd.ExecuteNonQuery();
-
-            // close connection when done
-            Con.Close();
+                // execute the query and return number of rows affected, should be one
+                int RowsAffected = Cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                Utils.ErrorManager(e, "Packages", "AddPackage()");
+            }
+            finally
+            {
+                // close connection when done
+                if (Con != null)
+                    Con.Close();
+            }            
         }
 
 
@@ -67,28 +78,44 @@ namespace ThreadedProjectLib
         public bool FillDataGrid()
         {
             bool dataFound = false;
-           // string dbConnect = GetDBConnectionString();
-            // create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = GetConnection();
-            // create command object with SQL query and link to connection object
+            SqlConnection Con = null;
+            try
+            {
+                // string dbConnect = GetDBConnectionString();
+                // create sql connection object.  Be sure to put a valid connection string
+                Con = GetConnection();
+                // create command object with SQL query and link to connection object
 
-            string query = "select * from packages";
-            // string query = "select PkgName,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission" +
-            //  " from packages";
+                string query = "select * from packages";
+                // string query = "select PkgName,PkgStartDate,PkgEndDate,PkgDesc,PkgBasePrice,PkgAgencyCommission" +
+                //  " from packages";
 
-            adapter = new SqlDataAdapter(query, Con);
+                adapter = new SqlDataAdapter(query, Con);
 
-            dt = new DataTable();
-            adapter.Fill(dt);
-            Con.Close();
-            dataFound = true;
+                dt = new DataTable();
+                adapter.Fill(dt);
+                dataFound = true;
+
+            }
+            catch (Exception e)
+            {
+                Utils.ErrorManager(e, "Packages", "FillDataGrid()");
+            }
+            finally
+            {
+                // close connection when done
+                if (Con != null)
+                    Con.Close();
+            }
+
             return dataFound;
-
         }
         //Fetch suppliersid based on a join query to display data into product packages
         public bool FetchSuppliers(string prod, int packageID)
         {
             bool dataFound = false;
+            SqlConnection Con = null;
+
             // Newly added on Jan 28 2019
             string query = "select SupName from Suppliers s join Products_Suppliers ps " +
                 "on s.SupplierId = ps.SupplierId join Products p on ps.ProductId = p.ProductId " +
@@ -98,40 +125,69 @@ namespace ThreadedProjectLib
                 "where PackageId = @PackageId) " +
                 "order by 1";
 
-            // create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = GetConnection();
-            Con.Open();
-            // create command object with SQL query and link to connection object
-            SqlCommand command;
-            command = new SqlCommand(query, Con);
-            //   command.Parameters.AddWithValue("@Name",criteria);
-            command.Parameters.AddWithValue("@cmbProducts", prod);
-            command.Parameters.AddWithValue("@PackageId", packageID);
-            reader = command.ExecuteReader();
-            dataFound = true;
+            try
+            {
+                // create sql connection object.  Be sure to put a valid connection string
+                Con = GetConnection();
+                Con.Open();
+                // create command object with SQL query and link to connection object
+                SqlCommand command;
+                command = new SqlCommand(query, Con);
+                //   command.Parameters.AddWithValue("@Name",criteria);
+                command.Parameters.AddWithValue("@cmbProducts", prod);
+                command.Parameters.AddWithValue("@PackageId", packageID);
+                reader = command.ExecuteReader();
+                dataFound = true;
+            }
+            catch (Exception e)
+            {
+                Utils.ErrorManager(e, "Suppliers, Products_Suppliers, Products, Packages_Products_Suppliers", "FetchSuppliers()");
+            }
+            finally
+            {
+                // close connection when done
+                if (Con != null)
+                    Con.Close();
+            }
+            
             return dataFound;
         }
         //Fetch porducts from products class
         public bool fetchProducts()
         {
             bool dataFound = false;
+            SqlConnection Con = null;
             //string dbConnect = GetDBConnectionString();
 
-            // create sql connection object.  Be sure to put a valid connection string
-            SqlConnection Con = GetConnection();
-            Con.Open();
-            // create command object with SQL query and link to connection object
-            SqlCommand command;
-            string query = "select prodName from products";
-            command = new SqlCommand(query, Con);
-            reader = command.ExecuteReader();
-            if (reader != null)
+            try
             {
-                dataFound = true;
+                // create sql connection object.  Be sure to put a valid connection string
+                Con = GetConnection();
+                Con.Open();
+                // create command object with SQL query and link to connection object
+                SqlCommand command;
+                string query = "select prodName from products";
+                command = new SqlCommand(query, Con);
+                reader = command.ExecuteReader();
+                if (reader != null)
+                {
+                    dataFound = true;
 
-                return dataFound;
+                    return dataFound;
+                }
+
             }
-            Con.Close();
+            catch (Exception e)
+            {
+                Utils.ErrorManager(e, "Products", "fetchProducts()");
+            }
+            finally
+            {
+                // close connection when done
+                if (Con != null)
+                    Con.Close();
+            }
+            
             return true;
 
         }

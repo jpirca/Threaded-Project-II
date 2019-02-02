@@ -25,7 +25,7 @@ namespace ThreadedProjectLib
                     //open the connection
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
-                    
+
                     while (reader.Read())
                     {
                         Products.Add(new Product() { ProductId = Convert.ToInt32(reader[0]), ProductName = reader[1].ToString() });
@@ -33,7 +33,7 @@ namespace ThreadedProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.ErrorManager(ex, "ProductDB", "getAllProducts()");
+                    Utils.ErrorManager(ex, "Products", "getAllProducts()");
                 }
 
                 return Products;
@@ -52,7 +52,7 @@ namespace ThreadedProjectLib
                 // Start a local transaction.
                 transaction = connection.BeginTransaction("SimpleTransaction");
 
-                // Must assign both transaction object and connection 
+                // Must assign both transaction object and connection
                 // to Command object for a pending local transaction
                 command.Connection = connection;
                 command.Transaction = transaction;
@@ -79,19 +79,19 @@ namespace ThreadedProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.ErrorManager(ex, "ProductDB", "AddProduct()");
+                    Utils.ErrorManager(ex, "Products", "AddProduct()");
 
-                    // Attempt to roll back the transaction. 
+                    // Attempt to roll back the transaction.
                     try
                     {
                         transaction.Rollback();
                     }
                     catch (Exception ex2)
                     {
-                        // This catch block will handle any errors that may have occurred 
-                        // on the server that would cause the rollback to fail, such as 
+                        // This catch block will handle any errors that may have occurred
+                        // on the server that would cause the rollback to fail, such as
                         // a closed connection.
-                        Utils.ErrorManager(ex2, "ProductDB", "AddProduct().Rollback");
+                        Utils.ErrorManager(ex2, "Products", "AddProduct().Rollback");
                     }
                 }
             }
@@ -109,7 +109,7 @@ namespace ThreadedProjectLib
                 // Start a local transaction.
                 transaction = connection.BeginTransaction("SimpleTransaction");
 
-                // Must assign both transaction object and connection 
+                // Must assign both transaction object and connection
                 // to Command object for a pending local transaction
                 command.Connection = connection;
                 command.Transaction = transaction;
@@ -142,19 +142,20 @@ namespace ThreadedProjectLib
                 catch (Exception ex)
                 {
                     //send this to logs
-                    Utils.ErrorManager(ex, "ProductDB", "UpdateProduct()");
-
-                    // Attempt to roll back the transaction. 
+                    //Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "Products, Products_Suppliers", "UpdateProduct()");
+                    // Attempt to roll back the transaction.
                     try
                     {
                         transaction.Rollback();
                     }
                     catch (Exception ex2)
                     {
-                        // This catch block will handle any errors that may have occurred 
-                        // on the server that would cause the rollback to fail, such as 
+                        // This catch block will handle any errors that may have occurred
+                        // on the server that would cause the rollback to fail, such as
                         // a closed connection.
-                        Utils.ErrorManager(ex2, "ProductDB", "UpdateProduct()");
+                        //Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
+                        Utils.ErrorManager(ex2, "Products, Products_Suppliers", "UpdateProduct()");
                     }
                 }
             }
