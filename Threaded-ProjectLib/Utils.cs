@@ -51,7 +51,7 @@ namespace ThreadedProjectLib
         {
             if (type.GetType().FullName == "System.Data.SqlClient.SqlException")
             {
-                Utils.WriteErrorLog("Table: "+tableName+" Method: "+errorMethod+" Message :"+type.Message + " -> " + type.GetType().ToString());
+                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
                 MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
             }
             else if (type.GetType().FullName == "System.Data.SqlClient.InvalidOperationException")
@@ -60,7 +60,12 @@ namespace ThreadedProjectLib
                 MessageBox.Show("Query isn't executing, Please Contact your administrator");
 
             }
-            
+            else {
+                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
+                MessageBox.Show("Please Contact your administrator");
+
+            }
+
         }
     }
     

@@ -18,7 +18,7 @@ namespace ThreadedProjectLib
         public List<Product> GetAllProducts()
         {
             string queryString =
-                "SELECT Productid, ProdName1 FROM dbo.Products";
+                "SELECT Productid, ProdName FROM dbo.Products";
             using (SqlConnection connection = GetConnection())
             {
                 SqlCommand command = new SqlCommand(
@@ -38,7 +38,6 @@ namespace ThreadedProjectLib
                 {
                     Utils.ErrorManager(ex, "ProductDB", "getAllProducts()");
                 }
-                
 
                 return Products;
             }
@@ -94,7 +93,7 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Utils.ErrorManager(ex2, "ProductDB", "AddProduct()");
+                        Utils.ErrorManager(ex2, "ProductDB", "AddProduct().Rollback");
                     }
                 }
             }
@@ -145,7 +144,7 @@ namespace ThreadedProjectLib
                 catch (Exception ex)
                 {
                     //send this to logs
-                    Utils.WriteErrorLog("Commit Exception Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "ProductDB", "UpdateProduct()");
 
                     // Attempt to roll back the transaction. 
                     try
@@ -157,7 +156,7 @@ namespace ThreadedProjectLib
                         // This catch block will handle any errors that may have occurred 
                         // on the server that would cause the rollback to fail, such as 
                         // a closed connection.
-                        Utils.WriteErrorLog("Rollback Exception Type: " + ex2.GetType() + "  Message: " + ex2.Message);
+                        Utils.ErrorManager(ex2, "ProductDB", "UpdateProduct()");
                     }
                 }
             }
