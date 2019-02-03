@@ -24,15 +24,24 @@ namespace ThreadedProjectII
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //this.Enabled = false;
-            //this.IsMdiContainer = true;
             frmLogin form1 = new frmLogin();
-            form1.MdiParent = this;
-            //Form2.Enabled = true;
-            //Form2.BringToFront();
-            //menuMain.Enabled = false;
-            form1.Show();
-            form1.Activate();
+            //form1.MdiParent = this;
+
+            DialogResult result = form1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                MainMenuStrip.Enabled = true;
+            }
+            else
+            {
+                MainMenuStrip.Enabled = true;
+                MainMenuStrip.Items[1].Enabled = false;
+                MainMenuStrip.Items[2].Enabled = false;
+                MainMenuStrip.Items[3].Enabled = false;
+            }
+
+            //form1.Show();
+            //form1.Activate();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
