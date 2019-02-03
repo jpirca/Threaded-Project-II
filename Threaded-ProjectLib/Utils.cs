@@ -12,7 +12,11 @@ using System.Windows.Forms;
 
 namespace ThreadedProjectLib
 {
-    class Utils
+    /* Author: Quynh Nguyen (Queenie) + Jeremaih
+     * Date: Dec - 17 - 2018
+     * Implement sql functions to work with Supplier.
+     */
+    public static class Utils
     {
         /*
          * Error Log Recording functions -- Error Message will be logged into "error_log.txt"
@@ -55,18 +59,7 @@ namespace ThreadedProjectLib
         {
             string title = "TravelExperts Application Error";
             string errorMessage = "";
-            //if (exception.GetType().FullName == "System.Data.SqlClient.SqlException")
-            //{
-            //    Utils.WriteErrorLog("Table: "+tableName+" Method: "+errorMethod+" Message :"+exception.Message + " -> " + exception.GetType().ToString());
-            //    MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
-            //}
-            //else if (exception.GetType().FullName == "System.Data.SqlClient.InvalidOperationException")
-            //{
-            //    Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + exception.Message + " -> " + exception.GetType().ToString());
-            //    MessageBox.Show("Query isn't executing, Please Contact your administrator");
 
-            //}
-            //
             if (exception is SqlException) // Error at Data Access Layer
             {
                 Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod

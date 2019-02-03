@@ -37,13 +37,13 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                //Utils.WriteErrorLog("SupplierDB.GetSuppliers() - table name: Supplier "+ e.Message + " - " + e.GetType().ToString());
                 Utils.ErrorManager(e, "Supplier", "SupplierDB.GetSuppliers()");
             }
             finally
             {
                 //close connection
-                conn.Close();
+                if(conn != null)
+                    conn.Close();
             }
             return result;
         }
@@ -71,12 +71,12 @@ namespace ThreadedProjectLib
             catch (Exception e)
             {
                 Utils.ErrorManager(e, "Supplier", "SupplierDB.GetSupplier()");
-                //Utils.WriteErrorLog("SupplierDB.GetSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
                 //close connection
-                conn.Close();
+                if (conn != null)
+                    conn.Close();
             }
             return result;
         }
@@ -105,16 +105,17 @@ namespace ThreadedProjectLib
             catch (Exception e)
             {
                 Utils.ErrorManager(e, "Supplier", "SupplierDB.UpdateSupplier()");
-                //Utils.WriteErrorLog("SupplierDB.UpdateSupplier() - table name: " + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
                 //close connection
-                conn.Close();
+                if (conn != null)
+                    conn.Close();
             }
             return (rows != 0);
         }
 
+        // Get Supplier by Product Id
         public List<Supplier> getSupplierByProductId(int productID)
         {
             string query = "SELECT [ProductSupplierId], [Supplierid], [SupName] " +
@@ -146,6 +147,7 @@ namespace ThreadedProjectLib
                 return AssocSuppliers;
             }
         }
+
         /* Insert Supplier to database */
         public bool InsertSuppliers(Supplier supplier)
         {
@@ -178,12 +180,12 @@ namespace ThreadedProjectLib
             catch (Exception e)
             {
                 Utils.ErrorManager(e, "Supplier", "SupplierDB.InsertSuppliers()");
-                //Utils.WriteErrorLog("SupplierDB.InsertSuppliers() - table name: Suppliers" + e.Message + " - " + e.GetType().ToString());
             }
             finally
             {
                 //close connection
-                conn.Close();
+                if (conn != null)
+                    conn.Close();
             }
             return (result != 0);
 
@@ -206,19 +208,17 @@ namespace ThreadedProjectLib
             }
             catch (Exception e)
             {
-                //Utils.WriteErrorLog("SupplierDB.DeleteSupplier() - table name: Supplier" + e.Message + " - " + e.GetType().ToString());
-                //throw e;
                 Utils.ErrorManager(e, "Supplier", "SupplierDB.DeleteSupplier()");
             }
             finally
             {
                 //close connection
-                conn.Close();
+                if (conn != null)
+                    conn.Close();
             }
 
             return (result != 0);
         }
-
 
     }
 }
