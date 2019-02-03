@@ -54,7 +54,7 @@
             this.btnCancelPkg.TabIndex = 48;
             this.btnCancelPkg.Text = "&Cancel";
             this.btnCancelPkg.UseVisualStyleBackColor = true;
-            this.btnCancelPkg.Click += new System.EventHandler(this.btnCancelPkg_Click);
+            //this.btnCancelPkg.Click += new System.EventHandler(this.btnCancelPkg_Click);
 
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(293, 303);
@@ -76,7 +76,7 @@
             this.btnNextPkg.TabIndex = 47;
             this.btnNextPkg.Text = "&Edit";
             this.btnNextPkg.UseVisualStyleBackColor = true;
-            this.btnNextPkg.Click += new System.EventHandler(this.btnNextPkg_Click);
+            //this.btnNextPkg.Click += new System.EventHandler(this.btnNextPkg_Click);
             // 
             // listBox1
 
