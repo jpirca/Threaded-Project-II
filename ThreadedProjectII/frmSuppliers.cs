@@ -25,46 +25,52 @@ namespace ThreadedProjectII
             string message = "";
             string messageBoxTitle = "";
 
-            DialogResult dialogResult = MessageBox.Show("Are you sure to create/update the supplier with Name - \"" + txtSupplierName.Text + "\"?", 
-                "Create/ Update Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            if(validaterClass.isProvided(txtSupplierName,"The field \"Supplier Name\" must be provided"))
             {
-                SupplierDB ado = new SupplierDB();
-
-                try
+                DialogResult dialogResult = MessageBox.Show("Are you sure to create/update the supplier with Name - \"" + txtSupplierName.Text + "\"?",
+                "Create/ Update Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (this.editedSupplier == null || editedSupplier.SupplierId == -1) // insert supplier
-                    {
-                        editedSupplier = new Supplier(-1, txtSupplierName.Text);
-                        messageBoxTitle = "Adding Supplier";
-                        if (ado.InsertSuppliers(editedSupplier))
-                            message = "The supplier \"" + txtSupplierName.Text + "\" was created sussccefully";
-                        else
-                            message = "The supplier \"" + txtSupplierName.Text + "\" was not created sussccefully";
-                    }
-                    else //update supplier
-                    {
-                        editedSupplier.SupName = txtSupplierName.Text; // set new supplier name supplier object
-                        messageBoxTitle = "Updating Supplier";
-                        if (ado.UpdateSupplier(editedSupplier))
-                            message = "The supplier \"" + txtSupplierName.Text + "\" was updated sussccefully";
-                        else
-                            message = "The supplier \"" + txtSupplierName.Text + "\" was not updated sussccefully";              
-                    
-                    }
-                }
-                catch (Exception ex)
-                {
-                    message = ex.Message;
-                    messageBoxTitle = "Update Supplier Error";
+                    SupplierDB ado = new SupplierDB();
 
-                }
+                    try
+                    {
+                        if (this.editedSupplier == null || editedSupplier.SupplierId == -1) // insert supplier
+                        {
+                            editedSupplier = new Supplier(-1, txtSupplierName.Text);
+                            messageBoxTitle = "Adding Supplier";
+                            if (ado.InsertSuppliers(editedSupplier))
+                                message = "The supplier \"" + txtSupplierName.Text + "\" was created sussccefully";
+                            else
+                                message = "The supplier \"" + txtSupplierName.Text + "\" was not created sussccefully";
+                        }
+                        else //update supplier
+                        {
+                            editedSupplier.SupName = txtSupplierName.Text; // set new supplier name supplier object
+                            messageBoxTitle = "Updating Supplier";
+                            if (ado.UpdateSupplier(editedSupplier))
+                                message = "The supplier \"" + txtSupplierName.Text + "\" was updated sussccefully";
+                            else
+                                message = "The supplier \"" + txtSupplierName.Text + "\" was not updated sussccefully";
 
-                if(!String.IsNullOrEmpty(message))
-                    MessageBox.Show(message, messageBoxTitle);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        message = ex.Message;
+                        messageBoxTitle = "Update Supplier Error";
+
+                    }
+
+                    if (!String.IsNullOrEmpty(message))
+                        MessageBox.Show(message, messageBoxTitle);
+                }
+                this.Close();
             }
 
-            this.Close();
+            
+
+            
             
             //form1.setSupplier(editedSupplier);
             //form1.Show();

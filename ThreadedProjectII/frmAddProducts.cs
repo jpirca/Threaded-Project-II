@@ -21,13 +21,31 @@ namespace ThreadedProjectII
 
         private void btnAddProduct_Click(object sender, EventArgs e)
         {
+            string message = "";
+            string messageBoxTitle = "";
+
             if (validaterClass.isProvided(txtAddProductName, "Product Name needs to be provided"))
             {
                 string addProductName = txtAddProductName.Text;
 
-                //Insert Product Name
-                perProduct.AddProduct(addProductName);
-                txtAddProductName.Text = "";
+                DialogResult dialogResult = MessageBox.Show("Are you sure to create the product with Name - \"" + txtAddProductName.Text + "\"?",
+               "Create/ Update Confirmation", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SupplierDB ado = new SupplierDB();
+
+                    try
+                    {
+                        //Insert Product Name
+                        perProduct.AddProduct(addProductName);
+                        txtAddProductName.Text = "";
+                    }
+                    catch(Exception ex)
+                    {
+                        message = ex.Message;
+                        messageBoxTitle = "Update Supplier Error";
+                    }
+                }
             }
             
 

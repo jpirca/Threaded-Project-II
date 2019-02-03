@@ -33,25 +33,28 @@
             this.btnNextSup = new System.Windows.Forms.Button();
             this.txtSupplierName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(8, 14);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(103, 23);
+            this.label10.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(492, 39);
+            this.label10.Size = new System.Drawing.Size(232, 31);
             this.label10.TabIndex = 51;
-            this.label10.Text = "Create New/ Update Supplier";
+            this.label10.Text = "Manage Supplier";
             // 
             // btnCancelSup
             // 
             this.btnCancelSup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelSup.Location = new System.Drawing.Point(296, 187);
+            this.btnCancelSup.Location = new System.Drawing.Point(331, 185);
+            this.btnCancelSup.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnCancelSup.Name = "btnCancelSup";
-            this.btnCancelSup.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelSup.Size = new System.Drawing.Size(71, 26);
             this.btnCancelSup.TabIndex = 50;
             this.btnCancelSup.Text = "&Cancel";
             this.btnCancelSup.UseVisualStyleBackColor = true;
@@ -60,9 +63,10 @@
             // btnNextSup
             // 
             this.btnNextSup.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNextSup.Location = new System.Drawing.Point(204, 187);
+            this.btnNextSup.Location = new System.Drawing.Point(236, 185);
+            this.btnNextSup.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnNextSup.Name = "btnNextSup";
-            this.btnNextSup.Size = new System.Drawing.Size(75, 23);
+            this.btnNextSup.Size = new System.Drawing.Size(71, 26);
             this.btnNextSup.TabIndex = 49;
             this.btnNextSup.Text = "&Next";
             this.btnNextSup.UseVisualStyleBackColor = true;
@@ -71,47 +75,56 @@
             // txtSupplierName
             // 
             this.txtSupplierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSupplierName.Location = new System.Drawing.Point(108, 132);
+            this.txtSupplierName.Location = new System.Drawing.Point(81, 44);
+            this.txtSupplierName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.txtSupplierName.Name = "txtSupplierName";
-            this.txtSupplierName.Size = new System.Drawing.Size(263, 22);
+            this.txtSupplierName.Size = new System.Drawing.Size(312, 22);
             this.txtSupplierName.TabIndex = 42;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(22, 132);
+            this.label1.Location = new System.Drawing.Point(17, 44);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 16);
             this.label1.TabIndex = 41;
             this.label1.Text = "Name:";
             // 
-            // lblTitle
+            // groupBox1
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(12, 81);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(406, 16);
-            this.lblTitle.TabIndex = 40;
-            this.lblTitle.Text = "Please fill all the required information to create/ update a \"Supplier\":";
+            this.groupBox1.Controls.Add(this.txtSupplierName);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.groupBox1.Location = new System.Drawing.Point(12, 80);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(404, 87);
+            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Please fill all the required information";
             // 
             // frmSuppliers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AcceptButton = this.btnNextSup;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 233);
+            this.CancelButton = this.btnCancelSup;
+            this.ClientSize = new System.Drawing.Size(425, 222);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnCancelSup);
             this.Controls.Add(this.btnNextSup);
-            this.Controls.Add(this.txtSupplierName);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblTitle);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmSuppliers";
             this.Text = "Add New Supplier";
             this.Load += new System.EventHandler(this.frmSuppliers_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +137,6 @@
         private System.Windows.Forms.Button btnNextSup;
         private System.Windows.Forms.TextBox txtSupplierName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
