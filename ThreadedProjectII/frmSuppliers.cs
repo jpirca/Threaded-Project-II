@@ -34,16 +34,12 @@ namespace ThreadedProjectII
             string messageBoxTitle = "";
 
 
-            if(validaterClass.isProvided(txtSupplierName,"The field \"Supplier Name\" must be provided"))
-            
-            DialogResult dialogResult = MessageBox.Show("Are you sure to create/update the supplier with Name - \"" + txtSupplierName.Text + "\"?", 
-                "Create/ Update Confirmation", MessageBoxButtons.YesNo);
-
-            if (dialogResult == DialogResult.Yes) // User wants to insert/ update Supplier
+            if (validaterClass.isProvided(txtSupplierName, "The field \"Supplier Name\" must be provided"))
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure to create/update the supplier with Name - \"" + txtSupplierName.Text + "\"?",
                 "Create/ Update Confirmation", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+
+                if (dialogResult == DialogResult.Yes) // User wants to insert/ update Supplier
                 {
                     SupplierDB ado = new SupplierDB();
 
@@ -68,6 +64,9 @@ namespace ThreadedProjectII
                                 message = "The supplier \"" + txtSupplierName.Text + "\" was not updated sussccefully";
 
                         }
+
+                        if (!String.IsNullOrEmpty(message))
+                            MessageBox.Show(message, messageBoxTitle);
                     }
                     catch (Exception ex)
                     {
@@ -76,28 +75,10 @@ namespace ThreadedProjectII
 
                     }
 
-
-                    if (!String.IsNullOrEmpty(message))
-                        MessageBox.Show(message, messageBoxTitle);
+                    this.Close();
                 }
-                catch (Exception ex)
-                {
-                    Utils.ErrorManager(ex, "", "frmSuppliers.btnNextSup_Click()");
-
-                }
-                this.Close();
             }
-
-
-            
-
-            
-            
-            //form1.setSupplier(editedSupplier);
-            //form1.Show();
-            //form1.Activate();
-            //this.Close();
-            this.Close();
+           
 
 
         }
