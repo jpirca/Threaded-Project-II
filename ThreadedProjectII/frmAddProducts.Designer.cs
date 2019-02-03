@@ -33,12 +33,14 @@
             this.label10 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtAddProductName = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelPkg
             // 
             this.btnCancelPkg.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelPkg.Location = new System.Drawing.Point(295, 239);
+            this.btnCancelPkg.Location = new System.Drawing.Point(315, 174);
             this.btnCancelPkg.Name = "btnCancelPkg";
             this.btnCancelPkg.Size = new System.Drawing.Size(75, 23);
             this.btnCancelPkg.TabIndex = 48;
@@ -49,7 +51,7 @@
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(161, 239);
+            this.btnAddProduct.Location = new System.Drawing.Point(216, 174);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(75, 23);
             this.btnAddProduct.TabIndex = 47;
@@ -60,18 +62,18 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(96, 57);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(96, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(324, 42);
+            this.label10.Size = new System.Drawing.Size(226, 31);
             this.label10.TabIndex = 43;
-            this.label10.Text = "Add New Product";
+            this.label10.Text = "Manage Product";
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(100, 174);
+            this.lblTitle.Location = new System.Drawing.Point(11, 38);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(94, 16);
             this.lblTitle.TabIndex = 42;
@@ -79,23 +81,40 @@
             // 
             // txtAddProductName
             // 
-            this.txtAddProductName.Location = new System.Drawing.Point(218, 170);
+            this.txtAddProductName.Location = new System.Drawing.Point(129, 34);
             this.txtAddProductName.Name = "txtAddProductName";
-            this.txtAddProductName.Size = new System.Drawing.Size(191, 20);
+            this.txtAddProductName.Size = new System.Drawing.Size(215, 20);
             this.txtAddProductName.TabIndex = 49;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtAddProductName);
+            this.groupBox1.Controls.Add(this.lblTitle);
+            this.groupBox1.Location = new System.Drawing.Point(21, 72);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(373, 83);
+            this.groupBox1.TabIndex = 50;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Fill the information below";
             // 
             // frmAddProducts
             // 
+            this.AcceptButton = this.btnAddProduct;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 316);
-            this.Controls.Add(this.txtAddProductName);
+            this.CancelButton = this.btnCancelPkg;
+            this.ClientSize = new System.Drawing.Size(408, 210);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancelPkg);
             this.Controls.Add(this.btnAddProduct);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.lblTitle);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAddProducts";
             this.Text = "Add a product";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -108,5 +127,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txtAddProductName;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
