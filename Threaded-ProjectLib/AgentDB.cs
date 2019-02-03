@@ -87,7 +87,8 @@ namespace Threaded_ProjectLib
                 }
                 catch (Exception ex)
                 {
-                    Utils.WriteErrorLog("Login failed Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    //Utils.WriteErrorLog("Login failed Type: " + ex.GetType() + "  Message: " + ex.Message);
+                    Utils.ErrorManager(ex, "Agents", "AgentDB.CheckAgentEmail()");
                     return false;
                 }
             }
@@ -112,8 +113,11 @@ namespace Threaded_ProjectLib
                         agent.HashedPassword = reader["HashedPassword"].ToString();
                     }
 
-
                     return agent;
+                }
+                catch(Exception ex)
+                {
+                    Utils.ErrorManager(ex, "Agents", "AgentDB.GetHashPasswordByAgentId()");
                 }
                 finally
                 {
@@ -122,6 +126,7 @@ namespace Threaded_ProjectLib
                 }
             }
 
+            return agent;
         }
     }
 }

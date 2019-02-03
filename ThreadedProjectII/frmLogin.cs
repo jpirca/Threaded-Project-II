@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Threaded_ProjectLib;
+using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
@@ -22,24 +23,31 @@ namespace ThreadedProjectII
         // Method to verify agent login
         private void btnOK_Click(object sender, EventArgs e)
         {
-            bool result = false;
-            AgentDB agentDB = new AgentDB();
-            //example too
-            //usernmae = janet.delton@travelexperts.com
-            string passsword = "abcd1234";
-            //HashSalt hashy = new HashSalt();
-            AgentDB.GenerateSaltedHash(passsword);
-            
-            result = agentDB.AgentLogin(new Agent(emailLogin.Text, passwordLogin.Text));
-
-            if (result)
+            // Validate fields are not blank
+            if((validaterClass.isProvided(emailLogin,"The field \"Email\" must be provided")) &&
+                (validaterClass.isProvided(passwordLogin, "The field \"Password\" must be provided")))
             {
-                //Open dashboard and close this form 
-                MessageBox.Show("Successfully Logged in");
+                bool result = false;
+                AgentDB agentDB = new AgentDB();
+                //example too
+                //usernmae = janet.delton@travelexperts.com
+                string passsword = "abcd1234";
+                //HashSalt hashy = new HashSalt();
+                AgentDB.GenerateSaltedHash(passsword);
+
+                result = agentDB.AgentLogin(new Agent(emailLogin.Text, passwordLogin.Text));
+                if (result)
+                {
+                    //Open dashboard and close this form 
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Your email or Password is wrong");
+                }
             }
-            else {
-                MessageBox.Show("Your email or Password is wrong");
-            }
+
+            
             
         }
 

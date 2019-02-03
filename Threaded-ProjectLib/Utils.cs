@@ -12,12 +12,16 @@ using System.Windows.Forms;
 
 namespace ThreadedProjectLib
 {
-    class Utils
+    /* Author: Quynh Nguyen (Queenie) + Jeremaih
+     * Date: Dec - 17 - 2018
+     * Implement sql functions to work with Supplier.
+     */
+    public static class Utils
     {
         /*
          * Error Log Recording functions -- Error Message will be logged into "error_log.txt"
          * param: errorMsg - Error Message.
-         * 
+         *
          */
         public static string errorLogFilePath = "error_log.txt";
         public static void WriteErrorLog(string errorMsg)
@@ -47,26 +51,39 @@ namespace ThreadedProjectLib
             }
         }
 
-        public static void ErrorManager(Exception type, string tableName, string errorMethod="")
+        /*
+         * Exception handling method
+         *      tableName is used for logging exception at Data Access layer.
+         */
+        public static void ErrorManager(Exception exception, string tableName="", string errorMethod="")
         {
-            if (type.GetType().FullName == "System.Data.SqlClient.SqlException")
+            string title = "TravelExperts Application Error";
+            string errorMessage = "";
+
+            if (exception is SqlException) // Error at Data Access Layer
             {
-                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
-                MessageBox.Show("Having trouble with the SQL, Please Contact your administrator");
+                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod
+                            + " Message :" + exception.Message + " -> " + exception.GetType().ToString());
+                errorMessage = "Having trouble with Database. Please Contact Administrator";
             }
-            else if (type.GetType().FullName == "System.Data.SqlClient.InvalidOperationException")
+            else if ((exception is InvalidOperationException || exception is ArgumentNullException)
+                            && !String.IsNullOrEmpty(tableName)) // Error at Data Access Layer
             {
-                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
-                MessageBox.Show("Query isn't executing, Please Contact your administrator");
+                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod
+                            + " Message :" + exception.Message + " -> " + exception.GetType().ToString());
+                errorMessage = "Query isn't executing. Please Contact Administrator";
 
             }
-            else {
-                Utils.WriteErrorLog("Table: " + tableName + " Method: " + errorMethod + " Message :" + type.Message + " -> " + type.GetType().ToString());
-                MessageBox.Show("Please Contact your administrator");
-
+            else //Error at Application Level
+            {
+                Utils.WriteErrorLog(" Method: " + errorMethod + " Message :" + exception.Message
+                            + " -> " + exception.GetType().ToString());
+                errorMessage = "Application's Error. Please Contact Administrator";
             }
 
+            // show message box
+            MessageBox.Show(errorMessage, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
-    
+
 }
