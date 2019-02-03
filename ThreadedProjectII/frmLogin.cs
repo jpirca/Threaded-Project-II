@@ -29,13 +29,12 @@ namespace ThreadedProjectII
             string passsword = "abcd1234";
             //HashSalt hashy = new HashSalt();
             AgentDB.GenerateSaltedHash(passsword);
-            
-            result = agentDB.AgentLogin(new Agent(emailLogin.Text, passwordLogin.Text));
 
+            result = agentDB.AgentLogin(new Agent(emailLogin.Text, passwordLogin.Text));
             if (result)
             {
                 //Open dashboard and close this form 
-                MessageBox.Show("Successfully Logged in");
+                this.DialogResult = DialogResult.OK;
             }
             else {
                 MessageBox.Show("Your email or Password is wrong");
