@@ -51,9 +51,9 @@ namespace ThreadedProjectLib
             get { return suppProductId; }
         }
 
-    public override string ToString()
+        public override string ToString()
         {
-            return /*supplierId + ": " + */supName;
+            return supName;
         }
 
         // Copy Data From Database Element

@@ -11,15 +11,23 @@ using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
+    /* Author: Jonathan Pirca
+     * Modified by: Quynh Nguyen (Queenie)
+     * Date: Dec - 17 - 2018
+     * Implement sql functions to work with Supplier.
+     */
     public partial class frmSuppliers : Form
     {
+        // used in case of editing form
         public Supplier editedSupplier = null;
         
+        // form construction - Jonathan
         public frmSuppliers()
         {
             InitializeComponent();
         }
 
+        // Next Action Handling - Quynh Nguyen (Queenie)
         private void btnNextSup_Click(object sender, EventArgs e)
         {
             string message = "";
@@ -27,7 +35,8 @@ namespace ThreadedProjectII
 
             DialogResult dialogResult = MessageBox.Show("Are you sure to create/update the supplier with Name - \"" + txtSupplierName.Text + "\"?", 
                 "Create/ Update Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+
+            if (dialogResult == DialogResult.Yes) // User wants to insert/ update Supplier
             {
                 SupplierDB ado = new SupplierDB();
 
@@ -55,9 +64,7 @@ namespace ThreadedProjectII
                 }
                 catch (Exception ex)
                 {
-                    message = ex.Message;
-                    messageBoxTitle = "Update Supplier Error";
-
+                    Utils.ErrorManager(ex, "", "frmSuppliers.btnNextSup_Click()");
                 }
 
                 if(!String.IsNullOrEmpty(message))
@@ -65,13 +72,10 @@ namespace ThreadedProjectII
             }
 
             this.Close();
-            
-            //form1.setSupplier(editedSupplier);
-            //form1.Show();
-            //form1.Activate();
-            //this.Close();
+
         }
 
+        // Cancel button clicked - Jonathan Pirca
         private void btnCancelSup_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to Cancel?", "Adding \"Supplier\"", MessageBoxButtons.YesNo);
@@ -85,11 +89,13 @@ namespace ThreadedProjectII
             }
         }
 
+        // Edit Supplier
         public void setEditedSupplier(Supplier supplier)
         {
             this.editedSupplier = supplier;
         }
 
+        // Supplier Form loaded - Quynh Nguyen (Queenie)
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
             if(editedSupplier != null)

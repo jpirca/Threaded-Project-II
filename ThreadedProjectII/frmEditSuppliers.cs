@@ -11,34 +11,59 @@ using ThreadedProjectLib;
 
 namespace ThreadedProjectII
 {
+    /* Author: Jonathan Pirca
+     * Modified by: Quynh Nguyen (Queenie)
+     * Date: Dec - 17 - 2018
+     * Implement sql functions to work with Supplier.
+     */
     public partial class frmEditSuppliers : Form
     {
+        // initialize Edit Supplier Form - Quynh Nguyen
         public frmEditSuppliers()
         {
-            InitializeComponent();
-            SupplierDB supADO = new SupplierDB();
-            List<Supplier> suppliers = supADO.GetSuppliers();
-            this.listBox1.Items.Clear();
-            this.listBox1.DataSource = suppliers;
+            try
+            {
+                InitializeComponent();
+                SupplierDB supADO = new SupplierDB();
+                List<Supplier> suppliers = supADO.GetSuppliers(); // get Suppliers from Database
+                this.listSupplier.Items.Clear();
+                this.listSupplier.DataSource = suppliers; // set Suppliers to list control
+            }
+            catch (Exception ex)
+            {
+                Utils.ErrorManager(ex, "", "frmEditSuppliers.frmEditSuppliers()");
+            }
+            
         }
 
-        private void btnNextPkg_Click(object sender, EventArgs e)
+        //next button handling - Quynh Nguyen
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Close();
+                frmSuppliers form1 = new frmSuppliers();
+                form1.setEditedSupplier((Supplier)this.listSupplier.SelectedItem);
+                form1.Show();
+                form1.Activate();
+            }
+            catch (Exception ex)
+            {
+                Utils.ErrorManager(ex, "", "frmEditSuppliers.btnNext_Click()");
+            }
+
+        }
+
+        // cancel button handling - Jonathan
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmSuppliers form1 = new frmSuppliers();
-            form1.setEditedSupplier((Supplier)this.listBox1.SelectedItem);
-            form1.Show();
-            form1.Activate();
         }
 
-        private void btnCancelPkg_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+        // Delete Supplier handling - Quynh Nguyen
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Supplier selectedSupplier = (Supplier)this.listBox1.SelectedItem;
+            Supplier selectedSupplier = (Supplier)this.listSupplier.SelectedItem;
             if(selectedSupplier == null)
             {
                 MessageBox.Show("Please select the supplier which you want to delete and try again.", "Not Select Supplier.");
@@ -46,7 +71,8 @@ namespace ThreadedProjectII
             {
                 DialogResult dialogResult = MessageBox.Show("Are you sure to delete the supplier with Name - \"" + selectedSupplier.SupName + "\"?",
                 "Delete Confirmation", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
+
+                if (dialogResult == DialogResult.Yes) // user confirmed to delete supplier
                 {
                     SupplierDB ado = new SupplierDB();
                     try
@@ -64,13 +90,14 @@ namespace ThreadedProjectII
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "Deleting Supplier Error");
-                    }                   
+                        Utils.ErrorManager(ex, "", "frmEditSuppliers.btnDelete_Click()");
+                    }
 
                 }
 
                 this.Close();
             }            
         }
+
     }
 }
