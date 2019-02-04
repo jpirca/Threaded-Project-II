@@ -143,12 +143,12 @@ namespace ThreadedProjectLib
             {
                 Utils.ErrorManager(e, "Suppliers, Products_Suppliers, Products, Packages_Products_Suppliers", "FetchSuppliers()");
             }
-            finally
-            {
-                // close connection when done
-                if (Con != null)
-                    Con.Close();
-            }
+            //finally
+            //{
+            //    // close connection when done
+            //    if (Con != null)
+            //        Con.Close();
+            //}
             
             return dataFound;
         }
@@ -181,12 +181,12 @@ namespace ThreadedProjectLib
             {
                 Utils.ErrorManager(e, "Products", "fetchProducts()");
             }
-            finally
-            {
-                // close connection when done
-                if (Con != null)
-                    Con.Close();
-            }
+            //finally
+            //{
+            //    // close connection when done
+            //    if (Con != null)
+            //        Con.Close();
+            //}
             
             return true;
 
